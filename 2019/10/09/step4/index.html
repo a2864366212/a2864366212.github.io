@@ -59,17 +59,20 @@
   };
 </script>
 
-  <meta name="description" content="NoGameNoLife">
+  <meta name="description" content="Step4">
+<meta name="keywords" content="MachineLearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="step4">
+<meta property="og:title" content="step4-NonLinearRegression">
 <meta property="og:url" content="https://a2864366212.github.io/2019/10/09/step4/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="NoGameNoLife">
+<meta property="og:description" content="Step4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-08T16:07:07.225Z">
+<meta property="og:image" content="https://a2864366212.github.io/.io//nn.png">
+<meta property="og:updated_time" content="2019-10-08T16:19:19.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="step4">
-<meta name="twitter:description" content="NoGameNoLife">
+<meta name="twitter:title" content="step4-NonLinearRegression">
+<meta name="twitter:description" content="Step4">
+<meta name="twitter:image" content="https://a2864366212.github.io/.io//nn.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/10/09/step4/">
 
 
@@ -84,7 +87,7 @@
   };
 </script>
 
-  <title>step4 | SteinsGate</title>
+  <title>step4-NonLinearRegression | SteinsGate</title>
   
 
 
@@ -307,7 +310,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">step4
+        <h1 class="post-title" itemprop="name headline">step4-NonLinearRegression
 
           
         </h1>
@@ -323,8 +326,12 @@
                 
               
 
-              <time title="创建时间：2019-10-09 00:07:07" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
+              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：00:19:19" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -336,7 +343,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>0</span>
+              <span>214</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -359,7 +366,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>Step4<br><a id="more"></a></p>
+<h1 id="9-3-双层神经网络实现非线性回归"><a href="#9-3-双层神经网络实现非线性回归" class="headerlink" title="9.3 双层神经网络实现非线性回归"></a>9.3 双层神经网络实现非线性回归</h1><h2 id="9-3-1-万能近似定理"><a href="#9-3-1-万能近似定理" class="headerlink" title="9.3.1 万能近似定理"></a>9.3.1 万能近似定理</h2><h2 id="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><a href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果" class="headerlink" title="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"></a>两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</h2><h2 id="9-3-2-定义神经网络结构"><a href="#9-3-2-定义神经网络结构" class="headerlink" title="9.3.2 定义神经网络结构"></a>9.3.2 定义神经网络结构</h2><p><img src="/.io//nn.png" alt="Network"></p>
+
     </div>
 
     
@@ -369,6 +378,15 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+            
+          </div>
+        
 
         
 
@@ -412,6 +430,17 @@
 
   <aside class="sidebar">
     
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+    
     <div class="sidebar-inner">
         
         
@@ -430,6 +459,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#9-3-双层神经网络实现非线性回归"><span class="nav-number">1.</span> <span class="nav-text">9.3 双层神经网络实现非线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-1-万能近似定理"><span class="nav-number">1.1.</span> <span class="nav-text">9.3.1 万能近似定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><span class="nav-number">1.2.</span> <span class="nav-text">两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-2-定义神经网络结构"><span class="nav-number">1.3.</span> <span class="nav-text">9.3.2 定义神经网络结构</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -456,7 +487,7 @@
       
       <div class="site-state-item site-state-tags">
         
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
@@ -549,6 +580,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   

@@ -308,7 +308,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/10/09/step4/" class="post-title-link" itemprop="url">step4</a>
+            <a href="/2019/10/09/step4/" class="post-title-link" itemprop="url">step4-NonLinearRegression</a>
           
         </h1>
 
@@ -323,8 +323,12 @@
                 
               
 
-              <time title="创建时间：2019-10-09 00:07:07" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
+              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：00:19:19" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -336,7 +340,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>0</span>
+              <span>214</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -359,7 +363,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <p>Step4<br></p>
+          <!--noindex-->
           
+            <div class="post-button">
+              <a class="btn" href="/2019/10/09/step4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -488,6 +501,17 @@
 
   <aside class="sidebar">
     
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h3 class="widget-title">Tag Cloud</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+    
     <div class="sidebar-inner">
 
       <ul class="sidebar-nav motion-element">
@@ -527,7 +551,7 @@
       
       <div class="site-state-item site-state-tags">
         
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
@@ -623,8 +647,60 @@
   
     
       
+        
+      
     
       
+    
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
     
   
 
