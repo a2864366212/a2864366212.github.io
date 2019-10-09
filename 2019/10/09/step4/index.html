@@ -70,7 +70,8 @@
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/setup.png">
-<meta property="og:updated_time" content="2019-10-09T05:07:35.830Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/backward.png">
+<meta property="og:updated_time" content="2019-10-09T10:11:26.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="step4-NonLinearRegression">
 <meta name="twitter:description" content="Step4前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
@@ -328,7 +329,7 @@
                 
               
 
-              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：13:07:35" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
+              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：18:11:26" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
             </span>
           
             
@@ -345,7 +346,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2k</span>
+              <span>2.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -420,8 +421,8 @@ A1 = Sigmoid(Z1) \tag{2}</script><h4 id="输出层-1"><a href="#输出层-1" cla
 <script type="math/tex; mode=display">
 z=a^1_{1}w^2_{11}+a^1_{2}w^2_{21}+a^1_{3}w^2_{31}+b^2_{1}</script><p>矩阵形式：</p>
 <script type="math/tex; mode=display">Z=A1 \cdot W2+B2 \tag{3}</script><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>均方差损失函数：</p>
-<script type="math/tex; mode=display">loss(w,b) = \frac{1}{2} (z-y)^2 \tag{4}</script><p>其中，$z$是样本预测值，$y$是样本的标签值，这里的z是第二层的输出Z。</p>
-<p>回忆之前的简单模型，<br>输入-&gt;单层神经元处理（线性计算+sigmoid）-&gt;输出<br>Z1和Z 如果从局部来看，都是输出。只是Z1经过sigmoid处理后得到A再作为下一层的输入<br>如下图<br>|本章的神经网络|第5章的神经网络|<br>|—-|—-|<br>| :-: |:-:|<br>|<img src="/2019/10/09/step4/nn.png" alt>|<img src="/2019/10/09/step4/setup.png" alt>|</p>
+<script type="math/tex; mode=display">loss(w,b) = \frac{1}{2} (z-y)^2 \tag{4}</script><p>s<br>其中，$z$是样本预测值，$y$是样本的标签值，这里的z是第二层的输出Z。</p>
+<p>回忆之前的简单模型，<br>输入-&gt;单层神经元处理（线性计算+sigmoid）-&gt;输出<br>Z1和Z 如果从局部来看，都是输出。只是Z1经过sigmoid处理后得到A再作为下一层的输入<br>如下图<br>|本章的神经网络|<br>|<img src="/2019/10/09/step4/nn.png" alt>|<br>第5章的神经网络|<br>|<img src="/2019/10/09/step4/setup.png" alt>|</p>
 <p>根据公式4：</p>
 <script type="math/tex; mode=display">
 {\partial loss \over \partial z} = z - y \tag{5}</script><h4 id="求W2的梯度"><a href="#求W2的梯度" class="headerlink" title="求W2的梯度"></a>求W2的梯度</h4><p>根据公式3和W2的矩阵形状：</p>
@@ -444,7 +445,31 @@ dW2={\partial loss \over \partial W2} =
     a^1_{1} & a^1_{2} & a^1_{3}
 \end{pmatrix}^T(z-y)
 =A1^T(Z-Y) \tag{6}</script><h4 id="求B2的梯度"><a href="#求B2的梯度" class="headerlink" title="求B2的梯度"></a>求B2的梯度</h4><script type="math/tex; mode=display">
-dB2={\partial loss \over \partial B2}=z-y \tag{7}</script>
+dB2={\partial loss \over \partial B2}=z-y \tag{7}</script><p>|反向传播|<br><img src="/2019/10/09/step4/backward.png" alt></p>
+<p>根据公式3和A1矩阵的形状：</p>
+<script type="math/tex; mode=display">
+{\partial loss \over \partial A1}
+=
+\begin{pmatrix}
+    {\partial loss \over \partial Z}{\partial Z \over \partial a_{11}}
+    &
+    {\partial loss \over \partial Z}{\partial Z \over \partial a_{12}}
+    &
+    {\partial loss \over \partial Z}{\partial Z \over \partial a_{13}}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+=
+\begin{pmatrix}
+(z-y)w^2_{11} & (z-y)w^2_{12} & (z-y)w^2_{13}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+=(z-y)
+\begin{pmatrix}
+    w^2_{11} & w^2_{21} & w^2_{31}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+
+=(z-y)
+\begin{pmatrix}
+    w^2_{11} \\ w^2_{21} \\ w^2_{31}
+\end{pmatrix}^T=(Z-Y) \cdot W2^T \tag{8}</script>
     </div>
 
     
@@ -593,7 +618,7 @@ dB2={\partial loss \over \partial B2}=z-y \tag{7}</script>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
