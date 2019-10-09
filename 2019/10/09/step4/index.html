@@ -59,19 +59,21 @@
   };
 </script>
 
-  <meta name="description" content="Step4">
+  <meta name="description" content="Step4前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta name="keywords" content="MachineLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="step4-NonLinearRegression">
 <meta property="og:url" content="https://a2864366212.github.io/2019/10/09/step4/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="Step4">
+<meta property="og:description" content="Step4前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
-<meta property="og:updated_time" content="2019-10-09T04:19:41.118Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
+<meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/setup.png">
+<meta property="og:updated_time" content="2019-10-09T05:01:05.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="step4-NonLinearRegression">
-<meta name="twitter:description" content="Step4">
+<meta name="twitter:description" content="Step4前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/10/09/step4/">
 
@@ -326,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：12:19:41" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
+              <time title="创建时间：2019-10-09 00:07:07 / 修改时间：13:01:05" itemprop="dateCreated datePublished" datetime="2019-10-09T00:07:07+08:00">2019-10-09</time>
             </span>
           
             
@@ -343,7 +345,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>282</span>
+              <span>2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -353,7 +355,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -366,11 +368,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Step4<br><a id="more"></a></p>
-<h1 id="9-3-双层神经网络实现非线性回归"><a href="#9-3-双层神经网络实现非线性回归" class="headerlink" title="9.3 双层神经网络实现非线性回归"></a>9.3 双层神经网络实现非线性回归</h1><h2 id="9-3-1-万能近似定理"><a href="#9-3-1-万能近似定理" class="headerlink" title="9.3.1 万能近似定理"></a>9.3.1 万能近似定理</h2><h2 id="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><a href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果" class="headerlink" title="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"></a>两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</h2><h2 id="9-3-2-定义神经网络结构"><a href="#9-3-2-定义神经网络结构" class="headerlink" title="9.3.2 定义神经网络结构"></a>9.3.2 定义神经网络结构</h2><p><img src="/2019/10/09/step4/nn.png" alt="Network"></p>
-<p>TestMath6</p>
+        <p>Step4<br>前向计算：输入 处理 输出<br>误差计算：loss = predict - table<br>反向传播|梯度下降 调整参数: 链式求导法则<br><a id="more"></a></p>
+<h1 id="9-3-双层神经网络实现非线性回归"><a href="#9-3-双层神经网络实现非线性回归" class="headerlink" title="9.3 双层神经网络实现非线性回归"></a>9.3 双层神经网络实现非线性回归</h1><h2 id="9-3-1-万能近似定理"><a href="#9-3-1-万能近似定理" class="headerlink" title="9.3.1 万能近似定理"></a>9.3.1 万能近似定理</h2><h2 id="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><a href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果" class="headerlink" title="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"></a>两层前馈神经网络（即一个<strong>隐层</strong>加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</h2><h2 id="9-3-2-定义神经网络结构"><a href="#9-3-2-定义神经网络结构" class="headerlink" title="9.3.2 定义神经网络结构"></a>9.3.2 定义神经网络结构</h2><p><img src="/2019/10/09/step4/nn.png" alt="Network"></p>
+<p>输入层：一个标量X（自变量）<br>输入层-隐藏层之间：</p>
+<h4 id="权重矩阵W1-B1-—-1行3列"><a href="#权重矩阵W1-B1-—-1行3列" class="headerlink" title="权重矩阵W1/B1 — 1行3列"></a>权重矩阵W1/B1 — 1行3列</h4><script type="math/tex; mode=display">
+W1=
+\begin{pmatrix}
+w^1_{11} & w^1_{12} & w^1_{13}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+B1=
+\begin{pmatrix}
+b^1_{1} & b^1_{2} & b^1_{3} 
+\end{pmatrix}</script><h4 id="隐层"><a href="#隐层" class="headerlink" title="隐层"></a>隐层</h4><p>我们用3个神经元：</p>
 <script type="math/tex; mode=display">
-z = x \cdot w_1 + x^2 \cdot w_2 + x^3 \cdot w_3 + b \tag{1}</script>
+Z1 = \begin{pmatrix}
+    z^1_1 & z^1_2 & z^1_3
+\end{pmatrix}</script><script type="math/tex; mode=display">
+A1 = \begin{pmatrix}
+    a^1_1 & a^1_2 & a^1_3
+\end{pmatrix}</script><h4 id="权重矩阵W2-B2"><a href="#权重矩阵W2-B2" class="headerlink" title="权重矩阵W2/B2"></a>权重矩阵W2/B2</h4><p>W2的尺寸是3x1，B2的尺寸是1x1。</p>
+<script type="math/tex; mode=display">
+W2=
+\begin{pmatrix}
+w^2_{11} \\
+w^2_{21} \\
+w^2_{31}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+B2=
+\begin{pmatrix}
+b^2_{1}
+\end{pmatrix}</script><h4 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h4><p>由于我们只想完成一个拟合任务，所以输出层只有一个神经元：<br>仅需得到一个因变量（Y）</p>
+<script type="math/tex; mode=display">
+Z2 = 
+\begin{pmatrix}
+    z^2_{1}
+\end{pmatrix}</script><h3 id="9-3-3-前向计算"><a href="#9-3-3-前向计算" class="headerlink" title="9.3.3 前向计算"></a>9.3.3 前向计算</h3><h4 id="隐层-1"><a href="#隐层-1" class="headerlink" title="隐层"></a>隐层</h4><ul>
+<li>线性计算</li>
+</ul>
+<script type="math/tex; mode=display">
+z^1_{1} = x \cdot w^1_{11} + b^1_{1}</script><script type="math/tex; mode=display">
+z^1_{2} = x \cdot w^1_{12} + b^1_{2}</script><script type="math/tex; mode=display">
+z^1_{3} = x \cdot w^1_{13} + b^1_{3}</script><script type="math/tex; mode=display">
+Z1 = X \cdot W1 + B1 \tag{1}</script><ul>
+<li>激活函数</li>
+</ul>
+<script type="math/tex; mode=display">
+a^1_{1} = Sigmoid(z^1_{1})</script><script type="math/tex; mode=display">
+a^1_{2} = Sigmoid(z^1_{2})</script><script type="math/tex; mode=display">
+a^1_{3} = Sigmoid(z^1_{3})</script><script type="math/tex; mode=display">
+A1 = Sigmoid(Z1) \tag{2}</script><h4 id="输出层-1"><a href="#输出层-1" class="headerlink" title="输出层"></a>输出层</h4><p>由于我们只想完成一个拟合任务，所以输出层只有一个神经元：</p>
+<script type="math/tex; mode=display">
+z=a^1_{1}w^2_{11}+a^1_{2}w^2_{21}+a^1_{3}w^2_{31}+b^2_{1}</script><p>矩阵形式：</p>
+<script type="math/tex; mode=display">Z=A1 \cdot W2+B2 \tag{3}</script><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>均方差损失函数：</p>
+<script type="math/tex; mode=display">loss(w,b) = \frac{1}{2} (z-y)^2 \tag{4}</script><p>其中，$z$是样本预测值，$y$是样本的标签值，这里的z是第二层的输出Z。</p>
+<p>回忆之前的简单模型，<br>输入-&gt;单层神经元处理（线性计算+sigmoid）-&gt;输出<br>Z1和Z 如果从局部来看，都是输出。只是Z1经过sigmoid处理后得到A再作为下一层的输入<br>如下图<br>|本章的神经网络|第5章的神经网络|<br>|—-|—-|<br>|<img src="/2019/10/09/step4/nn.png" alt>|<img src="/2019/10/09/step4/setup.png" alt>|</p>
+<p>根据公式4：</p>
+<script type="math/tex; mode=display">
+{\partial loss \over \partial z} = z - y \tag{5}</script><h4 id="求W2的梯度"><a href="#求W2的梯度" class="headerlink" title="求W2的梯度"></a>求W2的梯度</h4><p>根据公式3和W2的矩阵形状：</p>
+<script type="math/tex; mode=display">
+dW2={\partial loss \over \partial W2} = 
+\begin{pmatrix}
+    {\partial loss \over \partial z}{\partial z \over \partial w^2_{11}} \\
+    \\
+    {\partial loss \over \partial z}{\partial z \over \partial w^2_{21}} \\
+    \\
+    {\partial loss \over \partial z}{\partial z \over \partial w^2_{31}}
+\end{pmatrix}
+=
+\begin{pmatrix}
+    (z-y) \cdot a^1_{1} \\
+    (z-y) \cdot a^1_{2} \\
+    (z-y) \cdot a^1_{3}
+\end{pmatrix}</script><script type="math/tex; mode=display">
+=\begin{pmatrix}
+    a^1_{1} & a^1_{2} & a^1_{3}
+\end{pmatrix}^T(z-y)
+=A1^T(Z-Y) \tag{6}</script><h4 id="求B2的梯度"><a href="#求B2的梯度" class="headerlink" title="求B2的梯度"></a>求B2的梯度</h4><script type="math/tex; mode=display">
+dB2={\partial loss \over \partial B2}=z-y \tag{7}</script>
     </div>
 
     
@@ -461,7 +535,7 @@ z = x \cdot w_1 + x^2 \cdot w_2 + x^3 \cdot w_3 + b \tag{1}</script>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#9-3-双层神经网络实现非线性回归"><span class="nav-number">1.</span> <span class="nav-text">9.3 双层神经网络实现非线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-1-万能近似定理"><span class="nav-number">1.1.</span> <span class="nav-text">9.3.1 万能近似定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><span class="nav-number">1.2.</span> <span class="nav-text">两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-2-定义神经网络结构"><span class="nav-number">1.3.</span> <span class="nav-text">9.3.2 定义神经网络结构</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#9-3-双层神经网络实现非线性回归"><span class="nav-number">1.</span> <span class="nav-text">9.3 双层神经网络实现非线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-1-万能近似定理"><span class="nav-number">1.1.</span> <span class="nav-text">9.3.1 万能近似定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><span class="nav-number">1.2.</span> <span class="nav-text">两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-2-定义神经网络结构"><span class="nav-number">1.3.</span> <span class="nav-text">9.3.2 定义神经网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#权重矩阵W1-B1-—-1行3列"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">权重矩阵W1/B1 — 1行3列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐层"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">隐层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权重矩阵W2-B2"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">权重矩阵W2/B2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出层"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">输出层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-3-前向计算"><span class="nav-number">1.3.1.</span> <span class="nav-text">9.3.3 前向计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#隐层-1"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">隐层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出层-1"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">输出层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求W2的梯度"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">求W2的梯度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求B2的梯度"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">求B2的梯度</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -519,12 +593,12 @@ z = x \cdot w_1 + x^2 \cdot w_2 + x^3 \cdot w_3 + b \tag{1}</script>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">2 分钟</span>
 </div>
 
 
