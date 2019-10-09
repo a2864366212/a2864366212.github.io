@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[step4-NonLinearRegression]]></title>
     <url>%2F2019%2F10%2F09%2Fstep4%2F</url>
-    <content type="text"><![CDATA[Step4 9.3 双层神经网络实现非线性回归9.3.1 万能近似定理两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果9.3.2 定义神经网络结构 TestMath z = x \cdot w_1 + x^2 \cdot w_2 + x^3 \cdot w_3 + b \tag{1}]]></content>
+    <content type="text"><![CDATA[Step4 9.3 双层神经网络实现非线性回归9.3.1 万能近似定理两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果9.3.2 定义神经网络结构 TestMath2 z = x \cdot w_1 + x^2 \cdot w_2 + x^3 \cdot w_3 + b \tag{1}]]></content>
       <tags>
         <tag>MachineLearning</tag>
       </tags>
