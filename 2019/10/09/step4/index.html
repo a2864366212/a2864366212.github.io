@@ -59,22 +59,22 @@
   };
 </script>
 
-  <meta name="description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践实在是数学公式和推导太多，不好插嘴，仅能在适当的地方加上自己的理解。。暂时不更了。。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参">
+  <meta name="description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践最近赶进度，就不更了，有时间会把自己做的思考与练习题放在这里。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta name="keywords" content="MachineLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="step4-NonLinearRegression">
 <meta property="og:url" content="https://a2864366212.github.io/2019/10/09/step4/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践实在是数学公式和推导太多，不好插嘴，仅能在适当的地方加上自己的理解。。暂时不更了。。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参">
+<meta property="og:description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践最近赶进度，就不更了，有时间会把自己做的思考与练习题放在这里。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/setup.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/10/09/step4/backward.png">
-<meta property="og:updated_time" content="2019-10-11T04:23:47.748Z">
+<meta property="og:updated_time" content="2019-10-12T01:27:41.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="step4-NonLinearRegression">
-<meta name="twitter:description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践实在是数学公式和推导太多，不好插嘴，仅能在适当的地方加上自己的理解。。暂时不更了。。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参">
+<meta name="twitter:description" content="https://www.codecogs.com/latex/eqneditor.php在线LaTeX公式编辑器 Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践最近赶进度，就不更了，有时间会把自己做的思考与练习题放在这里。 前向计算：输入 处理 输出误差计算：loss = predict - table反向传播|梯度下降 调整参数: 链式求导法则">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/10/09/step4/nn.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/10/09/step4/">
 
@@ -340,7 +340,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-11 12:23:47" itemprop="dateModified" datetime="2019-10-11T12:23:47+08:00">2019-10-11</time>
+                <time title="修改时间：2019-10-12 09:27:41" itemprop="dateModified" datetime="2019-10-12T09:27:41+08:00">2019-10-12</time>
               </span>
             
           
@@ -378,7 +378,7 @@
 
       
         <p><a href="https://www.codecogs.com/latex/eqneditor.php" target="_blank" rel="noopener">https://www.codecogs.com/latex/eqneditor.php</a><br>在线LaTeX公式编辑器</p>
-<p>Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践<br>实在是数学公式和推导太多，不好插嘴，仅能在适当的地方加上自己的理解。。暂时不更了。。</p>
+<p>Step4 转载于Microsoft/ai-edu/blob/master/B-教学案例与实践<br>最近赶进度，就不更了，有时间会把自己做的思考与练习题放在这里。</p>
 <p>前向计算：输入 处理 输出<br>误差计算：loss = predict - table<br>反向传播|梯度下降 调整参数: 链式求导法则<br><a id="more"></a></p>
 <h1 id="9-3-双层神经网络实现非线性回归"><a href="#9-3-双层神经网络实现非线性回归" class="headerlink" title="9.3 双层神经网络实现非线性回归"></a>9.3 双层神经网络实现非线性回归</h1><h2 id="9-3-1-万能近似定理"><a href="#9-3-1-万能近似定理" class="headerlink" title="9.3.1 万能近似定理"></a>9.3.1 万能近似定理</h2><h2 id="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"><a href="#两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果" class="headerlink" title="两层前馈神经网络（即一个隐层加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果"></a>两层前馈神经网络（即一个<strong>隐层</strong>加一个输出层）和至少一层具有任何一种挤压性质的激活函数，只要隐层的神经元的数量足够，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。当然这个函数需要是单调递增有界的。注意，它要求的是挤压性质的激活函数，也就是类似Sigmoid的函数，如果用ReLU函数不能实现这个效果</h2><h2 id="9-3-2-定义神经网络结构"><a href="#9-3-2-定义神经网络结构" class="headerlink" title="9.3.2 定义神经网络结构"></a>9.3.2 定义神经网络结构</h2><p><img src="/2019/10/09/step4/nn.png" alt="Network"></p>
 <p>输入层：一个标量X（自变量）<br>输入层-隐藏层之间：</p>
@@ -643,7 +643,7 @@ dB1=dZ1 \tag{12}</script><p>显然成立</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -768,8 +768,8 @@ dB1=dZ1 \tag{12}</script><p>显然成立</p>
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
