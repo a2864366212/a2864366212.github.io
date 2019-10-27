@@ -294,6 +294,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/10/27/pythonLearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李松">
+      <meta itemprop="description" content="NoGameNoLife">
+      <meta itemprop="image" content="/images/MyAvatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SteinsGate">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/27/pythonLearning/" class="post-title-link" itemprop="url">pythonLearning</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-27 13:50:27 / 修改时间：14:02:00" itemprop="dateCreated datePublished" datetime="2019-10-27T13:50:27+08:00">2019-10-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="为了看懂Microsoft-Speech-Services-API的源码，学习一下python的语法"><a href="#为了看懂Microsoft-Speech-Services-API的源码，学习一下python的语法" class="headerlink" title="为了看懂Microsoft Speech Services API的源码，学习一下python的语法"></a>为了看懂Microsoft Speech Services API的源码，学习一下python的语法</h1><h2 id="python-raise"><a href="#python-raise" class="headerlink" title="python raise"></a>python raise</h2><p>当程序出现错误，python会自动引发异常，也可以通过raise显示地引发异常。一旦执行了raise语句，raise后面的语句将不能执行<br>s = None<br>if s is None:<br>    raise NameError<br>print ‘is here?’ 直接抛出异常，不会执行到这里</p>
+<h2 id="python-继承"><a href="#python-继承" class="headerlink" title="python 继承"></a>python 继承</h2><p>子类直接 son(farther)<br>class Father(object):<br>    def <strong>init</strong>(self, name):<br>        self.name=name<br>        print ( “name: %s” %( self.name) )<br>    def getName(self):<br>        return ‘Father ‘ + self.name</p>
+<p>class Son(Father):<br>    def getName(self):<br>        return ‘Son ‘+self.name</p>
+<h2 id="str方法"><a href="#str方法" class="headerlink" title="str方法"></a><strong>str</strong>方法</h2><p>如果要把一个类的实例变成 str，就需要实现特殊方法<strong>str</strong>()：<br>例子：</p>
+<h3 id="不使用str-方法"><a href="#不使用str-方法" class="headerlink" title="不使用str()方法"></a>不使用<strong>str</strong>()方法</h3><p>class Student(object):<br>    def <strong>init</strong>(self,id,name,age):<br>        self.id=id<br>        self.name=name<br>        self.age=age</p>
+<p>s=Student(111,”Bob”,18)<br>print(s)<br>输出结果：<main.student object at 0x0362ebf0></main.student></p>
+<h3 id="使用str-方法"><a href="#使用str-方法" class="headerlink" title="使用str()方法"></a>使用<strong>str</strong>()方法</h3><p>class Student(object):<br>    def <strong>init</strong>(self,id,name,age):<br>        self.id=id<br>        self.name=name<br>        self.age=age</p>
+<pre><code>def __str__(self):
+    return &quot;学号:{}--姓名:{}--年龄{}&quot;.format(self.id,self.name,self.age)
+</code></pre><p>s=Student(111,”Bob”,18)<br>print(s)<br>输出结果：学号:111–姓名:Bob–年龄18</p>
+<h2 id="Python中的format方法"><a href="#Python中的format方法" class="headerlink" title="Python中的format方法"></a>Python中的format方法</h2><p>类似printf()中的占位符<br>print(“{}的性别是：{}”.format(“小明”,”男”))<br>输出结果：<br>小明的性别是：男</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/10/09/step4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,7 +619,7 @@
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -552,7 +654,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -561,7 +663,7 @@
       
       <div class="site-state-item site-state-tags">
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
@@ -591,12 +693,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">4 分钟</span>
 </div>
 
 
@@ -657,6 +759,8 @@
   
 
   
+    
+      
     
       
         
