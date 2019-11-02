@@ -334,7 +334,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-02 21:37:07" itemprop="dateModified" datetime="2019-11-02T21:37:07+08:00">2019-11-02</time>
+                <time title="修改时间：2019-11-02 22:46:28" itemprop="dateModified" datetime="2019-11-02T22:46:28+08:00">2019-11-02</time>
               </span>
             
           
@@ -393,7 +393,7 @@
 }     
 </code></pre><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>该算法使用的是贪心策略：每次都找出剩余顶点中与源点距离最近的一个顶点。<br>参考：<br><a href="https://blog.csdn.net/zhangxiangDavaid/article/details/38360337" target="_blank" rel="noopener">Dijkstra算法</a></p>
 <h4 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h4><p>带权图G=<v,e>令S为已确定了最短路径顶点的集合，则可用V-S(V集合减去S集合)表示剩余未确定最短路径顶点的集合。假设V0是源点，则初始 S={V0}。用数组Distance表示源点V0到其余顶点的路径长度，用数组pre[i]表示最短路径序列上顶点i的前一个顶点。初始时，pre[i]都是源点的下标。接下来需重复两个步骤：</v,e></p>
-<p>从当前Distance[i]找出最小的一个，记录其下标v=i，源点V0到顶点Vv的最短路径即已确定，把Vv加入S。<br>更新源点到剩余顶点的最短路径长度。更新方法是：以上一步的顶点Vv为中间点，若Distance[v]+weight(v,i)小于Distance[i]，则修改值：pre[i]=v;Distance[i]=Distance[v]+weight(v,i);<br>重复以上两个步骤，直至所有顶点的最短路径都已找到。<br>需要指出，Dijkstra算法求解的不仅是有向图，无向图也是可以的。下面给出一个完整的有向带权图的实例：<br><img src="/2019/11/01/ShortestPath/DijkstraMap.jpg" alt="ShortestPath"></p>
+<p>从当前Distance[i]找出最小的一个，记录其下标v=i，源点V0到顶点Vv的最短路径即已确定，把Vv加入S。<br>更新源点到剩余顶点的最短路径长度。更新方法是：以上一步的顶点Vv为中间点，若Distance[v]+weight(v,i)小于Distance[i]，则修改值：pre[i]=v;Distance[i]=Distance[v]+weight(v,i);<br>重复以上两个步骤，直至所有顶点的最短路径都已找到.。<br>需要指出，Dijkstra算法求解的不仅是有向图，无向图也是可以的。下面给出一个完整的有向带权图的实例：<br><img src="/2019/11/01/ShortestPath/DijkstraMap.png" alt="ShortestPath"><br><img src="/2019/11/01/ShortestPath/nodeTable.jpg" alt="ShortestPath"><br><img src="/2019/11/01/ShortestPath/Solution.jpg" alt="ShortestPath"></p>
 <h3 id="SPFA算法-Bellman-Ford算法"><a href="#SPFA算法-Bellman-Ford算法" class="headerlink" title="SPFA算法\Bellman-Ford算法"></a>SPFA算法\Bellman-Ford算法</h3><h3 id="Johnson算法"><a href="#Johnson算法" class="headerlink" title="Johnson算法"></a>Johnson算法</h3><h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h3>
         
       
