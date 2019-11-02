@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BasicAlgorithm]]></title>
+    <url>%2F2019%2F11%2F02%2FBasicAlgorithm%2F</url>
+    <content type="text"><![CDATA[a)欧几里德算法求最大公约数实现一：#include &lt;iostream&gt; using namespace std; int gcd(int m, int n) { int r = 0; while(n!=0) { r=m%n; m=n; n=r; } return m; } int main() { int m,n; cout&lt;&lt;&quot;请输入2个正整数：&quot;&lt;&lt;endl; cin&gt;&gt;m&gt;&gt;n; cout&lt;&lt;endl&lt;&lt;&quot;最大公约数为：&quot;&lt;&lt;gcd(m,n)&lt;&lt;endl; return 0; } 实现二：int gcd(int a,int b) {//b是上一层的余数 a%b是这一层的余数 a是除数 return b==0?a:(gcd(b,a%b)); } b)筛法求素数（朴素筛和快速线性筛）埃拉托斯特尼筛法，简称埃氏筛或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于根号n的所有素数的倍数剔除，剩下的就是素数。为啥终止是根号n呢， 首先我们要明确，假设一个合数x能表示为两个数的乘积，他必定有一个小于等于sqrt(x)的因子，这可以用归谬证明法证明。如果两个因子都大于sqrt(x)，那么乘积大于x,这和假设矛盾。 然后就是，根据埃氏筛的思想，拿到当前序列的第一个新的素数，然后往后遍历筛选。因而对于序列较后面的数，在小于等于根号n的范围内总有机会被 其小于等于sqrt(x)的因子 筛一次（如果这个数真是合数的话），进而被筛去 大致过程：(1).把2到n的自然数放入a[2]到a[n]中(所放入的数与下标号相同) ; (2).在数组元素中以下标为序，按顺序找到未曾找过的最小素数minp和它的位置p(即下标号); (3).从p+1开始，把凡是能被minp整除的各元素值从a数组中划去(筛掉)，也就是把该元素标记为0;举个例子：minp=3 就把 3*3 3*4 3*5….筛掉，即PrimeFlag标记为0，is not a prime（也是缺点来源） 至于为什么从minp*minp开始筛:不需要从i*j（且j &lt; i）开始，因为i*j，在遇到j时已经被标记了，因为j比i小，所以遇到j比遇到i要早。同时因为从i*i开始标记，所以i终止条件也为sqrt(n)，否则i*i将大于n。（算是第二个方面限制i的范围在根号n内吧） (4).让p=p+1，重复执行第(2) (3)步骤，知道，minp&gt;floor(sqrt(n))为止; (5).打印输出a数组中留下来的数，未被筛掉的各元素值; int isPrime_sieve(int n){ int* isPrimes = (int*)malloc(sizeof(int)*(n+1)); int i,j; int sqrtn = sqrt(n); if(n&lt;=1) return 0; for(i=2;i&lt;=n;i++){ //初始化都为素数 isPrimes[i] = 1; } //从2开始，将素数的倍数标记为非素数 //从i的平方开始标记即可，不需要从i*j(且j&lt;i)开始，因为i*j至少在遇到j时已经被标记过了 for(i=2;i&lt;=sqrtn;i+=1){ if(isPrimes[i]==0) //不是素数，说明i可以分解为两个因子相乘，那么在遇到这两个因子的较小者时，i的倍数已经被标记过 continue; for(j=i*i;j&lt;=n;j+=i){ //j是i的倍数 isPrimes[j] = 0; } } return isPrimes[n]; } 这种求素数的算法很容易被理解，其时间复杂度介于O(n)~O(nlogn)是一种比较流行的方法。但是同样的，这种算法也存在先天性的缺陷，我们简单分析：对于一个数30，可分解为30=2*15=3*10=5*6，显然，当循环,2,3,5,6,10,15时都会筛除一次30这个数，而当n很大时，就会出现许多的冗余操作， c)康托展开d)逆康托展开e)同余定理f)次方求模]]></content>
+      <tags>
+        <tag>Algorithm and Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LearningPath]]></title>
+    <url>%2F2019%2F11%2F02%2FLearningPath%2F</url>
+    <content type="text"><![CDATA[临时路线. 需要掌握以下基本算法：a)欧几里德算法求最大公约数b)筛法求素数c)康托展开d)逆康托展开e)同余定理f)次方求模计算几何初步a)三角形面积b)三点顺序 学会简单计算程序的时间复杂度与空间复杂度二分查找法简单的排序算法a)冒泡排序法b)插入排序法贪心算法经典题目]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[ShortestPath]]></title>
     <url>%2F2019%2F11%2F01%2FShortestPath%2F</url>
     <content type="text"><![CDATA[感慨：大一一年，奔波了不少地方，雨露均沾，我其实有些累了，团队合作开发一直是我所羡慕的，但是我一直没有做成一件项目，我理解大家都有各自的想法，我累了，我现在想自己走一走了临时路线. 最短路径：什么是最短路径？ 单源最短路径（所谓单源最短路径就是只指定一个顶点，最短路径是指其他顶点和这个顶点之间的路径的权值的最小值）什么是最短路径问题？ 给定一带权图，图中每条边的权值是非负的，代表着两顶点之间的距离。指定图中的一顶点为源点，找出源点到其它顶点的最短路径和其长度的问题，即是单源最短路径问题 非负这个条件很有意思，要是负数且形成环的话，你可以在这条路上不断刷。。。反正是负数 带权图的单源最短路径Floyd算法\Floyd-Warshall算法Floyd算法.有一说一，讲的可以ヾ(≧▽≦*)o简述一下：初始化图-&gt;加载各点的路径长（矩阵存储）-&gt;顺序引入新的中转点-&gt;遍历更新路径长的矩阵-&gt;继续引入继续更新 for(k=1;k&lt;=n;k++) {//迭代更新新的中转点 for(i=1;i&lt;=n;i++) {//两层循环 遍历更新 路径长度矩阵 的值 for(j=1;j&lt;=n;j++) { if(e[i][j]&gt;e[i][k]+e[k][j]) { e[i][j]=e[i][k]+e[k][j]; } } } } Dijkstra算法该算法使用的是贪心策略：每次都找出剩余顶点中与源点距离最近的一个顶点。参考：Dijkstra算法 算法思想带权图G=令S为已确定了最短路径顶点的集合，则可用V-S(V集合减去S集合)表示剩余未确定最短路径顶点的集合。假设V0是源点，则初始 S={V0}。用数组Distance表示源点V0到其余顶点的路径长度，用数组pre[i]表示最短路径序列上顶点i的前一个顶点。初始时，pre[i]都是源点的下标。接下来需重复两个步骤： 从当前Distance[i]找出最小的一个，记录其下标v=i，源点V0到顶点Vv的最短路径即已确定，把Vv加入S。更新源点到剩余顶点的最短路径长度。更新方法是：以上一步的顶点Vv为中间点，若Distance[v]+weight(v,i)小于Distance[i]，则修改值：pre[i]=v;Distance[i]=Distance[v]+weight(v,i);重复以上两个步骤，直至所有顶点的最短路径都已找到.。需要指出，Dijkstra算法求解的不仅是有向图，无向图也是可以的。下面给出一个完整的有向带权图的实例： SPFA算法\Bellman-Ford算法Johnson算法A*算法]]></content>
