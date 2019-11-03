@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="一些基本算法a)欧几里德算法求最大公约数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-03T04:38:33.814Z">
+<meta property="og:updated_time" content="2019-11-03T11:38:42.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BasicAlgorithm">
 <meta name="twitter:description" content="一些基本算法a)欧几里德算法求最大公约数">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-03 12:38:33" itemprop="dateModified" datetime="2019-11-03T12:38:33+08:00">2019-11-03</time>
+                <time title="修改时间：2019-11-03 19:38:42" itemprop="dateModified" datetime="2019-11-03T19:38:42+08:00">2019-11-03</time>
               </span>
             
           
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>4.3k</span>
+              <span>4.6k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -435,12 +435,14 @@ int main()
     return isPrimes[n];
 }
 </code></pre><p>这种求素数的算法很容易被理解，其时间复杂度介于O(n)~O(nlogn)是一种比较流行的方法。但是同样的，这种算法也存在先天性的缺陷，我们简单分析：<br>对于一个数30，可分解为30=2*15=3*10=5*6，显然，当循环,2,3,5,6,10,15时都会筛除一次30这个数，而<br>当n很大时，就会出现许多的冗余操作，</p>
-<p>快速线性筛：<br>(1).开一个n+1大小的数组num[n]来存放每一个元素的筛留情况(即对于num[n]的每个数与下标号相同，对于任</p>
-<pre><code>  意num[n]有num[n]=0,num[n]=1两种情况，如果num[n]=0则是素数，反之num[n]=1时是合数);
-</code></pre><p>(2).再开一个数组prime[n]来存放筛出的素数以便最后输出结果;</p>
-<p>(3).对于一个数k,总是进行从n*prime[0]~n*prime[j](由小到大来乘)，直到if(n%prime[j]==0)成立时break掉</p>
-<p>解释一下：<br>举个例子：对于素数9，按照朴素筛法，会：9*1 9*2 9*3 9*4 这样筛<br>然后会检索 11*1 11*2 11*3 11*4 11*5…<br>我们约定一下：记作 c*i<br>而 c=a*b（b为c的最小质因数），按照结论，对于c这一组，只应当把i的值取到b<br>因为假如取到了b+1 记为d=b+1, 则 迭代到 c*d<br>而c=a*b 故 迭代到了 a*b*d 即 a*d*b-&gt; c’*b<br>因而c*d==c’*b 这个数被多次判定 造成冗余</p>
-<p> 举个例子，对于一个数9，9<em>2=18将18标记为合数，循环继续；9</em>3=27将27标记为合数，此时发现9%3=0，循环退出。如果将循环继续下去会出现筛除9<em>5=45的情况，而45=15</em>3，在15时会被在筛去一次，故不可行</p>
+<p>快速线性筛：<br>(1).开一个n+1大小的数组num[]来存放每一个元素的筛留情况(num[i]用来表示i这个数是不是素数<br>对于任意num[i] 有num[i]=0,num[i]=1两种情况，如果num[i]=0则是素数，反之num[i]=1时是合数);</p>
+<p>(2).再开一个数组prime[n]来存放筛出的素数以便最后输出结果;</p>
+<p>(3).对于一个数i,总是进行从i*prime[0]~i*prime[j](由小到大来乘)，直到if(i%prime[j]==0)成立时break掉</p>
+<p>对（3）解释一下：<br>第一，所有数（2~n）都会被作为i拿来判定，即第一层循环<br>第二，为什么是从i*prime[0]~i*prime[j](由小到大来乘)</p>
+<p>前提是：一个合数 i=p1*p2*…*pn, pi都是素数（2&lt;=i&lt;=n）,pi&lt;=pj  ( i&lt;=j )<br>p1是最小的系数。这样每一个合数就有一个确定的表示方法，不会重复。（像12=2<em>2</em>3）<br>No.1：我们现在规定一个合数由两个数得到。<br>NO.2：那么合数有两种。<br>1.素数*素数=合数<br>2.一个最小的素数*合数=合数</p>
+<p>至于为什么if(i%prime[j]==0)成立时break掉</p>
+<p>我们约定一下：记作 c*i<br>而 c=a*b（b为c的最小质因数），按照结论，对于c这一组，只应当把i的值取到b<br>因为假如取到了b+1 记为d=b+1, 则 迭代到 c*d<br>而c=a*b 故 迭代到了 a*b*d 即 a*d*b -&gt; c’*b<br>因而c*d==c’*b 这个数被多次判定 造成冗余</p>
+<p>举个例子，对于一个数9，9*2=18将18标记为合数，循环继续；9*3=27将27标记为合数，此时发现9%3=0，循环退出。如果将循环继续下去会出现筛除9*5=45的情况，会对45进行一次筛选，而45=15*3，在15时会被在筛去一次，故不可行</p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;ctime&gt;
@@ -449,7 +451,8 @@ int main()
 using namespace std;
 int n;
 bool a[inf+1];
-long num[inf+1]={1,1},prime[inf+1]={0},number=0;     //number 记录素数个数                                                     
+bool num[inf+1]={1,1};
+int prime[inf+1]={0},number=0;     //number 记录素数个数                                                     
 
 void putongshaifa()                                  //普通筛法求素数 
 {
@@ -457,11 +460,14 @@ void putongshaifa()                                  //普通筛法求素数
     begin=clock();
     for(int i=0;i&lt;=n;++i)
       a[i]=true;
+      //初始化 全是素数
     a[1]=false;
+    //1不是素数
     for(int i=2;i&lt;sqrt(n);++i)
-      if(a[i])
+      if(a[i])//新的第一个素数
         for(int j=2;j&lt;=n/i;++j)
           a[i*j]=false;
+          //i*1 i*2 i*3...一直往后筛
     end=clock();
     /*for(int i=2,t=0;i&lt;=n;++i)
       if(a[i])
@@ -480,14 +486,15 @@ void kuaisushaifa()                                 //快速筛法求素数
 {
     clock_t begin,end;                                             
     begin=clock();
-    for(int i=2;i&lt;=n;++i) 
+    for(int i=2;i&lt;=n;++i) //遍历所有2~n数 -&gt;i
     {
         if(!num[i])
           prime[number++]=i;
+          /*先用number的值再自加*/
         for(int j=0;j&lt;number &amp;&amp; i*prime[j]&lt;=n;j++)  
         {  
             num[i*prime[j]]=1;                     //把所有合数标记为 1 
-            if(!(i%prime[j]))                      // *为保证不重复筛选* 
+            if(!(i%prime[j]) /*i%prime[j]==0*/ )   // *为保证不重复筛选* 
                 break;  
         }  
     }
@@ -738,8 +745,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
