@@ -59,19 +59,21 @@
   };
 </script>
 
-  <meta name="description" content="NoGameNoLife">
-<meta name="keywords" content="Unity">
+  <meta name="description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
+<meta name="keywords" content="Algorithm and Data Structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maxim_Go">
-<meta property="og:url" content="https://a2864366212.github.io/2019/10/08/Maxim-Go/index.html">
+<meta property="og:title" content="ProcessOfEquivalentPair">
+<meta property="og:url" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="NoGameNoLife">
+<meta property="og:description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-08T12:21:27.596Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
+<meta property="og:updated_time" content="2019-11-05T17:08:06.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maxim_Go">
-<meta name="twitter:description" content="NoGameNoLife">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/10/08/Maxim-Go/">
+<meta name="twitter:title" content="ProcessOfEquivalentPair">
+<meta name="twitter:description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
+<meta name="twitter:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/">
 
 
 <script id="page-configurations">
@@ -85,7 +87,7 @@
   };
 </script>
 
-  <title>Maxim_Go | SteinsGate</title>
+  <title>ProcessOfEquivalentPair | SteinsGate</title>
   
 
 
@@ -296,7 +298,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/10/08/Maxim-Go/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +310,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Maxim_Go
+        <h1 class="post-title" itemprop="name headline">ProcessOfEquivalentPair
 
           
         </h1>
@@ -324,7 +326,7 @@
                 
               
 
-              <time title="创建时间：2019-10-08 20:21:08 / 修改时间：20:21:27" itemprop="dateCreated datePublished" datetime="2019-10-08T20:21:08+08:00">2019-10-08</time>
+              <time title="创建时间：2019-11-06 01:05:31 / 修改时间：01:08:06" itemprop="dateCreated datePublished" datetime="2019-11-06T01:05:31+08:00">2019-11-06</time>
             </span>
           
             
@@ -341,7 +343,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>0</span>
+              <span>390</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -364,7 +366,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>连通区域标记－行程扫描算法 — 等价对的处理过程<br>将等价对转换为若干个等价序列,比如有如下等价对: <1,2>  <1,6> <3,7> <9,3> <8,1> <8,10> <11,5> <11,8> <11,12> <11,13> <11,14> <15,11></15,11></11,14></11,13></11,12></11,8></11,5></8,10></8,1></9,3></3,7></1,6></1,2></p>
+<p>经过等价对处理之后,应得到的等价序列为:</p>
+<p>list1:1-2-5-6-8-10-11-12-13-14-15</p>
+<p>list2:3-7-9</p>
+<p>list3:4</p>
+<p>主要思路:将1-15个点都看成图的节点,而等价对<1,2>说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有连通图,主要采用的是图的深度优先遍历法,进行等价序列的查找.</1,2></p>
+<p><img src="/2019/11/06/ProcessOfEquivalentPair/tree.png" alt="Network"></p>
+<p>如上图所示,从节点1开始查找,它有三个路径1-2,1-6,1-8;2和6后面没有路径,8后面有两个路径8-10,8-11;10后面没有路径,11后面有5条路径分别为11-5,11-12,11-13,11-14,11-15,到此,等价表1查找完毕.</p>
+<p>等价表2是从3开始查找,它的后面有两条路径3-7,3-9.</p>
+<p>等价表3只有一个孤立的点.</p>
+
     </div>
 
     
@@ -379,7 +391,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Unity/" rel="tag"># Unity</a>
+              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
             
           </div>
         
@@ -389,15 +401,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/11/02/BasicAlgorithm/" rel="next" title="BasicAlgorithm">
+                  <i class="fa fa-chevron-left"></i> BasicAlgorithm
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/09/step4/" rel="prev" title="step4-NonLinearRegression">
-                  step4-NonLinearRegression <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
