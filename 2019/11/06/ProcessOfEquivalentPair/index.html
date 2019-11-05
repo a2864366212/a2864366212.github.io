@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
+  <meta name="description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
 <meta name="keywords" content="Algorithm and Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ProcessOfEquivalentPair">
 <meta property="og:url" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
+<meta property="og:description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
-<meta property="og:updated_time" content="2019-11-05T17:08:06.833Z">
+<meta property="og:updated_time" content="2019-11-05T17:12:59.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ProcessOfEquivalentPair">
-<meta name="twitter:description" content="连通区域标记－行程扫描算法 — 等价对的处理过程将等价对转换为若干个等价序列,比如有如下等价对:              经过等价对处理之后,应得到的等价序列为: list1:1-2-5-6-8-10-11-12-13-14-15 list2:3-7-9 list3:4 主要思路:将1-15个点都看成图的节点,而等价对说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有">
+<meta name="twitter:description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/">
 
@@ -326,7 +326,7 @@
                 
               
 
-              <time title="创建时间：2019-11-06 01:05:31 / 修改时间：01:08:06" itemprop="dateCreated datePublished" datetime="2019-11-06T01:05:31+08:00">2019-11-06</time>
+              <time title="创建时间：2019-11-06 01:05:31 / 修改时间：01:12:59" itemprop="dateCreated datePublished" datetime="2019-11-06T01:05:31+08:00">2019-11-06</time>
             </span>
           
             
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>390</span>
+              <span>506</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -366,8 +366,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>连通区域标记－行程扫描算法 — 等价对的处理过程<br>将等价对转换为若干个等价序列,比如有如下等价对: <1,2>  <1,6> <3,7> <9,3> <8,1> <8,10> <11,5> <11,8> <11,12> <11,13> <11,14> <15,11></15,11></11,14></11,13></11,12></11,8></11,5></8,10></8,1></9,3></3,7></1,6></1,2></p>
-<p>经过等价对处理之后,应得到的等价序列为:</p>
+        <h1 id="连通区域标记－行程扫描算法"><a href="#连通区域标记－行程扫描算法" class="headerlink" title="连通区域标记－行程扫描算法"></a>连通区域标记－行程扫描算法</h1><p>— 等价对的处理过程<br><a id="more"></a><br>将等价对转换为若干个等价序列,比如有如下等价对: <1,2>  <1,6> <3,7> <9,3> <8,1> <8,10> <11,5> <11,8> <11,12> <11,13> <11,14> <15,11><br>只要两个数在同一序偶中，就用线连起来，化成一棵树<br>经过等价对处理之后,应得到的等价序列为:</15,11></11,14></11,13></11,12></11,8></11,5></8,10></8,1></9,3></3,7></1,6></1,2></p>
 <p>list1:1-2-5-6-8-10-11-12-13-14-15</p>
 <p>list2:3-7-9</p>
 <p>list3:4</p>
@@ -376,6 +375,7 @@
 <p>如上图所示,从节点1开始查找,它有三个路径1-2,1-6,1-8;2和6后面没有路径,8后面有两个路径8-10,8-11;10后面没有路径,11后面有5条路径分别为11-5,11-12,11-13,11-14,11-15,到此,等价表1查找完毕.</p>
 <p>等价表2是从3开始查找,它的后面有两条路径3-7,3-9.</p>
 <p>等价表3只有一个孤立的点.</p>
+<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><h2 id="父节点表示法"><a href="#父节点表示法" class="headerlink" title="父节点表示法"></a>父节点表示法</h2><p>对于树中的每个结点都保存一个指针域指向父结点。（缺点：不能准确地找到给定的结点的子结点信息。优点：可以解决判断俩个结点是否在同一个树中的问题；用并查算法合并俩个集合。）</p>
 
     </div>
 
@@ -467,6 +467,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#连通区域标记－行程扫描算法"><span class="nav-number">1.</span> <span class="nav-text">连通区域标记－行程扫描算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#父节点表示法"><span class="nav-number">2.1.</span> <span class="nav-text">父节点表示法</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
