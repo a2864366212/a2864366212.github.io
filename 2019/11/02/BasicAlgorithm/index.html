@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="一些基本算法a)欧几里德算法求最大公约数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-03T11:38:42.096Z">
+<meta property="og:updated_time" content="2019-11-07T12:26:14.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BasicAlgorithm">
 <meta name="twitter:description" content="一些基本算法a)欧几里德算法求最大公约数">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-03 19:38:42" itemprop="dateModified" datetime="2019-11-03T19:38:42+08:00">2019-11-03</time>
+                <time title="修改时间：2019-11-07 20:26:14" itemprop="dateModified" datetime="2019-11-07T20:26:14+08:00">2019-11-07</time>
               </span>
             
           
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>4.6k</span>
+              <span>5.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
           
 
@@ -521,7 +521,55 @@ int main()
     }
     return 0;   
 }
-</code></pre><h2 id="c-康托展开"><a href="#c-康托展开" class="headerlink" title="c)康托展开"></a>c)康托展开</h2><h2 id="d-逆康托展开"><a href="#d-逆康托展开" class="headerlink" title="d)逆康托展开"></a>d)逆康托展开</h2><h2 id="e-同余定理"><a href="#e-同余定理" class="headerlink" title="e)同余定理"></a>e)同余定理</h2><h2 id="f-次方求模"><a href="#f-次方求模" class="headerlink" title="f)次方求模"></a>f)次方求模</h2>
+
+#include&lt;iostream&gt;
+using namespace std;
+const int MAX=1000;
+bool IsPrime[MAX];
+int Prime[MAX];
+int main() 
+{
+    int n;
+    cin&gt;&gt;n;
+    int *a= new int[n+5];
+    for(int i=1;i&lt;=n;i++)
+    {
+        a[i]=i;
+        IsPrime[i]=1; 
+    }
+    int CurrPrime=0;
+    IsPrime[1]=0; 
+    IsPrime[2]=1;
+    for(int i=2;i&lt;=n;i++)
+    {
+        if(IsPrime[i])
+        {
+            Prime[CurrPrime]=i;
+            CurrPrime++;
+        }
+
+        for(int j=0;j&lt;CurrPrime&amp;&amp;i*Prime[j]&lt;=n;j++)
+        {
+            IsPrime[i*Prime[j]]=0;
+            if(i%Prime[j]==0)
+            {
+                break;
+            }
+        }
+    }
+    for(int i=2;i&lt;=n;i++)
+    {
+        if(IsPrime[i])
+        {
+            cout&lt;&lt;i&lt;&lt;&quot; is Prime\n&quot;;
+        }else{
+            cout&lt;&lt;i&lt;&lt;&quot; is not a prime\n&quot;;
+        }
+    }
+    return 0; 
+} 
+</code></pre><h2 id="c-康托展开"><a href="#c-康托展开" class="headerlink" title="c)康托展开"></a>c)康托展开</h2><p>公式：<br>rank = a_{n}(n-1)!+a_{n-1}(n-2)!+…+a_{1}\cdot 0!</p>
+<h2 id="d-逆康托展开"><a href="#d-逆康托展开" class="headerlink" title="d)逆康托展开"></a>d)逆康托展开</h2><h2 id="e-同余定理"><a href="#e-同余定理" class="headerlink" title="e)同余定理"></a>e)同余定理</h2><h2 id="f-次方求模"><a href="#f-次方求模" class="headerlink" title="f)次方求模"></a>f)次方求模</h2>
     </div>
 
     
@@ -674,12 +722,12 @@ int main()
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">15k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">14 分钟</span>
 </div>
 
 
@@ -740,6 +788,56 @@ int main()
   
 
   
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
 
   
 
@@ -749,8 +847,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
