@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="azure-cognitiveservices-speech reference.  短促的字段识别（15s）start_continuous_recognition()">
-<meta name="keywords" content="Microsoft Speech Services API">
+  <meta name="description" content="DFS深度优先搜索上例子寻找二叉树上从根结点到给定结点的路径： 一.递归实现/**  * Definition for a binary tree node.  * struct TreeNode {  *     int val;  *     TreeNode *left;  *     TreeNode *right;  *     TreeNode(int x) : val(x), lef">
+<meta name="keywords" content="Algorithm and Data Structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MicrosoftAPIReadingNotes">
-<meta property="og:url" content="https://a2864366212.github.io/2019/10/27/MicrosoftAPIReadingNotes/index.html">
+<meta property="og:title" content="BFSandDFS">
+<meta property="og:url" content="https://a2864366212.github.io/2019/11/07/BFSandDFS/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="azure-cognitiveservices-speech reference.  短促的字段识别（15s）start_continuous_recognition()">
+<meta property="og:description" content="DFS深度优先搜索上例子寻找二叉树上从根结点到给定结点的路径： 一.递归实现/**  * Definition for a binary tree node.  * struct TreeNode {  *     int val;  *     TreeNode *left;  *     TreeNode *right;  *     TreeNode(int x) : val(x), lef">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T06:04:48.483Z">
+<meta property="og:updated_time" content="2019-11-07T16:28:57.234Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MicrosoftAPIReadingNotes">
-<meta name="twitter:description" content="azure-cognitiveservices-speech reference.  短促的字段识别（15s）start_continuous_recognition()">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/10/27/MicrosoftAPIReadingNotes/">
+<meta name="twitter:title" content="BFSandDFS">
+<meta name="twitter:description" content="DFS深度优先搜索上例子寻找二叉树上从根结点到给定结点的路径： 一.递归实现/**  * Definition for a binary tree node.  * struct TreeNode {  *     int val;  *     TreeNode *left;  *     TreeNode *right;  *     TreeNode(int x) : val(x), lef">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/11/07/BFSandDFS/">
 
 
 <script id="page-configurations">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title>MicrosoftAPIReadingNotes | SteinsGate</title>
+  <title>BFSandDFS | SteinsGate</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/10/27/MicrosoftAPIReadingNotes/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/07/BFSandDFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +308,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">MicrosoftAPIReadingNotes
+        <h1 class="post-title" itemprop="name headline">BFSandDFS
 
           
         </h1>
@@ -324,11 +324,19 @@
                 
               
 
-              <time title="创建时间：2019-10-27 11:54:38 / 修改时间：14:04:48" itemprop="dateCreated datePublished" datetime="2019-10-27T11:54:38+08:00">2019-10-27</time>
+              <time title="创建时间：2019-11-07 21:38:46" itemprop="dateCreated datePublished" datetime="2019-11-07T21:38:46+08:00">2019-11-07</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-08 00:28:57" itemprop="dateModified" datetime="2019-11-08T00:28:57+08:00">2019-11-08</time>
+              </span>
             
           
 
@@ -341,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>84</span>
+              <span>1.7k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -351,7 +359,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -364,9 +372,84 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python" target="_blank" rel="noopener">azure-cognitiveservices-speech reference</a>. </p>
-<p>短促的字段识别（<15s）:recognize_once() 比较长的连续识别（>15s）start_continuous_recognition()</15s）:recognize_once()></p>
+        <h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>深度优先搜索<br>上例子<br>寻找二叉树上从根结点到给定结点的路径：</p>
+<h2 id="一-递归实现"><a href="#一-递归实现" class="headerlink" title="一.递归实现"></a>一.递归实现</h2><pre><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    stack&lt;TreeNode*&gt;P,Q;
+    bool PFlag=false,QFlag=false;
+    void DFS(TreeNode* root, TreeNode* goal,stack&lt;TreeNode*&gt;&amp;road,bool&amp;HasFind)
+    {    /*对树DFS寻找两个目标节点，然后存储路径，仅为寻找到最近的共同祖先（要不然root就是所有的祖先，那还找啥）*/
+        if(HasFind)
+            return;
 
+        if(root==goal)
+        {
+            HasFind=true;
+            road.push(root);
+            return;
+        }
+
+        road.push(root);
+        if(root-&gt;left)
+        {
+            DFS(root-&gt;left,goal,road,HasFind);
+            if(!HasFind)
+            road.pop();
+        }
+        if(root-&gt;right)
+        {
+            DFS(root-&gt;right,goal,road,HasFind);
+            if(!HasFind)
+            road.pop();
+        }
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        DFS(root,p,P,PFlag);
+        DFS(root,q,Q,QFlag);
+        stack&lt;TreeNode*&gt;Proad,Qroad;
+        while(!P.empty())
+        {
+            Proad.push(P.top());
+            P.pop();
+        }
+        while(!Q.empty())
+        {
+            Qroad.push(Q.top());
+            Q.pop();
+        }
+        P=Proad;
+        Q=Qroad;
+        int MAXSize=P.size();
+        if(MAXSize&lt;Q.size())
+        {
+            MAXSize=Q.size();
+        }
+        TreeNode* temp=root;
+        while(1)
+        {
+            if(P.empty()||Q.empty())
+                break;
+
+            if(P.top()==Q.top())
+            {
+                temp=P.top();
+                P.pop();
+                Q.pop();
+            }else break;
+        }
+        return temp;
+    }
+};
+</code></pre>
     </div>
 
     
@@ -381,7 +464,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Microsoft-Speech-Services-API/" rel="tag"># Microsoft Speech Services API</a>
+              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
             
           </div>
         
@@ -391,8 +474,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/09/step4/" rel="next" title="step4-NonLinearRegression">
-                  <i class="fa fa-chevron-left"></i> step4-NonLinearRegression
+                <a href="/2019/11/06/ProcessOfEquivalentPair/" rel="next" title="ProcessOfEquivalentPair">
+                  <i class="fa fa-chevron-left"></i> ProcessOfEquivalentPair
                 </a>
               
             </div>
@@ -400,10 +483,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/27/pythonLearning/" rel="prev" title="pythonLearning">
-                  pythonLearning <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -461,6 +540,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS"><span class="nav-number">1.</span> <span class="nav-text">DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-递归实现"><span class="nav-number">1.1.</span> <span class="nav-text">一.递归实现</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
