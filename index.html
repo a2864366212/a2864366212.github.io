@@ -334,7 +334,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-08 00:35:32" itemprop="dateModified" datetime="2019-11-08T00:35:32+08:00">2019-11-08</time>
+                <time title="修改时间：2019-11-08 00:40:28" itemprop="dateModified" datetime="2019-11-08T00:40:28+08:00">2019-11-08</time>
               </span>
             
           
@@ -348,7 +348,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.1k</span>
+              <span>2.2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -371,95 +371,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>深度优先搜索<br>上例子<br>寻找二叉树上从根结点到给定结点的路径：</p>
-<h2 id="一-递归实现"><a href="#一-递归实现" class="headerlink" title="一.递归实现"></a>一.递归实现</h2><pre><code>/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    stack&lt;TreeNode*&gt;P,Q;
-    bool PFlag=false,QFlag=false;
-    void DFS(TreeNode* root, TreeNode* goal,stack&lt;TreeNode*&gt;&amp;road,bool&amp;HasFind)
-    {    /*对树DFS寻找两个目标节点，然后存储路径，仅为寻找到最近的共同祖先（要不然root就是所有的祖先，那还找啥）*/
-        if(HasFind)//已经在别的地方找到了
-            return;
-
-        if(root==goal)//现在刚刚找到
-        {
-            HasFind=true;//flag置为1
-            road.push(root);
-            return;
-        }
-
-        road.push(root);
-        if(root-&gt;left)//DFS非空左子树
-        {
-            DFS(root-&gt;left,goal,road,HasFind);
-            if(!HasFind)
-            road.pop();//子树中未找到目标节点，还原路径
-        }
-        if(root-&gt;right)//DFS非空右子树
-        {
-            DFS(root-&gt;right,goal,road,HasFind);
-            if(!HasFind)
-            road.pop();//子树中未找到目标节点，还原路径
-        }
-    }
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        DFS(root,p,P,PFlag);
-        DFS(root,q,Q,QFlag);
-        stack&lt;TreeNode*&gt;Proad,Qroad;
-        while(!P.empty())
-        {
-            Proad.push(P.top());
-            P.pop();
-        }
-        while(!Q.empty())
-        {
-            Qroad.push(Q.top());
-            Q.pop();
-        }
-        P=Proad;
-        Q=Qroad;
-        int MAXSize=P.size();
-        if(MAXSize&lt;Q.size())
-        {
-            MAXSize=Q.size();
-        }
-        TreeNode* temp=root;
-        while(1)
-        {
-            if(P.empty()||Q.empty())
-                break;
-
-            if(P.top()==Q.top())
-            {
-                temp=P.top();
-                P.pop();
-                Q.pop();
-            }else break;
-        }
-        return temp;
-    }
-};
-
-给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
-例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]
-示例 1:
-输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-输出: 6 
-解释: 节点 2 和节点 8 的最近公共祖先是 6。
-
-写这个题的时候，额。。。没看树的类型，直接敲了树的DFS，其实可以利用二叉检索树的特性的，服了，算了，反正目的达到了。下回有机会再写吧。
-</code></pre><h1 id><a href="#" class="headerlink" title="#"></a>#</h1><p>#</p>
-
+          <h1 id="BFSandDFS"><a href="#BFSandDFS" class="headerlink" title="BFSandDFS"></a>BFSandDFS</h1><p>a)迷宫求解（最少步数）<br>b)水池数目(NYOJ27)<br>c)图像有用区域(NYOJ92)<br>d)树的前序中序后序遍历<br></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/11/07/BFSandDFS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1508,7 +1429,7 @@ public:
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
