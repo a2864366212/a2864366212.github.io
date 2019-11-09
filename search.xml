@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[BinSearchTree]]></title>
     <url>%2F2019%2F11%2F10%2FBinSearchTree%2F</url>
-    <content type="text"><![CDATA[二叉检索树二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。 可以实现字典的功能，通过将关键码与值绑定（可以将不可比较大小的值，变得可比，大概～(￣▽￣～)(～￣▽￣)～）二分检索树的时间复杂度为\theta (\log n)]]></content>
+    <content type="text"><![CDATA[二叉检索树二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。 可以实现字典的功能，通过将关键码与值绑定（可以将不可比较大小的值，变得可比，大概～(￣▽￣～)(～￣▽￣)～）二分检索树的时间复杂度为\theta (\log n) 插入操作key值如果小于当前节点的k值，往右边深入，否则往左边深入，直到成为叶子节点 删除操作step1:deletemin()//删除树中的最小值根据树的特性，一直向左子树深入，知道某个节点没有左子节点，则该节点为树中最小节点.则欲删除该节点，只需使其父节点的leftChild指针 直接指向该节点的右子树，即可完成删除.且不破坏BST树的结构（其父节点一定大于等于其左子树中各节点） step2:1.如果要删除的节点R没有子节点，那么只需要把其父节点指向R的指针，指向NULL即可2.如果要删除的节点R只有一个子节点，那么只需要把其父节点指向R的指针，指向R唯一的一颗子树即可3.如果要删除的节点R有两个子节点，较好地解决办法是从某棵子树中，找出一个R的替代者替代者的选取：大于(或等于)被替换值的最小者]]></content>
       <tags>
         <tag>Algorithm and Data Structure</tag>
       </tags>
@@ -91,7 +91,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Gensokyo]]></title>
+    <title><![CDATA[MaxHeap]]></title>
     <url>%2F2019%2F11%2F01%2FGensokyo%2F</url>
     <content type="text"><![CDATA[不是我变化太大，只是预见了最后的可能分支。为了不被抛弃，更为了避免那时的无能狂怒，我只能选择，不辞而别，独自行走。 最大堆和最小堆最大堆和最小堆是二叉堆的两种形式。（完全二叉树） 最大堆：根结点的键值是所有堆结点键值中最大者，且每个结点的值都比其孩子的值大。 最小堆：根结点的键值是所有堆结点键值中最小者，且每个结点的值都比其孩子的值小。构建方式不唯一 下面对书本上的bulid过程分析并实现：（仅仅分析最大堆，则最小堆可以重载大于号等进行构建） 关键操作：siftdown(节点下沉、下拉) 构建的算法原理基础：归纳证明假设根的两个子树都是最大堆了，设根的元素为R，则有两种情况：一、R的值大于或者等于其两个子节点，此时最大堆结构完成二、否则，R与两个子节点中大的那一个交换位置，此时最大堆结构完成，或者重复第二步直到完成 为了使得子树已经是最大堆，则可以采用递归（我们不用），或者倒着循环上来下面采用循环实现BuildHeap： 初始化curr=HeapSize/2（最后一个分支节点，开始开倒车） BuildMaxHeap#include&lt;iostream&gt; #include&lt;cstring&gt; #include&lt;algorithm&gt; using namespace std; int a[1000]; void OrderPrint(int n) { int line=2; for(int i=1;i&lt;=n;i++) { cout&lt;&lt;&#39; &#39;&lt;&lt;a[i]&lt;&lt;&#39; &#39;; if(i==line-1) {// 1 3 7 cout&lt;&lt;endl; line*=2; } } } int main() { int n; cin&gt;&gt;n; memset(a,0,1000*sizeof(int)); for(int i=1;i&lt;=n;i++) { cin&gt;&gt;a[i]; } int HeapSize=n; for(int curr=HeapSize/2;curr&gt;=1;curr--) { int son=curr*2;//son 其实可以理解为 变动元素的下一个待判断的位置 //a[0]=a[curr]; while(son&lt;=HeapSize)// //待判断的位置 的 上限 { if(a[son]&lt;a[son+1]) { son++; } if(a[son/2]&gt;=a[son]) {/*父节点大于最大子节点 堆结构 构造完成*/ break;//停止下沉 } else{//节点小于最大子节点 swap(a[son/2],a[son]);//父变子 子变父 son*=2;//待判断的位置 移动到下一层 } } } OrderPrint(HeapSize); return 0; } 插入：添加到数组尾部（n+1处）比较简单和其父节点比较一路 上浮 到合适的位置即可可以调用OrderPrint方法查看上浮全程（其实我拿来debug的，因为我这a[0]的元素会干扰，a[0]并非堆中的节点） void MaxHeapInsert(int element,int &amp; HeapSize) { HeapSize++; a[HeapSize]=element; int curr=HeapSize; while(curr/2&gt;0&amp;&amp;a[curr/2]&lt;a[curr]) { //OrderPrint(HeapSize); swap(a[curr/2],a[curr]); curr/=2;//节点上浮 //OrderPrint(HeapSize); } } 删除：最大堆的删除，只能删除堆的最大值（根节点）把最后一个元素移动到根节点来当老大，然后siftdown对堆重排 不写了，&lt;(*\￣▽￣*)/]]></content>
       <tags>
