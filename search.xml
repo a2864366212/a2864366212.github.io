@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2019%2F11%2F09%2FHuffman%2F</url>
+    <content type="text"><![CDATA[title: Huffmandate: 2019-11-09 17:18:41 tags: Algorithm and Data StructureHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长度），如果存在一种赋权方式，使得\sum_{i=1}^{t}w_{i}l(v_{i})的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树. 构造方法(1).对所有权值从低到高排序.(2).找出两个最小的权值，记为w_{1},w_{2}(3).用(w_{1}+w_{2} 代替w_{1}与w_{2}),产生新的队列(4).若队列中的点数大于1，则回到第一步，否则进行下一步. (5).逆序将以上组合过程画出来得到Huffman树]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[LuoguP1162]]></title>
     <url>%2F2019%2F11%2F09%2FLuoguP1162%2F</url>
     <content type="text"><![CDATA[模板题目：和Leetcode T130的解法只需要改一下参数就可 #include&lt;cstdio&gt; #include&lt;vector&gt; #include&lt;cstring&gt; #include&lt;iostream&gt; using namespace std; void DFS(int r,int c,vector&lt;vector&lt;char&gt; &gt;&amp; board) { if(r&lt;0||r&gt;=board.size()||c&lt;0 ||c&gt;=board[0].size()||board[r][c]==&#39;1&#39; ||board[r][c]==&#39;H&#39;) { return ; } board[r][c]=&#39;H&#39;; DFS(r+1,c,board); DFS(r-1,c,board); DFS(r,c+1,board); DFS(r,c-1,board); } void solve(vector&lt;vector&lt;char&gt; &gt;&amp; board) { if(board.size()&lt;1||board[0].size()&lt;1) return ; for(int i=0;i&lt;board[0].size();i++) DFS(0,i,board); for(int i=0;i&lt;board[0].size();i++) DFS(board.size()-1,i,board); for(int i=0;i&lt;board.size();i++) DFS(i,0,board); for(int i=0;i&lt;board.size();i++) DFS(i,board[0].size()-1,board); for(int i=0;i&lt;board.size();i++) { for(int j=0;j&lt;board[0].size();j++) { if(board[i][j]==&#39;H&#39;) board[i][j]=&#39;0&#39;; else{ if(board[i][j]==&#39;0&#39;) board[i][j]=&#39;2&#39;; } } } } int main() { int n; cin&gt;&gt;n; vector&lt;vector&lt;char&gt; &gt;board; vector&lt;char&gt;temp; for(int i=0;i&lt;n;i++) { for(int j=0;j&lt;n;j++) { char ch; cin&gt;&gt;ch; temp.push_back(ch); } board.push_back(temp); temp.erase(temp.begin(),temp.end()); } solve(board); for(int i=0;i&lt;n;i++) { for(int j=0;j&lt;n;j++) { if(j==0) cout&lt;&lt;board[i][j]; else{ cout&lt;&lt;&#39; &#39;&lt;&lt;board[i][j]; } } if(i!=n-1) cout&lt;&lt;endl; } return 0; } 真就是只改了下参数。。。。水题]]></content>
