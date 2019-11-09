@@ -59,18 +59,18 @@
   };
 </script>
 
-  <meta name="description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可 class Solution { public:     void DFS(int r,int c,vector&amp;lt;vector&amp;lt;char&amp;gt;&amp;gt;&amp;amp; board)     {         if(r&amp;l">
+  <meta name="description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode130">
 <meta property="og:url" content="https://a2864366212.github.io/2019/11/08/Leetcode130/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可 class Solution { public:     void DFS(int r,int c,vector&amp;lt;vector&amp;lt;char&amp;gt;&amp;gt;&amp;amp; board)     {         if(r&amp;l">
+<meta property="og:description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T04:55:20.712Z">
+<meta property="og:updated_time" content="2019-11-09T04:57:03.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode130">
-<meta name="twitter:description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可 class Solution { public:     void DFS(int r,int c,vector&amp;lt;vector&amp;lt;char&amp;gt;&amp;gt;&amp;amp; board)     {         if(r&amp;l">
+<meta name="twitter:description" content="130.被围绕的区域被围绕的区域.题目还是很简单的：就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可">
   <link rel="canonical" href="https://a2864366212.github.io/2019/11/08/Leetcode130/">
 
 
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-09 12:55:20" itemprop="dateModified" datetime="2019-11-09T12:55:20+08:00">2019-11-09</time>
+                <time title="修改时间：2019-11-09 12:57:03" itemprop="dateModified" datetime="2019-11-09T12:57:03+08:00">2019-11-09</time>
               </span>
             
           
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.3k</span>
+              <span>150</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -372,18 +372,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="130-被围绕的区域"><a href="#130-被围绕的区域" class="headerlink" title="130.被围绕的区域"></a>130.被围绕的区域</h1><p><a href="https://leetcode-cn.com/problems/surrounded-regions/" target="_blank" rel="noopener">被围绕的区域</a>.<br>题目还是很简单的：<br>就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可</p>
-<pre><code>class Solution {
-public:
-    void DFS(int r,int c,vector&lt;vector&lt;char&gt;&gt;&amp; board)
-    {
-        if(r&lt;0||r&gt;=board.size()||c&lt;0 ||c&gt;=board[0].size()||board[r][c]==&#39;X&#39;
-           ||board[r][c]==&#39;H&#39;)
-        {
-            return ;
-        }
-
-        board[r][c]=&#39;H&#39;;
+        <h1 id="130-被围绕的区域"><a href="#130-被围绕的区域" class="headerlink" title="130.被围绕的区域"></a>130.被围绕的区域</h1><p><a href="https://leetcode-cn.com/problems/surrounded-regions/" target="_blank" rel="noopener">被围绕的区域</a>.<br>题目还是很简单的：<br>就沿着边沿做几次DFS，把所有和边沿连同的路径上的’O’标记出来，剩下的’O’就是被包围起来的，将其翻转为’X’即可<br><a id="more"></a><br>    class Solution {<br>    public:<br>        void DFS(int r,int c,vector<vector<char>&gt;&amp; board)<br>        {<br>            if(r<0||r>=board.size()||c<0 ||c>=board[0].size()||board[r][c]==’X’<br>               ||board[r][c]==’H’)<br>            {<br>                return ;<br>            }</0></0||r></vector<char></p>
+<pre><code>        board[r][c]=&#39;H&#39;;
         DFS(r+1,c,board);
         DFS(r-1,c,board);
         DFS(r,c+1,board);
@@ -569,12 +559,12 @@ public:
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">24k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">23 分钟</span>
+    <span title="站点阅读时长">22 分钟</span>
 </div>
 
 
@@ -644,8 +634,8 @@ public:
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
