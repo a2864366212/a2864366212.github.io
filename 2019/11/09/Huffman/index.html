@@ -59,17 +59,17 @@
   };
 </script>
 
-  <meta name="description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径">
+  <meta name="description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SteinsGate">
 <meta property="og:url" content="https://a2864366212.github.io/2019/11/09/Huffman/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径">
+<meta property="og:description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T09:40:45.474Z">
+<meta property="og:updated_time" content="2019-11-09T16:21:03.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SteinsGate">
-<meta name="twitter:description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径">
+<meta name="twitter:description" content="title: Huffmandate: 2019-11-09 17:18:41tags: Algorithm and Data Structure mathjax: trueHuffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长">
   <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/Huffman/">
 
 
@@ -323,11 +323,19 @@
                 
               
 
-              <time title="创建时间：2019-11-09 17:18:41 / 修改时间：17:40:45" itemprop="dateCreated datePublished" datetime="2019-11-09T17:18:41+08:00">2019-11-09</time>
+              <time title="创建时间：2019-11-09 17:18:41" itemprop="dateCreated datePublished" datetime="2019-11-09T17:18:41+08:00">2019-11-09</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-10 00:21:03" itemprop="dateModified" datetime="2019-11-10T00:21:03+08:00">2019-11-10</time>
+              </span>
             
           
 
@@ -363,8 +371,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <hr>
-<p>title: Huffman<br>date: 2019-11-09 17:18:41<br>tags: Algorithm and Data Structure</p>
+        <p>title: Huffman<br>date: 2019-11-09 17:18:41<br>tags: Algorithm and Data Structure</p>
 <h2 id="mathjax-true"><a href="#mathjax-true" class="headerlink" title="mathjax: true"></a>mathjax: true</h2><h1 id="Huffman树"><a href="#Huffman树" class="headerlink" title="Huffman树"></a>Huffman树</h1><p>设根树T有t片树叶<script type="math/tex">v_{1},v_{2},..,v_{t},</script>给每片树叶赋一个权值<script type="math/tex">w_{1},w_{2},...,w_{t}</script>,则成为T赋权二叉树，其中<script type="math/tex">l(v_{i})</script>为叶子节点<script type="math/tex">v_{i}</script>的长度（节点到根节点路径长度），如果存在一种赋权方式，使得<script type="math/tex">\sum_{i=1}^{t}w_{i}l(v_{i})</script>的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树.<br><a id="more"></a></p>
 <h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>(1).对所有权值从低到高排序.<br>(2).找出两个最小的权值，记为<script type="math/tex">w_{1},w_{2}</script><br>(3).用(<script type="math/tex">w_{1}+w_{2}</script> 代替<script type="math/tex">w_{1}</script>与<script type="math/tex">w_{2}</script>),产生新的队列<br>(4).若队列中的点数大于1，则回到第一步，否则进行下一步.</p>
 <p>(5).逆序将以上组合过程画出来得到Huffman树</p>
