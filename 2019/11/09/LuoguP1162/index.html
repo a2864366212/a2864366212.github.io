@@ -59,25 +59,18 @@
   };
 </script>
 
-  <meta name="description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
-<meta name="keywords" content="Algorithm and Data Structure">
+  <meta name="description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ProcessOfEquivalentPair">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/index.html">
+<meta property="og:title" content="LuoguP1162">
+<meta property="og:url" content="https://a2864366212.github.io/2019/11/09/LuoguP1162/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
+<meta property="og:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
-<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/check.png">
-<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree2.png">
-<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/roadShorten.png">
-<meta property="og:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/roadShorten2.png">
-<meta property="og:updated_time" content="2019-11-05T17:30:01.966Z">
+<meta property="og:updated_time" content="2019-11-09T05:50:40.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProcessOfEquivalentPair">
-<meta name="twitter:description" content="连通区域标记－行程扫描算法— 等价对的处理过程">
-<meta name="twitter:image" content="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/tree.png">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/">
+<meta name="twitter:title" content="LuoguP1162">
+<meta name="twitter:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
 
 
 <script id="page-configurations">
@@ -91,7 +84,7 @@
   };
 </script>
 
-  <title>ProcessOfEquivalentPair | SteinsGate</title>
+  <title>LuoguP1162 | SteinsGate</title>
   
 
 
@@ -302,7 +295,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/06/ProcessOfEquivalentPair/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -314,7 +307,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">ProcessOfEquivalentPair
+        <h1 class="post-title" itemprop="name headline">LuoguP1162
 
           
         </h1>
@@ -330,7 +323,7 @@
                 
               
 
-              <time title="创建时间：2019-11-06 01:05:31 / 修改时间：01:30:01" itemprop="dateCreated datePublished" datetime="2019-11-06T01:05:31+08:00">2019-11-06</time>
+              <time title="创建时间：2019-11-09 13:48:52 / 修改时间：13:50:40" itemprop="dateCreated datePublished" datetime="2019-11-09T13:48:52+08:00">2019-11-09</time>
             </span>
           
             
@@ -347,7 +340,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>998</span>
+              <span>2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -357,7 +350,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -370,21 +363,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="连通区域标记－行程扫描算法"><a href="#连通区域标记－行程扫描算法" class="headerlink" title="连通区域标记－行程扫描算法"></a>连通区域标记－行程扫描算法</h1><p>— 等价对的处理过程<br><a id="more"></a><br>将等价对转换为若干个等价序列,比如有如下等价对: <1,2>  <1,6> <3,7> <9,3> <8,1> <8,10> <11,5> <11,8> <11,12> <11,13> <11,14> <15,11><br>只要两个数在同一序偶中，就用线连起来，化成一棵树<br>经过等价对处理之后,应得到的等价序列为:</15,11></11,14></11,13></11,12></11,8></11,5></8,10></8,1></9,3></3,7></1,6></1,2></p>
-<p>list1:1-2-5-6-8-10-11-12-13-14-15</p>
-<p>list2:3-7-9</p>
-<p>list3:4</p>
-<p>主要思路:将1-15个点都看成图的节点,而等价对<1,2>说明节点1和2之间有通路,而且形成的图是无向图.我们需要遍历图,找到其中的所有连通图,主要采用的是图的深度优先遍历法,进行等价序列的查找.</1,2></p>
-<p><img src="/2019/11/06/ProcessOfEquivalentPair/tree.png" alt="tree"></p>
-<p>如上图所示,从节点1开始查找,它有三个路径1-2,1-6,1-8;2和6后面没有路径,8后面有两个路径8-10,8-11;10后面没有路径,11后面有5条路径分别为11-5,11-12,11-13,11-14,11-15,到此,等价表1查找完毕.</p>
-<p>等价表2是从3开始查找,它的后面有两条路径3-7,3-9.</p>
-<p>等价表3只有一个孤立的点.</p>
-<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><h2 id="父节点表示法"><a href="#父节点表示法" class="headerlink" title="父节点表示法"></a>父节点表示法</h2><p>对于树中的每个结点都保存一个指针域指向父结点。（缺点：不能准确地找到给定的结点的子结点信息。优点：可以解决判断俩个结点是否在同一个树中的问题；用并查算法合并俩个集合。）</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>查询元素a和元素b是否属于同一组：<br>由于采用父节点表示法，使用递归，一直向上检索，判断两个节点能否走到同一个根（查询是否有共同祖先祖先），即可知道是否在一组中。</p>
-<p>在下图，2和5都走到了1，因此他们为同一组。另一方面，由于7走到的是6，因此与2和5属于不同组<br><img src="/2019/11/06/ProcessOfEquivalentPair/check.png" alt="check"></p>
-<p>合并元素a和元素b所在的组：<br>像下图一样，从一个组的根向另一个组的根连边，这样两棵树就变成了一棵树，也就是把两个组合并为了一个组。将其中一颗树的根节点作为另一颗树的子节点：<br><img src="/2019/11/06/ProcessOfEquivalentPair/tree2.png" alt="tree2"></p>
-<h1 id="并查集实现中的注意点-优化-降低rank）"><a href="#并查集实现中的注意点-优化-降低rank）" class="headerlink" title="并查集实现中的注意点(优化)(降低rank）"></a>并查集实现中的注意点(优化)(降低rank）</h1><h2 id="退化问题"><a href="#退化问题" class="headerlink" title="退化问题"></a>退化问题</h2><p>在树形数据结构中，如果发生了退化的情况，那么复杂度就会变得很高。因此有必要避免退化（呈线性，树形结构不明显，丧失树形优势）<br>1.对于每棵树，记录这棵树的高度（rank）<br>2.合并时如果两个数的rank不同，那么从rank小的向rank大的连边。（大的连在小rank树上，会在大rank基础上增加深度；小的连在大的上，就可能会被包含，并不增加rank）<br><img src="/2019/11/06/ProcessOfEquivalentPair/roadShorten.png" alt="roadShorten"></p>
-<h2 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h2><p>不论是所查询的节点，还是在查询过程中向上经过的其他所有节点，都直接改为直接连到根上。这样再次查询这些节点时，就可以很快知道根是谁了。（降低rank）<br><img src="/2019/11/06/ProcessOfEquivalentPair/roadShorten2.png" alt="roadShorten2"></p>
+        <p>模板题目：和Leetcode T130的解法只需要改一下参数就可<br><a id="more"></a></p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+    void DFS(int r,int c,vector&lt;vector&lt;char&gt; &gt;&amp; board)
+    {
+        if(r&lt;0||r&gt;=board.size()||c&lt;0 ||c&gt;=board[0].size()||board[r][c]==&#39;1&#39;
+           ||board[r][c]==&#39;H&#39;)
+        {
+            return ;
+        }
+
+        board[r][c]=&#39;H&#39;;
+        DFS(r+1,c,board);
+        DFS(r-1,c,board);
+        DFS(r,c+1,board);
+        DFS(r,c-1,board);
+    }
+    void solve(vector&lt;vector&lt;char&gt; &gt;&amp; board) {
+        if(board.size()&lt;1||board[0].size()&lt;1)
+            return ;
+
+        for(int i=0;i&lt;board[0].size();i++)
+            DFS(0,i,board);
+        for(int i=0;i&lt;board[0].size();i++)
+            DFS(board.size()-1,i,board);
+        for(int i=0;i&lt;board.size();i++)
+            DFS(i,0,board);
+        for(int i=0;i&lt;board.size();i++)
+            DFS(i,board[0].size()-1,board);
+        for(int i=0;i&lt;board.size();i++)
+        {
+            for(int j=0;j&lt;board[0].size();j++)
+            {
+                if(board[i][j]==&#39;H&#39;)
+                    board[i][j]=&#39;0&#39;;
+                else{
+                    if(board[i][j]==&#39;0&#39;)
+                    board[i][j]=&#39;2&#39;;
+                }
+            }
+        }
+    }
+int main()
+{
+    int n;
+    cin&gt;&gt;n;
+
+    vector&lt;vector&lt;char&gt; &gt;board;
+    vector&lt;char&gt;temp;
+    for(int i=0;i&lt;n;i++)
+    {
+        for(int j=0;j&lt;n;j++)
+        {
+            char ch;
+            cin&gt;&gt;ch;
+
+            temp.push_back(ch);                
+        }
+        board.push_back(temp);
+        temp.erase(temp.begin(),temp.end());
+    }
+    solve(board);
+    for(int i=0;i&lt;n;i++)
+    {
+        for(int j=0;j&lt;n;j++)
+        {
+            if(j==0)
+            cout&lt;&lt;board[i][j];
+            else{
+                cout&lt;&lt;&#39; &#39;&lt;&lt;board[i][j];
+            }
+        }
+        if(i!=n-1)
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre><p>真就是只改了下参数。。。。水题</p>
 
     </div>
 
@@ -395,23 +454,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/02/BasicAlgorithm/" rel="next" title="BasicAlgorithm">
-                  <i class="fa fa-chevron-left"></i> BasicAlgorithm
+                <a href="/2019/11/09/Leetcode127/" rel="next" title="Leetcode127">
+                  <i class="fa fa-chevron-left"></i> Leetcode127
                 </a>
               
             </div>
@@ -419,10 +469,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/07/BFSandDFS/" rel="prev" title="BFSandDFS">
-                  BFSandDFS <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -480,8 +526,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#连通区域标记－行程扫描算法"><span class="nav-number">1.</span> <span class="nav-text">连通区域标记－行程扫描算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#父节点表示法"><span class="nav-number">2.1.</span> <span class="nav-text">父节点表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.2.</span> <span class="nav-text">基本操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集实现中的注意点-优化-降低rank）"><span class="nav-number">3.</span> <span class="nav-text">并查集实现中的注意点(优化)(降低rank）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#退化问题"><span class="nav-number">3.1.</span> <span class="nav-text">退化问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径压缩"><span class="nav-number">3.2.</span> <span class="nav-text">路径压缩</span></a></li></ol></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
