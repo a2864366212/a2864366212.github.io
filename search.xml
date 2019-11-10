@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[Greedy]]></title>
     <url>%2F2019%2F11%2F10%2FGreedy%2F</url>
-    <content type="text"><![CDATA[贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关 P1090 合并果子优先队列（使用stl写好的priority_queue）先出队列元素不是先进队列的元素，而是队列中优先级最高的元素 priority_queue基本用法： //升序队列 push小的优先 小的在堆顶 priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q; //降序队列 push大的优先 大的在堆顶 也是默认情况 priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt;q; struct node{ int x; bool operator&lt;(const tmp1&amp; a) const { return x &lt; a.x; // this object 的优先级 小于 a的优先级 } }]]></content>
+    <content type="text"><![CDATA[贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关 P1090 合并果子优先队列（使用stl写好的priority_queue）先出队列元素不是先进队列的元素，而是队列中优先级最高的元素代码 priority_queue基本用法： //升序队列 push小的优先 小的在堆顶 priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q; //降序队列 push大的优先 大的在堆顶 也是默认情况 priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt;q; struct node{ int x; bool operator&lt;(const tmp1&amp; a) const { return x &lt; a.x; // this object 的优先级 小于 a的优先级 } }]]></content>
       <tags>
         <tag>Algorithm and Data Structure</tag>
       </tags>
