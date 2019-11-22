@@ -59,17 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="NoGameNoLife">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SteinsGate">
-<meta property="og:url" content="https://a2864366212.github.io/archives/index.html">
+  <meta name="description" content="Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn)  质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素)：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余：同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡">
+<meta name="keywords" content="Algorithm and Data Structure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PrimeJudge">
+<meta property="og:url" content="https://a2864366212.github.io/2019/11/22/PrimeJudge/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="NoGameNoLife">
+<meta property="og:description" content="Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn)  质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素)：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余：同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-22T09:07:49.286Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SteinsGate">
-<meta name="twitter:description" content="NoGameNoLife">
-  <link rel="canonical" href="https://a2864366212.github.io/archives/">
+<meta name="twitter:title" content="PrimeJudge">
+<meta name="twitter:description" content="Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn)  质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素)：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余：同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/11/22/PrimeJudge/">
 
 
 <script id="page-configurations">
@@ -77,13 +79,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | SteinsGate</title>
+  <title>PrimeJudge | SteinsGate</title>
   
 
 
@@ -286,360 +288,166 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/22/PrimeJudge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李松">
+      <meta itemprop="description" content="NoGameNoLife">
+      <meta itemprop="image" content="/images/MyAvatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SteinsGate">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">PrimeJudge
+
           
-        
-        <span class="collection-header">嗯..! 目前共计 24 篇日志。 继续努力。</span>
-      </div>
-      
+        </h1>
 
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  
-  
+              
+                
+              
 
-  
+              <time title="创建时间：2019-11-22 16:45:07 / 修改时间：17:07:49" itemprop="dateCreated datePublished" datetime="2019-11-22T16:45:07+08:00">2019-11-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.1k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn)</p>
+<ul>
+<li>质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。</li>
+<li>互质(互素)：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。</li>
+<li>同余：<br>同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡b(mod m)，或记为a≡b(m)。这个式子称为模m的同余式，若m∤ (a-b)，则称a、b对模m不同余，同余概念又常表达为：<br>1.a=b+km(k∈Z)；<br>2.a和b被m除时有相同的余数。 同余式的记号由高斯(Gauss,C.F.)于1800年首创,发表在他的数论专著《算术研究》之中。</li>
+<li>快速幂：</li>
+<li>费马小定理：设p是素数，a与p互素，则 <script type="math/tex">a^{(p-1)}\equiv 1(mod p)</script><a id="more"></a>
+1</li>
+</ul>
+<p>// 检测num是否是素数</p>
+<pre><code>for(i=0;i&lt;20;i++){// 检测num是否是素数
+    c=num-1;
+    // 生成20个大于等于2小于num的随机数，从而保证错误率低于(1/4)^20
+    long long r=rand()%(num-2)+2;
+    long long y=aPowb(r,c,num);
+    if(y!=1){
+        return 404;
+        // 首先得保证a^(num-1)%num==1
+    }
+    for(j=0;j&lt;k;j++){
+        // k是上面式子中a*2^r中的r
+        c/=2;
+        // 每次检测幂次方都折半
+        y=aPowb(r,c,num);
+        // cout&lt;&lt;r&lt;&lt;&quot; &quot;&lt;&lt;c&lt;&lt;&quot; &quot;&lt;&lt;num&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;endl;            
+        if(y==1){
+              // 正常
+        }
+        else if(y==num-1){
+            break;
+            // 没有比较的必要了
+        }
+        else{
+            return 404;
+            // 肯定不是素数
+        }
+    }
+}
+</code></pre>
     </div>
-  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-22T16:45:07+08:00"
-              content="2019-11-22">
-          11-22
-        </time>
-      </div>
-
-      <h2 class="post-title">
+    
+    
+    
         
-          <a class="post-title-link" href="/2019/11/22/PrimeJudge/" itemprop="url">
-            <span itemprop="name">PrimeJudge</span>
-          </a>
-        
-      </h2>
+      
 
-    </header>
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/21/Knapsackproblem/" rel="next" title="Knapsackproblem">
+                  <i class="fa fa-chevron-left"></i> Knapsackproblem
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </article>
-
-
-
+  
   
   
 
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-21T17:42:41+08:00"
-              content="2019-11-21">
-          11-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/21/Knapsackproblem/" itemprop="url">
-            <span itemprop="name">Knapsackproblem</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-21T17:33:41+08:00"
-              content="2019-11-21">
-          11-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/21/LongestIncreasingSubsequence/" itemprop="url">
-            <span itemprop="name">LongestIncreasingSubsequence</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-20T08:56:57+08:00"
-              content="2019-11-20">
-          11-20
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/20/Search/" itemprop="url">
-            <span itemprop="name">Search</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-15T21:52:34+08:00"
-              content="2019-11-15">
-          11-15
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/15/Graph/" itemprop="url">
-            <span itemprop="name">Graph</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-10T11:47:02+08:00"
-              content="2019-11-10">
-          11-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/10/LuoguP1090/" itemprop="url">
-            <span itemprop="name">LuoguP1090</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-10T11:32:05+08:00"
-              content="2019-11-10">
-          11-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/10/Greedy/" itemprop="url">
-            <span itemprop="name">Greedy</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-10T00:32:44+08:00"
-              content="2019-11-10">
-          11-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/10/BinSearchTree/" itemprop="url">
-            <span itemprop="name">BinSearchTree</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-09T17:18:41+08:00"
-              content="2019-11-09">
-          11-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/09/Huffman/" itemprop="url">
-            <span itemprop="name">Huffman</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-09T13:48:52+08:00"
-              content="2019-11-09">
-          11-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/11/09/LuoguP1162/" itemprop="url">
-            <span itemprop="name">LuoguP1162</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-
-    </div>
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
@@ -668,6 +476,11 @@
       </div>
     
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -801,6 +614,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   

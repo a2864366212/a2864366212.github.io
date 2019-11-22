@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PrimeJudge]]></title>
+    <url>%2F2019%2F11%2F22%2FPrimeJudge%2F</url>
+    <content type="text"><![CDATA[Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn) 质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素)：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余：同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡b(mod m)，或记为a≡b(m)。这个式子称为模m的同余式，若m∤ (a-b)，则称a、b对模m不同余，同余概念又常表达为：1.a=b+km(k∈Z)；2.a和b被m除时有相同的余数。 同余式的记号由高斯(Gauss,C.F.)于1800年首创,发表在他的数论专著《算术研究》之中。 快速幂： 费马小定理：设p是素数，a与p互素，则 a^{(p-1)}\equiv 1(mod p) 1 // 检测num是否是素数 for(i=0;i&lt;20;i++){// 检测num是否是素数 c=num-1; // 生成20个大于等于2小于num的随机数，从而保证错误率低于(1/4)^20 long long r=rand()%(num-2)+2; long long y=aPowb(r,c,num); if(y!=1){ return 404; // 首先得保证a^(num-1)%num==1 } for(j=0;j&lt;k;j++){ // k是上面式子中a*2^r中的r c/=2; // 每次检测幂次方都折半 y=aPowb(r,c,num); // cout&lt;&lt;r&lt;&lt;&quot; &quot;&lt;&lt;c&lt;&lt;&quot; &quot;&lt;&lt;num&lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt;endl; if(y==1){ // 正常 } else if(y==num-1){ break; // 没有比较的必要了 } else{ return 404; // 肯定不是素数 } } }]]></content>
+      <tags>
+        <tag>Algorithm and Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Knapsackproblem]]></title>
     <url>%2F2019%2F11%2F21%2FKnapsackproblem%2F</url>
     <content type="text"><![CDATA[0-1 背包问题给定n个重量为w_{1},w_{2},..,w_{n}的物品，价值为v_{1},v_{2},…,v_{n}的物品和容量为C的背包，求这个物品中一个最有价值的子集，使得在满足背包的容量的前提下，包内的总价值最大 方案一:递归求解递归遍历解空间树，枚举，2_{n}（会因为剪枝而大大减少）种情况 answer[1~n]=max(选择物品1:value[1]+answer[2~n] 但是背包容量减少，不选择物品1+answer[2~n]背包容量不变) #include&lt;iostream&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; using namespace std; int n; int w[100],v[100]; int Enum(int index,int c) { if(c&lt;0) return 0; if(index&gt;n-1) return 0; if(c&gt;=w[index]) { return max( v[index]+Enum(index+1,c-w[index]),Enum(index+1,c) ); } else{ return Enum(index+1,c); } } int main() { cin&gt;&gt;n; int c; cin&gt;&gt;c; for(int i=0;i&lt;n;i++) { cin&gt;&gt;w[i]&gt;&gt;v[i]; } cout&lt;&lt;Enum(0,c); return 0; }]]></content>
@@ -83,7 +91,7 @@
   <entry>
     <title><![CDATA[HNUOJ2826]]></title>
     <url>%2F2019%2F11%2F09%2FHNUOJ2826%2F</url>
-    <content type="text"><![CDATA[3.3 合并操作二项堆的合并操作是一个比较复杂的过程，这里假设需要合并的两个二项堆是H1和H2，如果简单的将H1和H2的根表（两个链表）进行合并的话，显然这可能是违反了二项堆定义的第二条： B[k]是由两棵B[k-1]二项树组成，其中一颗树是另外一颗树的子树。 这就是二项堆合并操作的主要需要解决的问题：两个二项堆合并完成之后，可能在根表中存在两个度数相同的节点，需要将度数相同的节点合并成一个新的节点。 这里我们进一步将这个问题现在转换成了：已知H1根表和H2的根表中每个节点的度数，并且H1和H2的根表已经是按照度数排序的，如何H1和H2根表合并，并且新的根表中不存在两个度数相同的节点。 一个朴素的思想就是现将H1和H2合并，然后在进行适当的调整，将两个度数相同的节点合并掉，这样保证了新的根表中不存你在两个度数相同的节点。那么基本的程序框架： union(H1, H2){ #1:合并H1和H2的根表，生成新的根表H，并且H的节点是按照度数排序的; #2:将H中度数相同的两个节点合并，直到根表H中不存在两个度数相同的节点; }继续细化上面的思路，#1是比较简单的，类似于归并排序中的合并的思路，但是对于#2而言，由于H是排序完成的，那么我们仅仅需要将H遍历一遍，如果存在两个相同的度数，合并即可。 （一）概述：Trie 树，又称单词查找树或键树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。Trie 的核心思想是空间换时间。利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。Trie 树的基本性质可以归纳为：1．根节点不包含字符，除根节点意外每个节点只包含一个字符。2．从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。3．每个节点的所有子节点包含的字符串不相同。Trie 树有一些特性：1．根节点不包含字符，除根节点外每一个节点都只包含一个字符。2．从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。3．每个节点的所有子节点包含的字符都不相同。4．如果字符的种数为 n，则每个结点的出度为 n，这也是空间换时间的体现，浪费了很多的空间。5．插入查找的复杂度为 O(n)，n 为字符串长度。]]></content>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Leetcode130]]></title>
