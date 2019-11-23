@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[PrimeJudge]]></title>
     <url>%2F2019%2F11%2F22%2FPrimeJudge%2F</url>
-    <content type="text"><![CDATA[Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn) 质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余： 同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡b(mod m)，或记为a≡b(m)。这个式子称为模m的同余式，若m∤ (a-b)，则称a、b对模m不同余，同余概念又常表达为： 1.a=b+km(k∈Z)； 2.a和b被m除时有相同的余数。 同余式的记号由高斯(Gauss,C.F.)于1800年首创,发表在他的数论专著《算术研究》之中。 快速幂：均见BasicAlgorithm post 快速积：均见BasicAlgorithm post 位运算：均见BasicAlgorithm post 费马小定理：设p是素数，a与p互素，则 a^{(p-1)}\equiv 1(mod p) 二次探测：如果p是素数，x是小于p的正整数，且x^{2}\equiv1(modp)那么要么x=1，要么x=p-1值得注意的是有一条推导结论(原论文长达500多页，我找不着，就不看了，只找到了引用该结论的其他文章)在如下算法流程中：有的d,r,n,a几个重要参数其中给出结论：case1：a^{d}modn=1, 或者 a^{2^j}modn=n-1结束 返回是素数case2：a^{2^j}modn=1 then judgea^{2^j-1}modn=1 in function (j\epsilon[1,r-1])default:是合数]]></content>
+    <content type="text"><![CDATA[Miller_Rabin（米勒-拉宾）素数判别法：时间复杂度O(logn) 质数:是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 互质(互素：互质是公约数只有1的两个整数，叫做互质整数。公约数只有1的两个自然数，叫做互质自然数，后者是前者的特殊情形。 同余： 同余式是数论的基本概念之一，设m是给定的一个正整数，a、b是整数，若满足m|(a-b)，则称a与b对模m同余，记为a≡b(mod m)，或记为a≡b(m)。这个式子称为模m的同余式，若m∤ (a-b)，则称a、b对模m不同余，同余概念又常表达为： 1.a=b+km(k∈Z)； 2.a和b被m除时有相同的余数。 同余式的记号由高斯(Gauss,C.F.)于1800年首创,发表在他的数论专著《算术研究》之中。 快速幂：均见BasicAlgorithm post 快速积：均见BasicAlgorithm post 位运算：均见BasicAlgorithm post 费马小定理：设p是素数，a与p互素，则 a^{(p-1)}\equiv 1(mod p) 二次探测：如果p是素数，x是小于p的正整数，且x^{2}\equiv1(modp)那么要么x=1，要么x=p-1值得注意的是有一条推导结论(原论文长达500多页，我找不着，就不看了，只找到了引用该结论的其他文章)在如下算法流程中：有的d,r,n,a几个重要参数其中给出结论：]]></content>
       <tags>
         <tag>Algorithm and Data Structure</tag>
       </tags>
