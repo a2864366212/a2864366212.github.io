@@ -323,7 +323,7 @@
                 
               
 
-              <time title="创建时间：2019-12-03 22:34:13 / 修改时间：22:34:43" itemprop="dateCreated datePublished" datetime="2019-12-03T22:34:13+08:00">2019-12-03</time>
+              <time title="创建时间：2019-12-03 22:34:13 / 修改时间：22:35:22" itemprop="dateCreated datePublished" datetime="2019-12-03T22:34:13+08:00">2019-12-03</time>
             </span>
           
             
@@ -402,7 +402,6 @@ bool Miller_Rabin(ll n, int repeat)//n是测试的大数，repeat是测试重复
 {
     if(n == 2 || n == 3)return true;//特判
     if(n % 2 == 0 || n == 1)return false;//偶数和1
-
     //将n-1分解成2^s*d
     ll d = n - 1;
     int s = 0;
@@ -423,6 +422,7 @@ bool Miller_Rabin(ll n, int repeat)//n是测试的大数，repeat是测试重复
     }
     return true;
 }
+
 ll gcd(ll a, ll b)
 {
     return b == 0 ? a : gcd(b, a % b);
@@ -452,17 +452,14 @@ ll pollard_rho(ll n, ll c)//找到n的一个因子
 void Find(ll n, ll c)
 {
     if(n == 1)return;//递归出口
-
     if(Miller_Rabin(n, times))//如果是素数，就加入
     {
         m[n]++;
         return ;
     }
-
     ll p = n;
     while(p &gt;= n)
         p = pollard_rho(p, c--);//不断找因子，知道找到为止，返回n说明没找到
-
     Find(p, c);
     Find(n / p, c);
 }
@@ -499,7 +496,6 @@ int main()
             PrintMin(n);
         }
     }
-
     return 0;
 }
 </code></pre>
