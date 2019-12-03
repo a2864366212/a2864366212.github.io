@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="大数因式分解 Pollard_rho 算法大致流程：先判断当前数是否是素数（Miller_rabin），如果是则直接返回。如果不是素数的话，试图找到当前数的一个因子（可以不是质因子）。然后递归对该因子和约去这个因子得到的另一个因子进行分解。//gcd 欧几里得算法见BasicAlgorithm post 参考资料">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T14:34:43.310Z">
+<meta property="og:updated_time" content="2019-12-03T15:31:49.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pollard_rho">
 <meta name="twitter:description" content="大数因式分解 Pollard_rho 算法大致流程：先判断当前数是否是素数（Miller_rabin），如果是则直接返回。如果不是素数的话，试图找到当前数的一个因子（可以不是质因子）。然后递归对该因子和约去这个因子得到的另一个因子进行分解。//gcd 欧几里得算法见BasicAlgorithm post 参考资料">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-03 22:34:43" itemprop="dateModified" datetime="2019-12-03T22:34:43+08:00">2019-12-03</time>
+                <time title="修改时间：2019-12-03 23:31:49" itemprop="dateModified" datetime="2019-12-03T23:31:49+08:00">2019-12-03</time>
               </span>
             
           
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.3k</span>
+              <span>2.4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -394,6 +394,65 @@ While a divisor isn’t obtained
         If GCD is not unity
             If GCD is n, repeat from step 2 with another set of x, y and c
             Else GCD is our answer
+
+        //优化版
+ll pollard_rho(ll n, ll c)//找到n的一个因子
+{
+    ll x = rand() % (n - 2) + 1;
+    ll y = x, i = 1, k = 2;
+    while(1)
+    {
+        i++;
+        x = (mul(x, x, n) + c) + n;//不断调整x2
+        ll d = gcd(y - x, n);
+        if(1 &lt; d &amp;&amp; d &lt; n)
+            return d;//找到因子
+        if(y == x)
+            return n;//找到循环，返回n，重新来
+        if(i == k)//一个优化
+        {
+            y = x;
+            k &lt;&lt;= 1;
+        }
+    }
+
+    //原始版
+ll pollard_rho2(ll n, int c)//找到n的一个因子
+{
+    ll x = rand() % (n - 2) + 1;
+    ll y = x, k = 2;
+    while(1)
+    {
+        x = (mul(x,x, n) + c) + n;//不断调整x2
+
+        y=  (mul(y,y, n) + c) + n;
+        y=  (mul(y,y, n) + c) + n;
+
+        ll d =gcd(y-x&gt;0?y-x:x-y , n);
+
+        if(1 &lt; d &amp;&amp; d &lt; n)
+            return d;//找到因子
+        if(d == n)
+            return n;//找到循环，返回n，重    新来
+        if(d==1)
+            return n;
+    }
+}    
+
+void Find(ll n, ll c)
+{
+    if(n == 1)return;//递归出口
+    if(Miller_Rabin(n, times))//如果是素数，就加入
+    {
+        m[n]++;
+        return ;
+    }
+    ll p = n;
+    while(p &gt;= n)
+        p = pollard_rho(p, c--);//不断找因子，知道找到为止，返回n说明没找到
+    Find(p, c);
+    Find(n / p, c);
+}
 </code></pre>
     </div>
 
@@ -545,12 +604,12 @@ While a divisor isn’t obtained
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">41k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">37 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
 </div>
 
 
