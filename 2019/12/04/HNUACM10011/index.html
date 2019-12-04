@@ -68,8 +68,8 @@
 <meta property="og:description" content="Problem descriptionThe inversion number of an integer sequence a1, a2, . . . , an is the number of pairs (ai, aj) that satisfy i &amp;lt; j and ai &amp;gt; aj . Given n and the inversion number m, your task i">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/04/HNUACM10011/rank.png">
-<meta property="og:image" content="https://a2864366212.github.io/2019/12/04/HNUACM10011/test.jpg">
-<meta property="og:updated_time" content="2019-12-04T13:42:50.975Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/04/HNUACM10011/test.png">
+<meta property="og:updated_time" content="2019-12-04T13:46:34.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HNUACM10011">
 <meta name="twitter:description" content="Problem descriptionThe inversion number of an integer sequence a1, a2, . . . , an is the number of pairs (ai, aj) that satisfy i &amp;lt; j and ai &amp;gt; aj . Given n and the inversion number m, your task i">
@@ -327,7 +327,7 @@
                 
               
 
-              <time title="创建时间：2019-12-04 19:43:39 / 修改时间：21:42:50" itemprop="dateCreated datePublished" datetime="2019-12-04T19:43:39+08:00">2019-12-04</time>
+              <time title="创建时间：2019-12-04 19:43:39 / 修改时间：21:46:34" itemprop="dateCreated datePublished" datetime="2019-12-04T19:43:39+08:00">2019-12-04</time>
             </span>
           
             
@@ -381,7 +381,7 @@
 <li>下界序列</li>
 <li>增量因子<br>再给出一些会用到的公式：<br>定义NUM[n]为 长度为n的序列的最大逆序数的对数<br>根据max公式知道：</li>
 <li><script type="math/tex; mode=display">NUM[n]=\frac{n\cdot (n-1)}{2}</script></li>
-<li><script type="math/tex; mode=display">NUM[n-1]=\frac{n-1\cdot (n-2)}{2}</script></li>
+<li><script type="math/tex; mode=display">NUM[n-1]=\frac{(n-1)\cdot (n-2)}{2}</script></li>
 <li>有序区间 和 无序区间 分别对应 【一段顺序递增序列】【一段比较乱序的序列，大体上是倒序的】 的左半部分和右半部分<br>有一说一，确实很中二，但是很形象，</li>
 </ul>
 <p>由于m=3,那么看一下怎样的序列可以满足<br>序列一：1 2 3 4 5 6 | 7:0<br>序列二：1 2 3 4 5 | 7 6:1<br>序列三：1 2 3 4 | 7 6 5:3<br>序列四：1 2 3 | 4 5 6 7:6</p>
@@ -447,7 +447,7 @@ int main()
 
     return 0;
 }
-</code></pre><p><img src="/2019/12/04/HNUACM10011/test.jpg" alt="pic1"><br>我还得写数电作业和完成CPU的综合设计，忙中刷题，抽空会维护以前的题解的。</p>
+</code></pre><p><img src="/2019/12/04/HNUACM10011/test.png" alt="pic1"><br>我还得写数电作业和完成CPU的综合设计，忙中刷题，抽空会维护以前的题解的。</p>
 
     </div>
 
@@ -722,8 +722,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
