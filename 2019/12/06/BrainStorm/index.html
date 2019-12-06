@@ -59,19 +59,23 @@
   };
 </script>
 
-  <meta name="description" content="贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关 P1090 合并果子优先队列（使用stl写好的priority_queue）先出队列元素不是先进">
-<meta name="keywords" content="Algorithm and Data Structure">
+  <meta name="description" content="记录一些平时的胡思乱想，便于日后有时间再想想">
+<meta name="keywords" content="BrainStorm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Greedy">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/10/Greedy/index.html">
+<meta property="og:title" content="BrainStorm">
+<meta property="og:url" content="https://a2864366212.github.io/2019/12/06/BrainStorm/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关 P1090 合并果子优先队列（使用stl写好的priority_queue）先出队列元素不是先进">
+<meta property="og:description" content="记录一些平时的胡思乱想，便于日后有时间再想想">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-10T03:51:24.052Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic1.jpg">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic2.jpg">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic3.jpg">
+<meta property="og:updated_time" content="2019-12-06T04:54:35.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Greedy">
-<meta name="twitter:description" content="贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关 P1090 合并果子优先队列（使用stl写好的priority_queue）先出队列元素不是先进">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/10/Greedy/">
+<meta name="twitter:title" content="BrainStorm">
+<meta name="twitter:description" content="记录一些平时的胡思乱想，便于日后有时间再想想">
+<meta name="twitter:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic1.jpg">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/12/06/BrainStorm/">
 
 
 <script id="page-configurations">
@@ -85,7 +89,7 @@
   };
 </script>
 
-  <title>Greedy | SteinsGate</title>
+  <title>BrainStorm | SteinsGate</title>
   
 
 
@@ -296,7 +300,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/10/Greedy/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/12/06/BrainStorm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +312,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Greedy
+        <h1 class="post-title" itemprop="name headline">BrainStorm
 
           
         </h1>
@@ -324,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-11-10 11:32:05 / 修改时间：11:51:24" itemprop="dateCreated datePublished" datetime="2019-11-10T11:32:05+08:00">2019-11-10</time>
+              <time title="创建时间：2019-12-06 12:30:13 / 修改时间：12:54:35" itemprop="dateCreated datePublished" datetime="2019-12-06T12:30:13+08:00">2019-12-06</time>
             </span>
           
             
@@ -341,7 +345,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>553</span>
+              <span>457</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -364,21 +368,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的<em>局部最优解</em>。<br>贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备<em>无后效性</em>，即某个状态以前的过程不会影响以后的状态，只与当前状态有关</p>
-<h1 id="P1090-合并果子"><a href="#P1090-合并果子" class="headerlink" title="P1090 合并果子"></a>P1090 合并果子</h1><h2 id="优先队列（使用stl写好的priority-queue）"><a href="#优先队列（使用stl写好的priority-queue）" class="headerlink" title="优先队列（使用stl写好的priority_queue）"></a>优先队列（使用stl写好的priority_queue）</h2><p>先出队列元素不是先进队列的元素，而是队列中优先级最高的元素<br><a href="https://a2864366212.github.io/2019/11/10/LuoguP1090/#more">代码</a></p>
-<p>priority_queue基本用法：</p>
-<pre><code>//升序队列 push小的优先 小的在堆顶
-priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q;
-//降序队列 push大的优先 大的在堆顶 也是默认情况
-priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt;q;
-struct node{
-    int x;
-    bool operator&lt;(const tmp1&amp; a) const
-    {
-        return x &lt; a.x; // this object 的优先级 小于 a的优先级
-    } 
-}
-</code></pre>
+        <p>记录一些平时的胡思乱想，便于日后有时间再想想<br><a id="more"></a><br>Hopfield:全连接的神经网络<br>特点：反馈式类型。该网络比BP出现的还早一点，他的学习规则是基于灌输式学习，即网络的权值不是通过训练出来的，而是按照一定规则计算出来的， Hopfield神经网络就是采用了这种学习方式，其权值一旦确定就不在改变，而网络中各神经元的状态在运行过程中不断更新，网络演变到稳定时各神经元的状态便是问题之解。</p>
+<p>我是在路上思考独立思考的一些东西，网上一查，有类似结构，但是和我想的又不太一样，还没细细了解，先放这里。备查<br>我觉得应该是可以使用反向传播算法计算权重的（现阶段先处于脑力风暴吧，瞎想。。。）<br>换句话来说。。。。就是瞎想的</p>
+<p>谈一谈现阶段的想法：虽然还没有足够深入了解（也不太现实），但是还是被前辈们的诸多操作震撼到，正因如此，我才觉得，如果先深入学习，其实会墨守成规，以至于失去一些东西，所以我打算先头脑风暴一阵子，记录一些奇奇怪怪的想法。最感慨的就是，自己独立思考的一些内容，在几十年前就已经被提出并被研究的差不多了，这。。。。。算了，也挺好<br><img src="/2019/12/06/BrainStorm/pic1.jpg" alt="pic1"><br><img src="/2019/12/06/BrainStorm/pic2.jpg" alt="pic1"><br><img src="/2019/12/06/BrainStorm/pic3.jpg" alt="pic1"></p>
+
     </div>
 
     
@@ -393,7 +386,7 @@ struct node{
           
           <div class="post-tags">
             
-              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
+              <a href="/tags/BrainStorm/" rel="tag"># BrainStorm</a>
             
           </div>
         
@@ -403,8 +396,8 @@ struct node{
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/10/BinSearchTree/" rel="next" title="BinSearchTree">
-                  <i class="fa fa-chevron-left"></i> BinSearchTree
+                <a href="/2019/12/04/HNUACM10011/" rel="next" title="HNUACM10011">
+                  <i class="fa fa-chevron-left"></i> HNUACM10011
                 </a>
               
             </div>
@@ -412,10 +405,6 @@ struct node{
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/10/LuoguP1090/" rel="prev" title="LuoguP1090">
-                  LuoguP1090 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -473,8 +462,6 @@ struct node{
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P1090-合并果子"><span class="nav-number">1.</span> <span class="nav-text">P1090 合并果子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优先队列（使用stl写好的priority-queue）"><span class="nav-number">1.1.</span> <span class="nav-text">优先队列（使用stl写好的priority_queue）</span></a></li></ol></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
