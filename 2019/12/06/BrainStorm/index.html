@@ -73,7 +73,8 @@
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic4.jpg">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic5.jpg">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic6.jpg">
-<meta property="og:updated_time" content="2019-12-06T08:58:11.476Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/06/BrainStorm/pic7.jpg">
+<meta property="og:updated_time" content="2019-12-06T10:36:09.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BrainStorm">
 <meta name="twitter:description" content="记录一些平时的胡思乱想，便于日后有时间再想想">
@@ -331,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-12-06 12:30:13 / 修改时间：16:58:11" itemprop="dateCreated datePublished" datetime="2019-12-06T12:30:13+08:00">2019-12-06</time>
+              <time title="创建时间：2019-12-06 12:30:13 / 修改时间：18:36:09" itemprop="dateCreated datePublished" datetime="2019-12-06T12:30:13+08:00">2019-12-06</time>
             </span>
           
             
@@ -348,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.2k</span>
+              <span>1.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -385,8 +386,11 @@
 <p>基于这个思考，是否可以在现有强大的各种网络结构支撑的算法下，使用仿眼球的摄像头，做一些编程操作，优化输入。<br>即：加入感兴趣算法，摄像头对感兴趣的物品做加强拍摄，而弱化其周围图像的拍摄。</p>
 <p>另外。。。似乎在幼儿园阶段，我的大脑就已经具备了，识别物品边缘等一系列复杂行为，这之前就已经没有记忆了，这真的很奇怪，难道幼儿园阶段之前我只是个傻子……</p>
 <p>时间：2019.12.6  1:28 endline</p>
-<p><img src="/2019/12/06/BrainStorm/pic5.jpg" alt="pic1"><br><img src="/2019/12/06/BrainStorm/pic6.jpg" alt="pic1"></p>
-
+<p><img src="/2019/12/06/BrainStorm/pic5.jpg" alt="pic1"><br><img src="/2019/12/06/BrainStorm/pic6.jpg" alt="pic1"><br><img src="/2019/12/06/BrainStorm/pic7.jpg" alt="pic1"><br>这里使用C++对 cell结构分解前一层输入的能力做了一个简单的分析：采用随机输入可以发现大致都在30层（更多的是在20层）以内完成分解，究其原因是采用最小因数进行分解 log级别的复杂度 很快<br>给出分解公式：（瞎写的，真是一通乱写、、、但是我喜欢^_^）</p>
+<script type="math/tex; mode=display">num_{j}=\begin{Bmatrix}
+num_{j}-1& ,num \, is \, a \, Prime\\ 
+ num_{j}/MinFactor,& else
+\end{Bmatrix}</script>
     </div>
 
     
@@ -600,6 +604,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
