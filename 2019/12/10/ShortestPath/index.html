@@ -71,7 +71,8 @@
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/nodeTable.jpg">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/Solution.jpg">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/FloydMap.png">
-<meta property="og:updated_time" content="2019-12-10T09:14:15.496Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/FloydMapdist.png">
+<meta property="og:updated_time" content="2019-12-10T09:35:00.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ShortestPath">
 <meta name="twitter:description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题（不可有带负权边的回路）：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路">
@@ -329,7 +330,7 @@
                 
               
 
-              <time title="创建时间：2019-12-10 16:03:57 / 修改时间：17:14:15" itemprop="dateCreated datePublished" datetime="2019-12-10T16:03:57+08:00">2019-12-10</time>
+              <time title="创建时间：2019-12-10 16:03:57 / 修改时间：17:35:00" itemprop="dateCreated datePublished" datetime="2019-12-10T16:03:57+08:00">2019-12-10</time>
             </span>
           
             
@@ -346,7 +347,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.5k</span>
+              <span>1.9k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -356,7 +357,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -398,8 +399,15 @@
 <h2 id="边上权值为任意值的情形（不可有带负权边的回路）"><a href="#边上权值为任意值的情形（不可有带负权边的回路）" class="headerlink" title="边上权值为任意值的情形（不可有带负权边的回路）"></a>边上权值为任意值的情形（不可有带负权边的回路）</h2><h3 id="SPFA算法-Bellman-Ford算法"><a href="#SPFA算法-Bellman-Ford算法" class="headerlink" title="SPFA算法\Bellman-Ford算法"></a>SPFA算法\Bellman-Ford算法</h3><p><img src="/2019/12/10/ShortestPath/FloydMap.png" alt="ShortestPath"></p>
 <ul>
 <li>核心思想：当图中没有由带负权值的边组成的回路时，有n个顶点的图中任意两点之间如果存在最短路径，此路径最多有n-1条边。这是显然的，从i到j的路径,最多就是把其他所有节点经历过一遍，何况是最短路径</li>
-<li>记dist[u]为源点v到其他顶点u的最短路径长度</li>
 </ul>
+<h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4><pre><code>记dist[u]为源点v到其他顶点u的最短路径长度
+</code></pre><p><img src="/2019/12/10/ShortestPath/FloydMapdist.png" alt="ShortestPath"><br>先看一下红线标注的文字，<em>最多</em>这两个字很精髓，这样的话可以发现<script type="math/tex">dist^{i}[u]包含了dist^{i}[u]</script>（最多包含三条边当然范围比最多包含两条边大了既然范围大，那么其利用的条件与资源就可以越充分）<br>为什么最终目的是要求出<script type="math/tex">dist^{n-1}[u]</script>呢，由上面的理解可以知道，<script type="math/tex">dist^{i}[u]</script>的i越大，其范围越大，所使用的的资源越充分，更接近于答案<br>递归关系式：</p>
+<script type="math/tex; mode=display">
+dist^{k}[u]=min\begin{Bmatrix}
+dist^{k-1}[u],& min\begin{Bmatrix}dist^{k-1}[j]+Edge\[j][u]
+\end{Bmatrix}
+\end{Bmatrix}</script><p>递归出口：<script type="math/tex">dist^{1}[u]=Edge\[v][u]</script></p>
+<p>当然，可以使用循环从最底层逐层往上计算</p>
 <h3 id="Johnson算法"><a href="#Johnson算法" class="headerlink" title="Johnson算法"></a>Johnson算法</h3><h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h3>
     </div>
 
@@ -491,7 +499,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径："><span class="nav-number">1.</span> <span class="nav-text">最短路径：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解法"><span class="nav-number">2.</span> <span class="nav-text">问题解法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#带权图的单源最短路径"><span class="nav-number">2.1.</span> <span class="nav-text">带权图的单源最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd算法-Floyd-Warshall算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">Floyd算法\Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边权非负情形"><span class="nav-number">2.2.</span> <span class="nav-text">边权非负情形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">算法思想</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边上权值为任意值的情形（不可有带负权边的回路）"><span class="nav-number">2.3.</span> <span class="nav-text">边上权值为任意值的情形（不可有带负权边的回路）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA算法-Bellman-Ford算法"><span class="nav-number">2.3.1.</span> <span class="nav-text">SPFA算法\Bellman-Ford算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Johnson算法"><span class="nav-number">2.3.2.</span> <span class="nav-text">Johnson算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.3.3.</span> <span class="nav-text">A*算法</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径："><span class="nav-number">1.</span> <span class="nav-text">最短路径：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解法"><span class="nav-number">2.</span> <span class="nav-text">问题解法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#带权图的单源最短路径"><span class="nav-number">2.1.</span> <span class="nav-text">带权图的单源最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd算法-Floyd-Warshall算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">Floyd算法\Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边权非负情形"><span class="nav-number">2.2.</span> <span class="nav-text">边权非负情形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">算法思想</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边上权值为任意值的情形（不可有带负权边的回路）"><span class="nav-number">2.3.</span> <span class="nav-text">边上权值为任意值的情形（不可有带负权边的回路）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA算法-Bellman-Ford算法"><span class="nav-number">2.3.1.</span> <span class="nav-text">SPFA算法\Bellman-Ford算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想："><span class="nav-number">2.3.1.1.</span> <span class="nav-text">算法思想：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Johnson算法"><span class="nav-number">2.3.2.</span> <span class="nav-text">Johnson算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.3.3.</span> <span class="nav-text">A*算法</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -549,12 +557,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">45k</span>
+    <span title="站点总字数">46k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">41 分钟</span>
+    <span title="站点阅读时长">42 分钟</span>
 </div>
 
 
