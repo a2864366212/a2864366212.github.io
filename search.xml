@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[MinimumSpanningTree]]></title>
     <url>%2F2019%2F12%2F10%2FMinimumSpanningTree%2F</url>
-    <content type="text"><![CDATA[最小生成树（MST）：是图G的一个子图，该子图所有边权和为类似子图集合中最小的，且该子图是连通的应用：在几个城市之间建立电话所需要的的线路最短两种构造算法： kruskal算法 prime算法核心思想：MST性质：]]></content>
+    <content type="text"><![CDATA[最小生成树（MST）：是图G的一个子图，该子图所有边权和为类似子图集合中最小的，且该子图是连通的应用：在几个城市之间建立电话所需要的的线路最短两种构造算法： kruskal算法 prime算法核心思想：MST性质 与 贪心]]></content>
       <tags>
         <tag>Algorithm and Data Structure</tag>
       </tags>
