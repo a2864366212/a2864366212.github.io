@@ -59,21 +59,22 @@
   };
 </script>
 
-  <meta name="description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路径问题具备最优子结构性质">
+  <meta name="description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题（不可有带负权边的回路）：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路">
 <meta name="keywords" content="Algorithm and Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ShortestPath">
 <meta property="og:url" content="https://a2864366212.github.io/2019/12/10/ShortestPath/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路径问题具备最优子结构性质">
+<meta property="og:description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题（不可有带负权边的回路）：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/DijkstraMap.png">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/nodeTable.jpg">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/Solution.jpg">
-<meta property="og:updated_time" content="2019-12-10T08:44:04.656Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/FloydMap.png">
+<meta property="og:updated_time" content="2019-12-10T09:14:15.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ShortestPath">
-<meta name="twitter:description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路径问题具备最优子结构性质">
+<meta name="twitter:description" content="临时路线. 最短路径：什么是最短路径？最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径  问题解法 边上权值非负情形的单源最短路径问题：Dijksta算法 边上权值为任意值的单源最短路径问题（不可有带负权边的回路）：Bellman-Ford算法 所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法  值得注意的的是：最短路">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/12/10/ShortestPath/DijkstraMap.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/12/10/ShortestPath/">
 
@@ -328,7 +329,7 @@
                 
               
 
-              <time title="创建时间：2019-12-10 16:03:57 / 修改时间：16:44:04" itemprop="dateCreated datePublished" datetime="2019-12-10T16:03:57+08:00">2019-12-10</time>
+              <time title="创建时间：2019-12-10 16:03:57 / 修改时间：17:14:15" itemprop="dateCreated datePublished" datetime="2019-12-10T16:03:57+08:00">2019-12-10</time>
             </span>
           
             
@@ -345,7 +346,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.4k</span>
+              <span>1.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -372,11 +373,11 @@
 <h1 id="最短路径："><a href="#最短路径：" class="headerlink" title="最短路径："></a>最短路径：</h1><p>什么是最短路径？<br>最短路径是指从某一顶点出发到达另一顶点，可能存在许多路径，则某路径上的各边权值之和最小，则为最短路径 </p>
 <h1 id="问题解法"><a href="#问题解法" class="headerlink" title="问题解法"></a>问题解法</h1><ul>
 <li>边上权值非负情形的单源最短路径问题：Dijksta算法</li>
-<li>边上权值为任意值的单源最短路径问题：Bellman-Ford算法</li>
+<li>边上权值为任意值的单源最短路径问题（不可有带负权边的回路）：Bellman-Ford算法</li>
 <li>所有顶点之间的最短路径（全源最短路径）：Floyd算法和Johonson算法</li>
 </ul>
 <p>值得注意的的是：最短路径问题具备<em>最优子结构性质</em>，也就是两顶点之间的最短路径包括路径上其他顶点的最短路径。</p>
-<p>发证法证明：<br><a id="more"></a><br>如果不包含，也就是说有办法使得换了路径上的某些顶点，可以使得仍到达目的地，但是总路径可以变短，这显然是和最短路径相违背的。符号化一些的描述呢，有一条最短路径&lt; i,j &gt;,这条路径上会经过许多点，设为<script type="math/tex">i,v_{1},v_{2}...v_{t},j</script>，如果假设成立，那么设当前从<script type="math/tex">v_{1}到v_{2}</script>这条小路径不是他们之间的最短路径，那么总存在另一条更短的路径可以使得从<script type="math/tex">v_{1}到v_{2}</script>更短，这样就会造成i可以到j，且路径缩短，与大前提&lt; i,j &gt;是最短路径相违背，得证</p>
+<p>反证法证明：<br><a id="more"></a><br>如果不包含，也就是说有办法使得换了路径上的某些顶点，可以使得仍到达目的地，但是总路径可以变短，这显然是和最短路径相违背的。符号化一些的描述呢，有一条最短路径&lt; i,j &gt;,这条路径上会经过许多点，设为<script type="math/tex">i,v_{1},v_{2}...v_{t},j</script>，如果假设成立，那么设当前从<script type="math/tex">v_{1}到v_{2}</script>这条小路径不是他们之间的最短路径，那么总存在另一条更短的路径可以使得从<script type="math/tex">v_{1}到v_{2}</script>更短，这样就会造成i可以到j，且路径缩短，与大前提&lt; i,j &gt;是最短路径相违背，得证</p>
 <h2 id="带权图的单源最短路径"><a href="#带权图的单源最短路径" class="headerlink" title="带权图的单源最短路径"></a>带权图的单源最短路径</h2><h3 id="Floyd算法-Floyd-Warshall算法"><a href="#Floyd算法-Floyd-Warshall算法" class="headerlink" title="Floyd算法\Floyd-Warshall算法"></a>Floyd算法\Floyd-Warshall算法</h3><p><a href="https://www.cnblogs.com/wangyuliang/p/9216365.html" target="_blank" rel="noopener">Floyd算法</a>.<br>有一说一，讲的可以ヾ(≧▽≦*)o<br>简述一下：<br>初始化图-&gt;加载各点的路径长（矩阵存储）-&gt;顺序引入新的中转点-&gt;遍历更新路径长的矩阵-&gt;继续引入继续更新</p>
 <pre><code>for(k=1;k&lt;=n;k++)
 {//迭代更新新的中转点
@@ -391,10 +392,15 @@
         }  
     }  
 }     
-</code></pre><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>该算法使用的是贪心策略：每次都找出剩余顶点中与源点距离最近的一个顶点。<br>参考：<br><a href="https://blog.csdn.net/zhangxiangDavaid/article/details/38360337" target="_blank" rel="noopener">Dijkstra算法</a></p>
+</code></pre><h2 id="边权非负情形"><a href="#边权非负情形" class="headerlink" title="边权非负情形"></a>边权非负情形</h2><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p><em>源点</em><br>该算法使用的是<em>贪心策略</em>：每次都找出剩余顶点中与源点距离最近的一个顶点。<br>参考：<br><a href="https://blog.csdn.net/zhangxiangDavaid/article/details/38360337" target="_blank" rel="noopener">Dijkstra算法</a></p>
 <h4 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h4><p>带权图G=<v,e>令S为已确定了最短路径顶点的集合，则可用V-S(V集合减去S集合)表示剩余未确定最短路径顶点的集合。假设V0是源点，则初始 S={V0}。用数组Distance表示源点V0到其余顶点的路径长度，用数组pre[i]表示最短路径序列上顶点i的前一个顶点。初始时，pre[i]都是源点的下标。接下来需重复两个步骤：</v,e></p>
 <p>从当前Distance[i]找出最小的一个，记录其下标v=i，源点V0到顶点Vv的最短路径即已确定，把Vv加入S。<br>更新源点到剩余顶点的最短路径长度。更新方法是：以上一步的顶点Vv为中间点，若Distance[v]+weight(v,i)小于Distance[i]，则修改值：pre[i]=v;Distance[i]=Distance[v]+weight(v,i);<br>重复以上两个步骤，直至所有顶点的最短路径都已找到.。<br>需要指出，Dijkstra算法求解的不仅是有向图，无向图也是可以的。下面给出一个完整的有向带权图的实例：<br><img src="/2019/12/10/ShortestPath/DijkstraMap.png" alt="ShortestPath"><br><img src="/2019/12/10/ShortestPath/nodeTable.jpg" alt="ShortestPath"><br><img src="/2019/12/10/ShortestPath/Solution.jpg" alt="ShortestPath"></p>
-<h3 id="SPFA算法-Bellman-Ford算法"><a href="#SPFA算法-Bellman-Ford算法" class="headerlink" title="SPFA算法\Bellman-Ford算法"></a>SPFA算法\Bellman-Ford算法</h3><h3 id="Johnson算法"><a href="#Johnson算法" class="headerlink" title="Johnson算法"></a>Johnson算法</h3><h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h3>
+<h2 id="边上权值为任意值的情形（不可有带负权边的回路）"><a href="#边上权值为任意值的情形（不可有带负权边的回路）" class="headerlink" title="边上权值为任意值的情形（不可有带负权边的回路）"></a>边上权值为任意值的情形（不可有带负权边的回路）</h2><h3 id="SPFA算法-Bellman-Ford算法"><a href="#SPFA算法-Bellman-Ford算法" class="headerlink" title="SPFA算法\Bellman-Ford算法"></a>SPFA算法\Bellman-Ford算法</h3><p><img src="/2019/12/10/ShortestPath/FloydMap.png" alt="ShortestPath"></p>
+<ul>
+<li>核心思想：当图中没有由带负权值的边组成的回路时，有n个顶点的图中任意两点之间如果存在最短路径，此路径最多有n-1条边。这是显然的，从i到j的路径,最多就是把其他所有节点经历过一遍，何况是最短路径</li>
+<li>记dist[u]为源点v到其他顶点u的最短路径长度</li>
+</ul>
+<h3 id="Johnson算法"><a href="#Johnson算法" class="headerlink" title="Johnson算法"></a>Johnson算法</h3><h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h3>
     </div>
 
     
@@ -485,7 +491,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径："><span class="nav-number">1.</span> <span class="nav-text">最短路径：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解法"><span class="nav-number">2.</span> <span class="nav-text">问题解法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#带权图的单源最短路径"><span class="nav-number">2.1.</span> <span class="nav-text">带权图的单源最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd算法-Floyd-Warshall算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">Floyd算法\Floyd-Warshall算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">2.1.2.</span> <span class="nav-text">Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">算法思想</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA算法-Bellman-Ford算法"><span class="nav-number">2.1.3.</span> <span class="nav-text">SPFA算法\Bellman-Ford算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Johnson算法"><span class="nav-number">2.1.4.</span> <span class="nav-text">Johnson算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.1.5.</span> <span class="nav-text">A*算法</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径："><span class="nav-number">1.</span> <span class="nav-text">最短路径：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解法"><span class="nav-number">2.</span> <span class="nav-text">问题解法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#带权图的单源最短路径"><span class="nav-number">2.1.</span> <span class="nav-text">带权图的单源最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd算法-Floyd-Warshall算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">Floyd算法\Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边权非负情形"><span class="nav-number">2.2.</span> <span class="nav-text">边权非负情形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">算法思想</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边上权值为任意值的情形（不可有带负权边的回路）"><span class="nav-number">2.3.</span> <span class="nav-text">边上权值为任意值的情形（不可有带负权边的回路）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA算法-Bellman-Ford算法"><span class="nav-number">2.3.1.</span> <span class="nav-text">SPFA算法\Bellman-Ford算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Johnson算法"><span class="nav-number">2.3.2.</span> <span class="nav-text">Johnson算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.3.3.</span> <span class="nav-text">A*算法</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -668,8 +674,8 @@
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
