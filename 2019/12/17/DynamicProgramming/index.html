@@ -67,10 +67,12 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="【动态规划】">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-17T14:34:20.799Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/17/DynamicProgramming/1.png">
+<meta property="og:updated_time" content="2019-12-17T15:38:48.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DynamicProgramming">
 <meta name="twitter:description" content="【动态规划】">
+<meta name="twitter:image" content="https://a2864366212.github.io/2019/12/17/DynamicProgramming/1.png">
   <link rel="canonical" href="https://a2864366212.github.io/2019/12/17/DynamicProgramming/">
 
 
@@ -324,7 +326,7 @@
                 
               
 
-              <time title="创建时间：2019-12-17 22:23:35 / 修改时间：22:34:20" itemprop="dateCreated datePublished" datetime="2019-12-17T22:23:35+08:00">2019-12-17</time>
+              <time title="创建时间：2019-12-17 22:23:35 / 修改时间：23:38:48" itemprop="dateCreated datePublished" datetime="2019-12-17T22:23:35+08:00">2019-12-17</time>
             </span>
           
             
@@ -341,7 +343,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>451</span>
+              <span>2.4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -351,7 +353,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -371,7 +373,82 @@
 <li>把第一件物品装进包，那么包的剩余容量会减小，但是包里的总价值会增加</li>
 <li>不装第一件物品，那么包的容量和其内部物品的价值保持不变，都是0<br>这里包就有了两种属性，容量和价值（即包的状态）<br>每一次的决策，会带来状态之间的变化，可以找出一定的关系式（状态转移方程，方便计算机进行迭代）</li>
 </ol>
-
+<p>1号决策-&gt;2号决策-&gt;3号决策-&gt;4号决策</p>
+<p>1号最优解=全局最优解=最优（1号决策产生的所有分支）</p>
+<p>换句话说，1号决策产生了两条路径，答案总会出现在两条路径中的其中一条<br>举个例子理解一下：<br>capacity=8,value=0<br>对于第一个物品，两种决策（背包容量比较大）<br>这里不妨引入一个初态state0:capacity=8,value=0</p>
+<ol>
+<li>拿： capacity=6,value=3 state0-&gt;state1</li>
+<li>不拿：capacity=8,value=0 state0-&gt;state2<br>那么，你再分别基于这两个状态的背包，进行二号决策，又会产生四个状态（如果背包空间还是比较大的话）<br>但是先到这里，最优解的产生一定是一系列决策的共同作用，也就是有一个最优决策序列。<br>那么再来重复下上面那句话：1号最优解=全局最优解=最优（1号决策产生的所有分支，这里的例子是2个）</li>
+</ol>
+<p>那么当我们做2号决策的时候，可以看见的是背包有两个状态，又或者说，要基于这两个状态的背包分别做决策<br>state1:那么其实 state1 就是一个新的state0了<br>state2:同理state2 也是一个新的state0</p>
+<p>这样,2号决策就拥有了与1号决策相似的结构了，它的最优解称为子最优解<br>那么来一个不正式的理解：<br>全局最优解=最优(子最优解)<br>子最优解=最优（子子最优解）<br>…<br>其实呢，动态规划，个人是觉得听不太好阐述清楚，有时间对比一下其他的一些思想和方法一起理解</p>
+<p>洛谷P1060 开心的金明</p>
+<script type="math/tex; mode=display">
+opt\[N_{i}][i]=\begin{Bmatrix}
+max(opt\[N_{i}-n_{i}][i+1]+v_{i}\cdot p_{i},opt\[N_{i}][i+1]),N_{i}\geqslant n_{i}\\\\ 
+opt\[N_{i}][i+1],N_{i}< n_{i}
+\end{Bmatrix}</script><p><img src="/2019/12/17/DynamicProgramming/1.png" alt="1.png"></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int opt[3000][27+2];
+int v[27+2],p[27+2];
+int main()
+{
+    int N,m;
+    cin&gt;&gt;N&gt;&gt;m;
+    for(int i=0;i&lt;m;i++)    
+    {
+        cin&gt;&gt;v[i+1]&gt;&gt;p[i+1];
+        //id=i+1
+    }
+    for(int i=0;i&lt;=N;i++)
+    {
+        opt[i][m]= i&gt;=v[m]?v[m]*p[m]:0;//最后一步的决策是可以直接给出的
+        //初始化 
+    }
+    for(int i=m-1;i&gt;=1;i--)
+    {
+        for(int j=0;j&lt;=N;j++)
+        {
+            opt[j][i]= j&gt;=v[i]?
+            max(opt[j-v[i]][i+1]+v[i]*p[i],opt[j][i+1]):
+            opt[j][i+1];//把上面的状态转移方程coding一下 
+        }
+    }
+    for(int i=0;i&lt;=m;i++)
+    {
+        for(int j=0;j&lt;=N;j++)
+        {
+            printf(&quot;%3d &quot;,opt[j][i]);
+        }
+        cout&lt;&lt;endl;
+    }
+    cout&lt;&lt;endl&lt;&lt;opt[N][1];
+    return 0;
+} 
+</code></pre><p>当然这里可以通过循环控制，将二维数组压缩为一维数组</p>
+<pre><code>for(int i=0;i&lt;m;i++)    
+{
+    cin&gt;&gt;v[i+1]&gt;&gt;p[i+1];
+    //id=i+1
+}
+for(int i=0;i&lt;=N;i++)
+{
+    opt[i]= i&gt;=v[m]?v[m]*p[m]:0;//最后一步的决策是可以直接给出的
+    //初始化 
+}
+for(int i=m-1;i&gt;=1;i--)
+{
+    for(int j=N;j&gt;=0;j--)
+    {
+        opt[j]= j&gt;=v[i]?
+        max(opt[j-v[i]]+v[i]*p[i],opt[j]):
+        opt[j];//把上面的状态转移方程coding一下 
+    }
+}
+cout&lt;&lt;endl&lt;&lt;opt[N];
+</code></pre>
     </div>
 
     
@@ -518,12 +595,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">47k</span>
+    <span title="站点总字数">49k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">43 分钟</span>
+    <span title="站点阅读时长">45 分钟</span>
 </div>
 
 
