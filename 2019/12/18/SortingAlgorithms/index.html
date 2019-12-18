@@ -67,12 +67,12 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/FloydMap.png">
-<meta property="og:updated_time" content="2019-12-18T02:55:14.989Z">
+<meta property="og:image" content="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/MergeSort_merge.jpg">
+<meta property="og:updated_time" content="2019-12-18T03:15:26.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SortingAlgorithms">
 <meta name="twitter:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
-<meta name="twitter:image" content="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/FloydMap.png">
+<meta name="twitter:image" content="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/MergeSort_merge.jpg">
   <link rel="canonical" href="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/">
 
 
@@ -326,7 +326,7 @@
                 
               
 
-              <time title="创建时间：2019-12-18 10:23:18 / 修改时间：10:55:14" itemprop="dateCreated datePublished" datetime="2019-12-18T10:23:18+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-18 10:23:18 / 修改时间：11:15:26" itemprop="dateCreated datePublished" datetime="2019-12-18T10:23:18+08:00">2019-12-18</time>
             </span>
           
             
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.8k</span>
+              <span>1.7k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -387,30 +387,14 @@
 </code></pre><h3 id="递归分解"><a href="#递归分解" class="headerlink" title="递归分解"></a>递归分解</h3><pre><code>    int mid = (b-e)/2+e;//防止大数之和超过范围
     MergeSort(b,mid);
     MergeSort(mid+1,e);//二分数据元素序列，减小排序规模
-</code></pre><h3 id="合并两有序子序列"><a href="#合并两有序子序列" class="headerlink" title="合并两有序子序列"></a>合并两有序子序列</h3><p>分解完序列，并将小规模数据排完序后，向上做合并操作<br>合并的步骤如图：<br><img src="/2019/12/18/SortingAlgorithms/FloydMap.png" alt="ShortestPath"></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code>#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstdlib&gt; 
-using namespace std;
-int c[5000];
-int tempc[5000]; 
-void MergeSort(int b,int e/*begin and end index of array*/)
-{
-    if(b==e) return;
-    if(b+1==e){
-        if(c[b]&gt;c[e]) swap(c[b],c[e]);
-        return ;
-    } 
-
-    int mid = (b-e)/2+e;
-    MergeSort(b,mid);
-    MergeSort(mid+1,e);
-    int tempi=b,tempj=mid+1;
+</code></pre><h3 id="合并两有序子序列"><a href="#合并两有序子序列" class="headerlink" title="合并两有序子序列"></a>合并两有序子序列</h3><p>分解完序列，并将小规模数据排完序后，向上做合并操作</p>
+<h4 id="合并思想"><a href="#合并思想" class="headerlink" title="合并思想"></a>合并思想</h4><p>对于待合并的两个有序子序列而言，可以开辟（最好全局声明吧）一个tempc[]数组存放中间结果，每一次比较量有序子序列的首部元素，选取两者中最小的（这里默认排序是按照升序方式进行）元素，放进tempc[]数组中，重复操作，得到即得到合并之后有序的数组，再将其拷贝回原数组c[]</p>
+<h4 id="合并步骤"><a href="#合并步骤" class="headerlink" title="合并步骤"></a>合并步骤</h4><p><img src="/2019/12/18/SortingAlgorithms/MergeSort_merge.jpg" alt="ShortestPath"></p>
+<pre><code>    int tempi=b,tempj=mid+1;
     for(int i=b;i&lt;=e;i++)
     {
         if(tempi&lt;=mid&amp;&amp;tempj&lt;=e)
-        {
+        {//选取两有序子序列各自的最小值，再从二者里面选最小值
             if(c[tempi]&lt;c[tempj])
             {
                 tempc[i]=c[tempi];    
@@ -419,7 +403,7 @@ void MergeSort(int b,int e/*begin and end index of array*/)
                 tempc[i]=c[tempj];
                 tempj++;
             }
-        }else{
+        }else{//其中一个子序列中的元素已被比较完，只需复制另一序列中的剩余元素即可
             if(tempi&gt;mid)
             {
                 while(tempj&lt;=e)
@@ -444,7 +428,6 @@ void MergeSort(int b,int e/*begin and end index of array*/)
     {
         c[i]=tempc[i];
     }
-}
 </code></pre>
     </div>
 
@@ -536,7 +519,7 @@ void MergeSort(int b,int e/*begin and end index of array*/)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">1.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">1.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">1.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">1.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">1.2.3.</span> <span class="nav-text">合并两有序子序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">1.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">1.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">1.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">1.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">1.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -599,7 +582,7 @@ void MergeSort(int b,int e/*begin and end index of array*/)
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">48 分钟</span>
+    <span title="站点阅读时长">47 分钟</span>
 </div>
 
 
