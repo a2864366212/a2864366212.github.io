@@ -68,7 +68,7 @@
 <meta property="og:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/18/SortingAlgorithms/MergeSort_merge.jpg">
-<meta property="og:updated_time" content="2019-12-18T03:15:26.560Z">
+<meta property="og:updated_time" content="2019-12-26T15:19:10.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SortingAlgorithms">
 <meta name="twitter:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
@@ -326,11 +326,19 @@
                 
               
 
-              <time title="创建时间：2019-12-18 10:23:18 / 修改时间：11:15:26" itemprop="dateCreated datePublished" datetime="2019-12-18T10:23:18+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-18 10:23:18" itemprop="dateCreated datePublished" datetime="2019-12-18T10:23:18+08:00">2019-12-18</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-26 23:19:10" itemprop="dateModified" datetime="2019-12-26T23:19:10+08:00">2019-12-26</time>
+              </span>
             
           
 
@@ -343,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.7k</span>
+              <span>2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -375,7 +383,10 @@
 <li>伪代码（pseudocode）<a id="more"></a>
 </li>
 </ol>
-<h1 id="六、归并排序"><a href="#六、归并排序" class="headerlink" title="六、归并排序"></a>六、归并排序</h1><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>分治法的思想，逐层向下分解（这里做2路归并，向下做二分减小待排数据规模），当分解到规模为1或者2时，就可以很简单的给出当前规模下的有序序列了（2个可以做交换，1个本身就有序）</p>
+<h1 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h1><h2 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h2><p>还是将待排序列分为无序区和有序区两块区域，一开始，待排序列为无序区，则从序列尾部向前扫描，找到本次扫描中的遇见的最小值，将其与首个元素交换位置，则无序序列被划分为有序区（最小值）+无序区</p>
+<p>这时，就得到了一个新的size为n-1的无序序列（无序区），再对这n-1个元素做上述操作，找到这n-1个元素里的最小值，交换至新无序区(size=n-1的新无序序列)的首部，这样从整体来看，原size=n的待排序列被划分为，<br>size=2：有序区<br>size=n-2：无序区</p>
+<h2 id="优化选择排序"><a href="#优化选择排序" class="headerlink" title="优化选择排序"></a>优化选择排序</h2><p>也就是在找寻最小值的过程中顺便也把最大值找出来，这样每一趟排序就可以把当前待排序列中的最大值和最小值放到合适的位置（表尾和表头），代码就不写了，就在上面找最小值的部分下面再加一个做比较找最大值的代码块就行</p>
+<h1 id="三、快速排序"><a href="#三、快速排序" class="headerlink" title="三、快速排序"></a>三、快速排序</h1><h1 id="六、归并排序"><a href="#六、归并排序" class="headerlink" title="六、归并排序"></a>六、归并排序</h1><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>分治法的思想，逐层向下分解（这里做2路归并，向下做二分减小待排数据规模），当分解到规模为1或者2时，就可以很简单的给出当前规模下的有序序列了（2个可以做交换，1个本身就有序）</p>
 <p>原序列-&gt;不断2分-&gt;数据量很小的序列直接排序-&gt;向上做合并-&gt;有序序列</p>
 <h2 id="代码实现分步骤解释"><a href="#代码实现分步骤解释" class="headerlink" title="代码实现分步骤解释"></a>代码实现分步骤解释</h2><h3 id="递归出口"><a href="#递归出口" class="headerlink" title="递归出口"></a>递归出口</h3><pre><code>void MergeSort(int b,int e/*begin and end index of array*/)
 {
@@ -463,6 +474,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2019/12/18/LuoguP1908/" rel="prev" title="LuoguP1908">
+                  LuoguP1908 <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -496,7 +511,7 @@
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Microsoft-Speech-Services-API/">Microsoft Speech Services API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Microsoft-Speech-Services-API/">Microsoft Speech Services API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -519,7 +534,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">1.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">1.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">1.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">1.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">1.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-number">1.</span> <span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接选择排序"><span class="nav-number">1.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化选择排序"><span class="nav-number">1.2.</span> <span class="nav-text">优化选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、快速排序"><span class="nav-number">2.</span> <span class="nav-text">三、快速排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">3.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">3.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">3.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">3.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">3.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">3.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -538,7 +553,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -577,12 +592,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">52k</span>
+    <span title="站点总字数">55k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">47 分钟</span>
+    <span title="站点阅读时长">50 分钟</span>
 </div>
 
 
@@ -702,8 +717,8 @@
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
