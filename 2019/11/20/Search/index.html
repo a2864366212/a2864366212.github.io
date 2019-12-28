@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="检索">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-22T03:21:44.794Z">
+<meta property="og:updated_time" content="2019-12-28T13:12:08.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Search">
 <meta name="twitter:description" content="检索">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-22 11:21:44" itemprop="dateModified" datetime="2019-11-22T11:21:44+08:00">2019-11-22</time>
+                <time title="修改时间：2019-12-28 21:12:08" itemprop="dateModified" datetime="2019-12-28T21:12:08+08:00">2019-12-28</time>
               </span>
             
           
@@ -386,9 +386,10 @@
 <ol>
 <li>Key=K,检索成功 返回dataList[i] </li>
 <li>Key&gt;K,则改为查找dataList[i]的前半个表中查找</li>
-<li>Key&lt;K,则改为查找dataList[i]的后半个表中查找<h3 id="散列："><a href="#散列：" class="headerlink" title="散列："></a>散列：</h3>理想情况下O(1)<h3 id="树索引："><a href="#树索引：" class="headerlink" title="树索引："></a>树索引：</h3></li>
+<li>Key&lt;K,则改为查找dataList[i]的后半个表中查找</li>
 </ol>
-<h1 id="启发式规则："><a href="#启发式规则：" class="headerlink" title="启发式规则："></a>启发式规则：</h1><p>初始序列：ABCDEFGH<br>访问模式：FDFGEGFADF</p>
+<h3 id="散列："><a href="#散列：" class="headerlink" title="散列："></a>散列：</h3><p>理想情况下O(1)</p>
+<h3 id="树索引："><a href="#树索引：" class="headerlink" title="树索引："></a>树索引：</h3><h1 id="启发式规则："><a href="#启发式规则：" class="headerlink" title="启发式规则："></a>启发式规则：</h1><p>初始序列：ABCDEFGH<br>访问模式：FDFGEGFADF</p>
 <h2 id="计数统计方法"><a href="#计数统计方法" class="headerlink" title="计数统计方法"></a>计数统计方法</h2><p>保持线性表按照访问频率排序：<br>A(1)B(0)C(0)D(2)E(2)F(4)G(3)H(0)</p>
 <p>排序后：FGDEABCH</p>
 <h2 id="移至前端"><a href="#移至前端" class="headerlink" title="移至前端"></a>移至前端</h2><p>访问某条记录，将该记录移至前端（刚访问过的元素很可能再被访问）<br>F:FABCDEGH<br>D:DFABCEGH<br>F:FDABCEGH<br>G:GFDABCEH<br>E:EGFDABCH<br>…<br>ANSWER:EGFDABCH</p>
@@ -548,12 +549,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">61k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">56 分钟</span>
 </div>
 
 
