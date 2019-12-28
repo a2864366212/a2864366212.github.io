@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="题目描述猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&amp;gt;aj且i &amp;lt; j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。 总之就是计算逆序对数目  暴力法 归并排">
-<meta name="keywords" content="Luogu">
+  <meta name="description" content="树父指针表示法每个节点只保存一个指针域，指向其父节点 等价类这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关">
+<meta name="keywords" content="Algorithm and Data Structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LuoguP1908">
-<meta property="og:url" content="https://a2864366212.github.io/2019/12/18/LuoguP1908/index.html">
+<meta property="og:title" content="Tree">
+<meta property="og:url" content="https://a2864366212.github.io/2019/12/28/Tree/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="题目描述猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&amp;gt;aj且i &amp;lt; j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。 总之就是计算逆序对数目  暴力法 归并排">
+<meta property="og:description" content="树父指针表示法每个节点只保存一个指针域，指向其父节点 等价类这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-18T08:15:16.784Z">
+<meta property="og:updated_time" content="2019-12-28T12:54:18.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LuoguP1908">
-<meta name="twitter:description" content="题目描述猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&amp;gt;aj且i &amp;lt; j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。 总之就是计算逆序对数目  暴力法 归并排">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/12/18/LuoguP1908/">
+<meta name="twitter:title" content="Tree">
+<meta name="twitter:description" content="树父指针表示法每个节点只保存一个指针域，指向其父节点 等价类这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关">
+  <link rel="canonical" href="https://a2864366212.github.io/2019/12/28/Tree/">
 
 
 <script id="page-configurations">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title>LuoguP1908 | SteinsGate</title>
+  <title>Tree | SteinsGate</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/12/18/LuoguP1908/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/12/28/Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +308,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">LuoguP1908
+        <h1 class="post-title" itemprop="name headline">Tree
 
           
         </h1>
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2019-12-18 11:36:00 / 修改时间：16:15:16" itemprop="dateCreated datePublished" datetime="2019-12-18T11:36:00+08:00">2019-12-18</time>
+              <time title="创建时间：2019-12-28 17:45:18 / 修改时间：20:54:18" itemprop="dateCreated datePublished" datetime="2019-12-28T17:45:18+08:00">2019-12-28</time>
             </span>
           
             
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.1k</span>
+              <span>2.3k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -364,107 +364,85 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>题目描述<br>猫猫TOM和小老鼠JERRY最近又较量上了，但是毕竟都是成年人，他们已经不喜欢再玩那种你追我赶的游戏，现在他们喜欢玩统计。最近，TOM老猫查阅到一个人类称之为“逆序对”的东西，这东西是这样定义的：对于给定的一段正整数序列，逆序对就是序列中ai&gt;aj且i &lt; j的有序对。知道这概念后，他们就比赛谁先算出给定的一段正整数序列中逆序对的数目。</p>
-<p>总之就是计算逆序对数目</p>
-<ol>
-<li>暴力法</li>
-<li>归并排序</li>
-<li>树状数组<a id="more"></a>
-</li>
+        <p>树<br>父指针表示法<br>每个节点只保存一个指针域，指向其父节点</p>
+<h1 id="等价类"><a href="#等价类" class="headerlink" title="等价类"></a>等价类</h1><p>这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。<br>举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关系的两个例子），</p>
+<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><ol>
+<li>判断两个结点是否在同一集合中</li>
+<li>归并两个集合<a id="more"></a>
+两个集合的合并常常被称为“并”UNION，合并的目的是为了之后方便的查询两结点是否在同一集合中。</li>
 </ol>
-<h1 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a>暴力法</h1><p>不讲了，就是枚举，平方复杂度</p>
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><pre><code>#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstdlib&gt; 
+<p>主要实现Union Find Differ 三个函数来完成并查集</p>
+<p>Differ:用于判断给出等价对中两结点是否已经属于同一集合，如果已经处于同一集合，则显然不需要使用合并操作（使用Find操作）</p>
+<p>Union合并两个集合（分为未使用加权合并和使用加权合并两种）</p>
+<p>Find:寻找到当前结点所在树的根节点（分为未使用路径压缩和使用路径压缩两个版本）</p>
+<p>以下是本人根据对算法思想理解自己写的代码，有错误的话见谅（虽说目前测试没问题，毕竟自己的代码才有灵魂吗<br>O(∩_∩)O~）。。。<br>分解讲解一下思路：</p>
+<h2 id="加权合并"><a href="#加权合并" class="headerlink" title="加权合并"></a>加权合并</h2><p>当两个集合之间要做合并的时候，将元素少的集合向元素多的集合去合并，<br>优点分析：这里的集合其实是一棵棵树，当合并两棵树的时候，如果将节点数少的树向节点数多的树合并，可以使得合并后节点数是至少是节点数少的树的两倍（这是显然的max &gt; min ; max + min&gt;=2*min）,但是高度最多只比合并之前的最大深度多1（试想一下，min和max的树的高度相同皆为h，那合并之后也不过h+1,至于其他的情况也可以自己画一画：高但少的树和矮但多的树合并，高但多的树和矮但少的树合并，合并之后也仍不过<script type="math/tex">h_{MAX}+1</script>）</p>
+<h2 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h2><p>如果D的父节点是C,C的父节点是B，B的父节点是根节点A，那么想一想，既然大家的FIND操作都是为了找到根节点A，为什么不把D,C都像B直接指向A呢，这样以后执行Find操作的时候查找次数将大幅降低，因而在寻找D的根节点的时候，就把这一条路径上的所有节点指向根节点，从而缩短了Find路径</p>
+<h2 id="根节点标志"><a href="#根节点标志" class="headerlink" title="根节点标志"></a>根节点标志</h2><p>ROOT = 2147483647 作为区分，节点是否为根节点的标志</p>
+<h2 id="主要物理存储结构"><a href="#主要物理存储结构" class="headerlink" title="主要物理存储结构"></a>主要物理存储结构</h2><p>uset数组：并查集节点数组，下标代表节点序号，数组元素存储的值代表其父节点序号，从而实现父指针表示法<br>num数组：用于加权合并规则的实现时，方便得知两个待合并集合各集合所拥有的元素个数，以此为依据，进行两集合之间的加权合并</p>
+<h2 id="主要操作函数"><a href="#主要操作函数" class="headerlink" title="主要操作函数"></a>主要操作函数</h2><p>Find1（未使用路径压缩）<br>Find2（使用路径压缩）<br>differ<br>Union（使用加权合并规则）</p>
+<pre><code>#include&lt;iostream&gt;
 using namespace std;
-int c[500000+10];
-int tempc[500000+10]; 
-int ans=0; 
-void MergeSort(int b,int e)//begin and end index of array)
+#define ROOT 2147483647
+int *uset,*num;
+int Find1(int curr)
 {
-    if(b==e) return ;
-    if(b+1==e){
-        if(c[b]&gt;c[e])
-        {
-            swap(c[b],c[e]);
-            ans+=1;
-        } 
-        return;
-    } 
-
-    int mid = (b-e)/2+e;
-    MergeSort(b,mid);
-    MergeSort(mid+1,e);
-    int tempi=b,tempj=mid+1;
-    for(int i=b;i&lt;=e;i++)
+    while(uset[curr]!=ROOT) curr=uset[curr];
+    return curr;
+}
+int Find2(int curr)
+{
+    if(uset[curr]==ROOT)return curr;
+    uset[curr]=Find2(uset[curr]);
+    return uset[curr];
+}
+bool differ(int a,int b,int(*Find)(int curr))
+{
+    if(Find(a)==Find(b)) return false;
+    else return true;
+}
+void Union(int a,int b,int(*Find)(int curr))
+{
+    int RootOfa=Find(a);
+    int RootOfb=Find(b);
+    if(num[RootOfa]&lt;=num[RootOfb])
     {
-        if(tempi&lt;=mid&amp;&amp;tempj&lt;=e)
-        {
-            if(c[tempi]&lt;c[tempj])
-            {
-                tempc[i]=c[tempi];    
-                tempi++;
-            }else{
-                while(tempi&lt;=mid)
-                {
-                    if(c[tempi]==c[tempj])
-                    {
-                        tempc[i]=c[tempi];
-                        i++;
-                        tempi++;
-                    }
-                    else{
-                        ans+=mid-tempi+1;
-                        break;
-                    }        
-                }    
-                tempc[i]=c[tempj];
-                tempj++;
-
-            }
-        }else{
-            if(tempi&gt;mid)
-            {
-                while(tempj&lt;=e)
-                {
-                    tempc[i]=c[tempj];
-                    tempj++;
-                    i++;
-                }
-                break; 
-            }else{
-                while(tempi&lt;=mid)
-                {
-                    tempc[i]=c[tempi];
-                    tempi++;
-                    i++;
-                }
-                break; 
-            }
-        }
-    }
-    for(int i=b;i&lt;=e;i++)
+        uset[RootOfa]=RootOfb;
+        num[RootOfb]+=num[RootOfa];
+    }else
     {
-        c[i]=tempc[i];
+        uset[RootOfb]=RootOfa;
+        num[RootOfa]+=num[RootOfb];
     }
 }
 int main()
 {
-    ans=0;
     int n;
     cin&gt;&gt;n;
+    uset=new int[n];
+    num=new int[n];
     for(int i=0;i&lt;n;i++)
     {
-        cin&gt;&gt;c[i];
-        //c[i]=n-i;
+        uset[i]=ROOT;
+        num[i]=1;
     }
-    MergeSort(0,n-1);
-    cout&lt;&lt;ans;
-
-    return 0; 
+    cout&lt;&lt;&quot;输入等价对数量&quot;;
+    int m;
+    cin&gt;&gt;m;
+    for(int i=0;i&lt;m;i++)
+    {
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        if(differ(a,b,Find2))
+        {
+            Union(a,b,Find2);
+        }
+    }
+    for(int i=0;i&lt;n;i++)
+        cout&lt;&lt;i&lt;&lt;&quot;  &quot;&lt;&lt;uset[i]&lt;&lt;endl;
+    return 0;
 }
-</code></pre><h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1>
+</code></pre>
     </div>
 
     
@@ -479,7 +457,7 @@ int main()
           
           <div class="post-tags">
             
-              <a href="/tags/Luogu/" rel="tag"># Luogu</a>
+              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
             
           </div>
         
@@ -489,8 +467,8 @@ int main()
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/12/17/DynamicProgramming/" rel="next" title="DynamicProgramming">
-                  <i class="fa fa-chevron-left"></i> DynamicProgramming
+                <a href="/2019/12/26/SortingAlgorithms/" rel="next" title="SortingAlgorithms">
+                  <i class="fa fa-chevron-left"></i> SortingAlgorithms
                 </a>
               
             </div>
@@ -498,10 +476,6 @@ int main()
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/12/26/SortingAlgorithms/" rel="prev" title="SortingAlgorithms">
-                  SortingAlgorithms <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -559,7 +533,7 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#暴力法"><span class="nav-number">1.</span> <span class="nav-text">暴力法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#归并排序"><span class="nav-number">2.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树状数组"><span class="nav-number">3.</span> <span class="nav-text">树状数组</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#等价类"><span class="nav-number">1.</span> <span class="nav-text">等价类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加权合并"><span class="nav-number">2.1.</span> <span class="nav-text">加权合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径压缩"><span class="nav-number">2.2.</span> <span class="nav-text">路径压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根节点标志"><span class="nav-number">2.3.</span> <span class="nav-text">根节点标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要物理存储结构"><span class="nav-number">2.4.</span> <span class="nav-text">主要物理存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要操作函数"><span class="nav-number">2.5.</span> <span class="nav-text">主要操作函数</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -682,6 +656,56 @@ int main()
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
