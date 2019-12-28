@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="树父指针表示法每个节点只保存一个指针域，指向其父节点 等价类这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-28T12:54:18.045Z">
+<meta property="og:updated_time" content="2019-12-28T13:07:55.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tree">
 <meta name="twitter:description" content="树父指针表示法每个节点只保存一个指针域，指向其父节点 等价类这里直接给出（离散数学中有介绍。。。），等价关系具有自反性、对称性、可传递性。举个简单的例子来理解一下，如果由A、B、C三座城市，给出等价对(A,B)(B,C)，则A、B双向通车，B、C双向通车，则可以认为A、C双向通车，称A、C等价，A、C应当归并为1个集合中（这里的关系是两城市是否连通，当然也可以是A是否是B的朋友这样的表达，这就是关">
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2019-12-28 17:45:18 / 修改时间：20:54:18" itemprop="dateCreated datePublished" datetime="2019-12-28T17:45:18+08:00">2019-12-28</time>
+              <time title="创建时间：2019-12-28 19:59:18 / 修改时间：21:07:55" itemprop="dateCreated datePublished" datetime="2019-12-28T19:59:18+08:00">2019-12-28</time>
             </span>
           
             
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.3k</span>
+              <span>2.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -380,7 +380,12 @@
 <h2 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h2><p>如果D的父节点是C,C的父节点是B，B的父节点是根节点A，那么想一想，既然大家的FIND操作都是为了找到根节点A，为什么不把D,C都像B直接指向A呢，这样以后执行Find操作的时候查找次数将大幅降低，因而在寻找D的根节点的时候，就把这一条路径上的所有节点指向根节点，从而缩短了Find路径</p>
 <h2 id="根节点标志"><a href="#根节点标志" class="headerlink" title="根节点标志"></a>根节点标志</h2><p>ROOT = 2147483647 作为区分，节点是否为根节点的标志</p>
 <h2 id="主要物理存储结构"><a href="#主要物理存储结构" class="headerlink" title="主要物理存储结构"></a>主要物理存储结构</h2><p>uset数组：并查集节点数组，下标代表节点序号，数组元素存储的值代表其父节点序号，从而实现父指针表示法<br>num数组：用于加权合并规则的实现时，方便得知两个待合并集合各集合所拥有的元素个数，以此为依据，进行两集合之间的加权合并</p>
-<h2 id="主要操作函数"><a href="#主要操作函数" class="headerlink" title="主要操作函数"></a>主要操作函数</h2><p>Find1（未使用路径压缩）<br>Find2（使用路径压缩）<br>differ<br>Union（使用加权合并规则）</p>
+<h2 id="主要操作函数"><a href="#主要操作函数" class="headerlink" title="主要操作函数"></a>主要操作函数</h2><h3 id="Find1（未使用路径压缩）"><a href="#Find1（未使用路径压缩）" class="headerlink" title="Find1（未使用路径压缩）"></a>Find1（未使用路径压缩）</h3><p>根据父指针一路向上寻找</p>
+<h3 id="Find2（使用路径压缩）"><a href="#Find2（使用路径压缩）" class="headerlink" title="Find2（使用路径压缩）"></a>Find2（使用路径压缩）</h3><p>根据父指针一路向上寻找，递归寻找，这样当最后一层找到根节点返回的时候，可以将整条路径上的节点的父节点设置为根节点</p>
+<h3 id="differ"><a href="#differ" class="headerlink" title="differ"></a>differ</h3><p>使用Find函数，查找节点的根节点，从而判断是否属于同一集合</p>
+<h3 id="Union（使用加权合并规则）"><a href="#Union（使用加权合并规则）" class="headerlink" title="Union（使用加权合并规则）"></a>Union（使用加权合并规则）</h3><p>根据num数组中存储的集合元素数目进行比较，进行加权合并，至于合并操作非常简单，只需要Find得到两个待合并集合各自的根节点，将元素多的集合的根节点作为新根节点，设置为另一集合根节点的父节点即可。</p>
+<h4 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h4><p>曾经写过这样一个题目，森林中有一群猴子，一开始互相不认识，如果见面就会打架，打完架就成了好朋友（不打不相识…），且好朋友这种关系是一个等价关系，上面介绍过了，这里再阐述一下（好朋友关系是可以传递的：A是B的好朋友，B是C的好朋友，那么A是C的好朋友；对称的：A是B的好朋友，那么B也是A的好朋友）这样又给出一个好朋友圈的概念，会打架的两只猴子一定不属于同一个好朋友圈，并且如果他们将要打架，他们会请出自己好朋友圈里最强壮的朋友来帮他们打架，打架之后，两个好朋友圈将会合并。</p>
+<p>显然，题目就是一个典型的并查集题目，题解就不放了。</p>
 <pre><code>#include&lt;iostream&gt;
 using namespace std;
 #define ROOT 2147483647
@@ -533,7 +538,7 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#等价类"><span class="nav-number">1.</span> <span class="nav-text">等价类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加权合并"><span class="nav-number">2.1.</span> <span class="nav-text">加权合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径压缩"><span class="nav-number">2.2.</span> <span class="nav-text">路径压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根节点标志"><span class="nav-number">2.3.</span> <span class="nav-text">根节点标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要物理存储结构"><span class="nav-number">2.4.</span> <span class="nav-text">主要物理存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要操作函数"><span class="nav-number">2.5.</span> <span class="nav-text">主要操作函数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#等价类"><span class="nav-number">1.</span> <span class="nav-text">等价类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加权合并"><span class="nav-number">2.1.</span> <span class="nav-text">加权合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路径压缩"><span class="nav-number">2.2.</span> <span class="nav-text">路径压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根节点标志"><span class="nav-number">2.3.</span> <span class="nav-text">根节点标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要物理存储结构"><span class="nav-number">2.4.</span> <span class="nav-text">主要物理存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要操作函数"><span class="nav-number">2.5.</span> <span class="nav-text">主要操作函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find1（未使用路径压缩）"><span class="nav-number">2.5.1.</span> <span class="nav-text">Find1（未使用路径压缩）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find2（使用路径压缩）"><span class="nav-number">2.5.2.</span> <span class="nav-text">Find2（使用路径压缩）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#differ"><span class="nav-number">2.5.3.</span> <span class="nav-text">differ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Union（使用加权合并规则）"><span class="nav-number">2.5.4.</span> <span class="nav-text">Union（使用加权合并规则）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用举例"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">应用举例</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -716,8 +721,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
