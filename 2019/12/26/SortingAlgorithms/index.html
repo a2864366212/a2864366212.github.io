@@ -68,7 +68,7 @@
 <meta property="og:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/26/SortingAlgorithms/MergeSort_merge.jpg">
-<meta property="og:updated_time" content="2019-12-28T16:52:43.580Z">
+<meta property="og:updated_time" content="2019-12-29T05:43:12.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SortingAlgorithms">
 <meta name="twitter:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
@@ -337,7 +337,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-29 00:52:43" itemprop="dateModified" datetime="2019-12-29T00:52:43+08:00">2019-12-29</time>
+                <time title="修改时间：2019-12-29 13:43:12" itemprop="dateModified" datetime="2019-12-29T13:43:12+08:00">2019-12-29</time>
               </span>
             
           
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6k</span>
+              <span>7.4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>5 分钟</span>
+              <span>7 分钟</span>
             </span>
           
 
@@ -526,6 +526,49 @@ int main()
     return 0;
 }
 </code></pre><h1 id="四、插入排序"><a href="#四、插入排序" class="headerlink" title="四、插入排序"></a>四、插入排序</h1><p>想象一下，一堆打乱的牌放在桌子上（写有0~26的总共27张卡片），怎么才能变成有序呢，可以这样，左手拿牌，右手去一张张抽牌，<br>右手拿第一张，将它直接放在左手里（一个元素自身有序）<br>再去拿第二张，如果比第一张大，放在最右边，否则放在左边。<br>拿第三张，这个时候左手里有两张牌了，右手拿着这张新牌，悬空着，从左手的最右边开始向左移动，找到合适位置插入到左手中（比如左手里的是1,5，拿到的是3，那么就插在1,5之间-&gt;1,3,5），这个合适的位置很显然就是，移动找位置过程中遇见的，第一个左相邻元素小于等于待插入元素的位置<br>下面以n比较大的情况说明一下<br>假如左手中的有序牌为：0 5 7 13 20 ，待插入牌为8号牌<br>则：0 5 7 13 20 8<br>-&gt;0 5 7 13 8 20<br>-&gt;0 5 7 8 13 20 找到合适位置，结束</p>
+<pre><code>void insort(int *A)
+{
+    for(int i=1;i&lt;n;i++)//右手取牌循环
+    {//i=1开始，因为左手里初始就拿了一张A[0]，所以右手从A[1]开始取牌向左手里插
+        for(int j=i;j&gt;=1;j--)//待插入牌寻找合适位置的循环
+        {
+            if(A[j-1]&gt;A[j])
+            {
+                swap(A[j-1],A[j]);//拿着右手的牌在悬在左手牌的上方
+                //在寻找合适插入位置的过程中，如果当前不合适，就向左交换
+                //可以自己再想一想右手牌寻找合适位置的情形
+            }else break;
+        }
+    }
+}
+</code></pre><h1 id="五、希尔排序"><a href="#五、希尔排序" class="headerlink" title="五、希尔排序"></a>五、希尔排序</h1><p>改进版的插入排序，采用最小增量进行间断式的分组插入排序，每一组插入排序处理的数据规模减小<br>代码解释以注释形式给出（略显简单^_^）</p>
+<pre><code>void insort2(int *A,int incr)
+{
+    for(int i=incr;i&lt;n;i+=incr)//如果对插入排序有一个比较深刻的思考，不难知道
+    {//修改后的插入排序，不过是把i++ i-- 这样的法则改为了i+=incr,i-=incr，从而实现了
+        //物理空间上的分隔，逻辑上的连续（逻辑上 i,i+incr，i+2*incr应当是连续的，同属于一个子序列）
+        for(int j=i;j&gt;=incr;j-=incr)
+        {
+            if(A[j-incr]&gt;A[j])//类比A[j-1] A[j] 的比较
+                swap(A[j-incr],A[j]);
+            else break;
+        }
+    }
+}
+void ShellSort(int *A)
+{
+    for(int i=n/3;i&gt;2;i/=3)//用于增量生成的循环 i即为增量
+    {
+        for(int j=0;j&lt;i;j++)
+        insort2(&amp;A[j],i);//这个函数的传参比较细节，传的是A[j]元素的地址
+    }
+    insort2(A,1);//做一次收尾的普通插入排序，但此时数据大致有序了
+}
+
+ for(int j=0;j&lt;i;j++)
+insort2(&amp;A[j],i);//这个函数的传参比较细节，传的是A[j]元素的地址
+</code></pre><p>这一个循环单独讲一下，当选定一个增量来划分数据序列的时候，设增量为d，那么序列被划分为这么几组：<br>A[0] A[d] A[2*d] … A[]<br>A[1] A[1+d] A[1+2*d] … A[]<br>…<br>…<br>A[d-1] A[d-1+d] A[d-1+2*d] … A[]<br>可以知道，每个子序列的起始端为0,1,2…d-1，且每个子序列的元素不相交（因为A[d]是A[0]开头的那一组的第二个元素，所以A[d-1]是最后一组子序列的开头）</p>
+<p>所以，调用insort2函数传的是A[j]元素的地址，也就是每一组子序列的开头元素的地址</p>
 <h1 id="六、归并排序"><a href="#六、归并排序" class="headerlink" title="六、归并排序"></a>六、归并排序</h1><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>分治法的思想，逐层向下分解（这里做2路归并，向下做二分减小待排数据规模），当分解到规模为1或者2时，就可以很简单的给出当前规模下的有序序列了（2个可以做交换，1个本身就有序）</p>
 <p>原序列-&gt;不断2分-&gt;数据量很小的序列直接排序-&gt;向上做合并-&gt;有序序列</p>
 <h2 id="代码实现分步骤解释"><a href="#代码实现分步骤解释" class="headerlink" title="代码实现分步骤解释"></a>代码实现分步骤解释</h2><h3 id="递归出口"><a href="#递归出口" class="headerlink" title="递归出口"></a>递归出口</h3><pre><code>void MergeSort(int b,int e/*begin and end index of array*/)
@@ -674,7 +717,7 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-number">2.</span> <span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">优化选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、快速排序"><span class="nav-number">3.</span> <span class="nav-text">三、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序代码实现："><span class="nav-number">3.1.</span> <span class="nav-text">快速排序代码实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码分解讲解："><span class="nav-number">3.1.1.</span> <span class="nav-text">代码分解讲解：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、插入排序"><span class="nav-number">4.</span> <span class="nav-text">四、插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">5.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">5.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">5.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">5.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">5.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">5.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">5.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">5.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-number">2.</span> <span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">优化选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、快速排序"><span class="nav-number">3.</span> <span class="nav-text">三、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序代码实现："><span class="nav-number">3.1.</span> <span class="nav-text">快速排序代码实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码分解讲解："><span class="nav-number">3.1.1.</span> <span class="nav-text">代码分解讲解：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、插入排序"><span class="nav-number">4.</span> <span class="nav-text">四、插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、希尔排序"><span class="nav-number">5.</span> <span class="nav-text">五、希尔排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">6.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">6.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">6.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">6.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">6.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">6.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">6.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">6.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -732,12 +775,12 @@ int main()
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">61k</span>
+    <span title="站点总字数">63k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">57 分钟</span>
 </div>
 
 
@@ -857,8 +900,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
