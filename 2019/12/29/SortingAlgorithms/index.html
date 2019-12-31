@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+  <meta name="description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta name="keywords" content="ChaoticDynamic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SortingAlgorithms">
 <meta property="og:url" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+<meta property="og:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/MergeSort_merge.jpg">
-<meta property="og:updated_time" content="2019-12-29T05:52:33.679Z">
+<meta property="og:updated_time" content="2019-12-31T15:34:29.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SortingAlgorithms">
-<meta name="twitter:description" content="冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+<meta name="twitter:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/MergeSort_merge.jpg">
   <link rel="canonical" href="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/">
 
@@ -326,11 +326,19 @@
                 
               
 
-              <time title="创建时间：2019-12-29 12:55:18 / 修改时间：13:52:33" itemprop="dateCreated datePublished" datetime="2019-12-29T12:55:18+08:00">2019-12-29</time>
+              <time title="创建时间：2019-12-29 12:55:18" itemprop="dateCreated datePublished" datetime="2019-12-29T12:55:18+08:00">2019-12-29</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-31 23:34:29" itemprop="dateModified" datetime="2019-12-31T23:34:29+08:00">2019-12-31</time>
+              </span>
             
           
 
@@ -343,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>7.4k</span>
+              <span>8.2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -366,7 +374,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、基数排序、堆排序、桶排序</p>
+        <p>比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序<br>分配式排序：基数排序，计数排序，桶排序</p>
 <ol>
 <li>是否基于比较、稳定性、是否需要额外空间</li>
 <li>算法的基本思想（basic idea)</li>
@@ -614,7 +622,45 @@ insort2(&amp;A[j],i);//这个函数的传参比较细节，传的是A[j]元素�
     {
         c[i]=tempc[i];
     }
-</code></pre>
+</code></pre><h2 id="归并排序的循环实现"><a href="#归并排序的循环实现" class="headerlink" title="归并排序的循环实现"></a>归并排序的循环实现</h2><h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><p>假设输入的数据范围是25 ~ 552，则数据的最大值为MaxValue=552<br>那就开一个计数数组Num,大小为553，这样Num数组能利用的下标范围为0-552,且Num数组元素初始化为0<br>然后输入数据input,那么Num[input]++;用数组下标来进行分配，从而避免了排序，因为数组下标本身就是顺序排列的</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int main()
+{
+    int n;
+    cin&gt;&gt;n;
+    int maxV;
+    int *A=new int[n];
+    for(int i=0;i&lt;n;i++)
+    {
+       cin&gt;&gt;A[i];
+    }
+    maxV=A[0];
+    for(int i=1;i&lt;n;i++)
+    {
+        if(A[i]&gt;maxV)
+        {
+            maxV=A[i];
+        }
+    }
+    int *num=new int[maxV+1];
+    memset(num,0,(maxV+1)*sizeof(int));
+
+    for(int i=0;i&lt;n;i++)
+        num[A[i]]++;
+
+    for(int i=0;i&lt;maxV+1;i++)
+    {
+        if(num[i]&gt;0)
+        {
+            for(int j=0;j&lt;num[i];j++)
+                cout&lt;&lt;i&lt;&lt;&#39; &#39;;
+        }
+    }
+    return 0;
+}
+</code></pre><h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1>
     </div>
 
     
@@ -709,7 +755,7 @@ insort2(&amp;A[j],i);//这个函数的传参比较细节，传的是A[j]元素�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-number">2.</span> <span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">优化选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、快速排序"><span class="nav-number">3.</span> <span class="nav-text">三、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序代码实现："><span class="nav-number">3.1.</span> <span class="nav-text">快速排序代码实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码分解讲解："><span class="nav-number">3.1.1.</span> <span class="nav-text">代码分解讲解：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、插入排序"><span class="nav-number">4.</span> <span class="nav-text">四、插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、希尔排序"><span class="nav-number">5.</span> <span class="nav-text">五、希尔排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">6.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">6.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">6.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">6.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">6.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">6.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">6.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">6.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、选择排序"><span class="nav-number">2.</span> <span class="nav-text">二、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接选择排序"><span class="nav-number">2.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">优化选择排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、快速排序"><span class="nav-number">3.</span> <span class="nav-text">三、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序代码实现："><span class="nav-number">3.1.</span> <span class="nav-text">快速排序代码实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码分解讲解："><span class="nav-number">3.1.1.</span> <span class="nav-text">代码分解讲解：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、插入排序"><span class="nav-number">4.</span> <span class="nav-text">四、插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、希尔排序"><span class="nav-number">5.</span> <span class="nav-text">五、希尔排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、归并排序"><span class="nav-number">6.</span> <span class="nav-text">六、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思想"><span class="nav-number">6.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现分步骤解释"><span class="nav-number">6.2.</span> <span class="nav-text">代码实现分步骤解释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归出口"><span class="nav-number">6.2.1.</span> <span class="nav-text">递归出口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归分解"><span class="nav-number">6.2.2.</span> <span class="nav-text">递归分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两有序子序列"><span class="nav-number">6.2.3.</span> <span class="nav-text">合并两有序子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并思想"><span class="nav-number">6.2.3.1.</span> <span class="nav-text">合并思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并步骤"><span class="nav-number">6.2.3.2.</span> <span class="nav-text">合并步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序的循环实现"><span class="nav-number">6.3.</span> <span class="nav-text">归并排序的循环实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆排序"><span class="nav-number">7.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计数排序"><span class="nav-number">8.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#桶排序"><span class="nav-number">9.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基数排序"><span class="nav-number">10.</span> <span class="nav-text">基数排序</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -767,7 +813,7 @@ insort2(&amp;A[j],i);//这个函数的传参比较细节，传的是A[j]元素�
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">63k</span>
+    <span title="站点总字数">64k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
