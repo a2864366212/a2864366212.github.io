@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+  <meta name="description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计  是否基于比较、稳定性、是否需要额外空间数排序，桶排序 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta name="keywords" content="ChaoticDynamic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SortingAlgorithms">
 <meta property="og:url" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+<meta property="og:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计  是否基于比较、稳定性、是否需要额外空间数排序，桶排序 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/MergeSort_merge.jpg">
-<meta property="og:updated_time" content="2019-12-31T15:34:29.707Z">
+<meta property="og:updated_time" content="2020-01-08T15:54:27.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SortingAlgorithms">
-<meta name="twitter:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计数排序，桶排序  是否基于比较、稳定性、是否需要额外空间 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
+<meta name="twitter:description" content="比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序分配式排序：基数排序，计  是否基于比较、稳定性、是否需要额外空间数排序，桶排序 算法的基本思想（basic idea) 对排序算法执行的每一步追踪（trace）， 复杂度分析（time/space complexity） 伪代码（pseudocode）">
 <meta name="twitter:image" content="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/MergeSort_merge.jpg">
   <link rel="canonical" href="https://a2864366212.github.io/2019/12/29/SortingAlgorithms/">
 
@@ -337,7 +337,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-31 23:34:29" itemprop="dateModified" datetime="2019-12-31T23:34:29+08:00">2019-12-31</time>
+                <time title="修改时间：2020-01-08 23:54:27" itemprop="dateModified" datetime="2020-01-08T23:54:27+08:00">2020-01-08</time>
               </span>
             
           
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>8.2k</span>
+              <span>8.3k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>7 分钟</span>
+              <span>8 分钟</span>
             </span>
           
 
@@ -374,9 +374,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序<br>分配式排序：基数排序，计数排序，桶排序</p>
+        <p>比较类排序：冒泡排序、选择排序、快速排序、插入排序、希尔排序、归并排序、堆排序<br>分配式排序：基数排序，计</p>
 <ol>
-<li>是否基于比较、稳定性、是否需要额外空间</li>
+<li>是否基于比较、稳定性、是否需要额外空间数排序，桶排序</li>
 <li>算法的基本思想（basic idea)</li>
 <li>对排序算法执行的每一步追踪（trace），</li>
 <li>复杂度分析（time/space complexity）</li>
@@ -660,7 +660,8 @@ int main()
     }
     return 0;
 }
-</code></pre><h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1>
+</code></pre><h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p>使用某些规则划分出不同的桶，根据规则将输入数据分配到相应的桶中，然后每个桶中的数据规模减小，再使用其他排序方法在桶内部进行排序，在收集各桶中的元素即为排序后的结果，</p>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1>
     </div>
 
     
@@ -732,7 +733,7 @@ int main()
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DebuggingSkill/">DebuggingSkill</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Microsoft-Speech-Services-API/">Microsoft Speech Services API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DebuggingSkill/">DebuggingSkill</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Microsoft-Speech-Services-API/">Microsoft Speech Services API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -774,7 +775,7 @@ int main()
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -783,7 +784,7 @@ int main()
       
       <div class="site-state-item site-state-tags">
         
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
@@ -804,7 +805,7 @@ int main()
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -813,12 +814,12 @@ int main()
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">58 分钟</span>
+    <span title="站点阅读时长">1:01</span>
 </div>
 
 
@@ -938,8 +939,8 @@ int main()
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
