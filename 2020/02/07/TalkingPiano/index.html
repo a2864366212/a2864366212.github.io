@@ -68,7 +68,7 @@
 <meta property="og:description" content="因为新型肺炎疫情，困于火炉旁的我的“胡思乱想”">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2020/02/07/TalkingPiano/bug1.png">
-<meta property="og:updated_time" content="2020-02-08T01:04:02.343Z">
+<meta property="og:updated_time" content="2020-02-08T01:57:56.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TalkingPiano">
 <meta name="twitter:description" content="因为新型肺炎疫情，困于火炉旁的我的“胡思乱想”">
@@ -337,7 +337,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-08 09:04:02" itemprop="dateModified" datetime="2020-02-08T09:04:02+08:00">2020-02-08</time>
+                <time title="修改时间：2020-02-08 09:57:56" itemprop="dateModified" datetime="2020-02-08T09:57:56+08:00">2020-02-08</time>
               </span>
             
           
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.4k</span>
+              <span>9.4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>3 分钟</span>
+              <span>9 分钟</span>
             </span>
           
 
@@ -467,6 +467,219 @@
 </code></pre></li>
 </ol>
 <p>bug出现的原因，猜测为，key_press和up函数需要较短时间来执行，当执行多次时，会有一定时间差，导致缝隙</p>
+<ol>
+<li><p>完整代码</p>
+<pre><code> import matplotlib.pyplot as plt
+ import numpy as np
+ from PIL import Image
+ import win32api
+ import win32con
+ import win32gui
+ from ctypes import *
+ import time
+ def up(x):
+     win32api.keybd_event(x, 0, win32con.KEYEVENTF_KEYUP, 0)
+ def press(x):
+     win32api.keybd_event(x, 0, 0, 0)
+ tune = np.array([
+     192, 49, 50, 51, 52, 53, 54, 55,
+     56, 57, 48, 189, 187, 8, 81, 87,
+     69, 82, 84, 89, 85, 73, 79, 80,
+     219, 221, 220, 65, 83, 68, 70, 71,
+     72, 74, 75, 76, 186, 222, 90, 88,
+     67, 86, 66, 78, 77, 188, 190, 191,
+     32, 38, 37, 40, 39, 111, 106, 109,
+     103, 104, 105, 107, 100, 101, 102, 97,
+ ], dtype=&quot;int64&quot;)
+ time.sleep(2)
+ threshold = 200
+ imgfile=[&quot;湖.png&quot;,&quot;北.png&quot;,&quot;加.png&quot;,&quot;油.png&quot;]
+ for k in range(0,len(imgfile)):
+     img = Image.open(imgfile[k]).convert(&#39;L&#39;)
+     a_img = np.asarray(img,dtype=&quot;int64&quot;).copy()
+     for i in range(0, a_img.shape[0]):
+         for j in range(0, a_img.shape[1]):
+             print(0 if a_img[i][j] &lt; threshold else 1, end=&quot;&quot;)
+         print()
+     plt.imshow(img, cmap=&#39;gray&#39;)
+     plt.axis(&#39;off&#39;)
+     plt.show()
+     for i in range(0,a_img.shape[0]):
+         for j in range(0,a_img.shape[1]):
+             if a_img[i][j] &lt; threshold:
+                 press(tune[j])
+             #end if
+         #end for
+         time.sleep(0.08)
+         if(i+1&lt;a_img.shape[0]):#判断下一行
+             for j in range(0, a_img.shape[1]):
+                 if a_img[i+1][j] &gt; threshold:
+                     up(tune[j])
+                 # end if
+             # end for
+         # end if
+     # end for
+     time.sleep(150)#这里150s只是为了方便看一个汉字的运行情况,实际上两个汉字间隔1.5s左右即可
+ #end for
+ &#39;&#39;&#39;
+ 图像打印操作 和 键盘键值对
+     for i in range(0, a_img.shape[0]):
+         for j in range(0, a_img.shape[1]):
+             print(a_img\[i][j],end=&quot;&quot;)
+         print()
+     plt.imshow(img, cmap=&#39;gray&#39;)
+     plt.axis(&#39;off&#39;)
+     plt.show()
+ VK_CODE = {
+     &#39;backspace&#39;: 0x08,
+     &#39;tab&#39;: 0x09,
+     &#39;clear&#39;: 0x0C,
+     &#39;enter&#39;: 0x0D,
+     &#39;shift&#39;: 0x10,
+     &#39;ctrl&#39;: 0x11,
+     &#39;alt&#39;: 0x12,
+     &#39;pause&#39;: 0x13,
+     &#39;caps_lock&#39;: 0x14,
+     &#39;esc&#39;: 0x1B,
+     &#39;spacebar&#39;: 0x20,
+     &#39;page_up&#39;: 0x21,
+     &#39;page_down&#39;: 0x22,
+     &#39;end&#39;: 0x23,
+     &#39;home&#39;: 0x24,
+     &#39;left_arrow&#39;: 0x25,
+     &#39;up_arrow&#39;: 0x26,
+     &#39;right_arrow&#39;: 0x27,
+     &#39;down_arrow&#39;: 0x28,
+     &#39;select&#39;: 0x29,
+     &#39;print&#39;: 0x2A,
+     &#39;execute&#39;: 0x2B,
+     &#39;print_screen&#39;: 0x2C,
+     &#39;ins&#39;: 0x2D,
+     &#39;del&#39;: 0x2E,
+     &#39;help&#39;: 0x2F,
+     &#39;0&#39;: 0x30,
+     &#39;1&#39;: 0x31,
+     &#39;2&#39;: 0x32,
+     &#39;3&#39;: 0x33,
+     &#39;4&#39;: 0x34,
+     &#39;5&#39;: 0x35,
+     &#39;6&#39;: 0x36,
+     &#39;7&#39;: 0x37,
+     &#39;8&#39;: 0x38,
+     &#39;9&#39;: 0x39,
+     &#39;a&#39;: 0x41,
+     &#39;b&#39;: 0x42,
+     &#39;c&#39;: 0x43,
+     &#39;d&#39;: 0x44,
+     &#39;e&#39;: 0x45,
+     &#39;f&#39;: 0x46,
+     &#39;g&#39;: 0x47,
+     &#39;h&#39;: 0x48,
+     &#39;i&#39;: 0x49,
+     &#39;j&#39;: 0x4A,
+     &#39;k&#39;: 0x4B,
+     &#39;l&#39;: 0x4C,
+     &#39;m&#39;: 0x4D,
+     &#39;n&#39;: 0x4E,
+     &#39;o&#39;: 0x4F,
+     &#39;p&#39;: 0x50,
+     &#39;q&#39;: 0x51,
+     &#39;r&#39;: 0x52,
+     &#39;s&#39;: 0x53,
+     &#39;t&#39;: 0x54,
+     &#39;u&#39;: 0x55,
+     &#39;v&#39;: 0x56,
+     &#39;w&#39;: 0x57,
+     &#39;x&#39;: 0x58,
+     &#39;y&#39;: 0x59,
+     &#39;z&#39;: 0x5A,
+     &#39;numpad_0&#39;: 0x60,
+     &#39;numpad_1&#39;: 0x61,
+     &#39;numpad_2&#39;: 0x62,
+     &#39;numpad_3&#39;: 0x63,
+     &#39;numpad_4&#39;: 0x64,
+     &#39;numpad_5&#39;: 0x65,
+     &#39;numpad_6&#39;: 0x66,
+     &#39;numpad_7&#39;: 0x67,
+     &#39;numpad_8&#39;: 0x68,
+     &#39;numpad_9&#39;: 0x69,
+     &#39;multiply_key&#39;: 0x6A,
+     &#39;add_key&#39;: 0x6B,
+     &#39;separator_key&#39;: 0x6C,
+     &#39;subtract_key&#39;: 0x6D,
+     &#39;decimal_key&#39;: 0x6E,
+     &#39;divide_key&#39;: 0x6F,
+     &#39;F1&#39;: 0x70,
+     &#39;F2&#39;: 0x71,
+     &#39;F3&#39;: 0x72,
+     &#39;F4&#39;: 0x73,
+     &#39;F5&#39;: 0x74,
+     &#39;F6&#39;: 0x75,
+     &#39;F7&#39;: 0x76,
+     &#39;F8&#39;: 0x77,
+     &#39;F9&#39;: 0x78,
+     &#39;F10&#39;: 0x79,
+     &#39;F11&#39;: 0x7A,
+     &#39;F12&#39;: 0x7B,
+     &#39;F13&#39;: 0x7C,
+     &#39;F14&#39;: 0x7D,
+     &#39;F15&#39;: 0x7E,
+     &#39;F16&#39;: 0x7F,
+     &#39;F17&#39;: 0x80,
+     &#39;F18&#39;: 0x81,
+     &#39;F19&#39;: 0x82,
+     &#39;F20&#39;: 0x83,
+     &#39;F21&#39;: 0x84,
+     &#39;F22&#39;: 0x85,
+     &#39;F23&#39;: 0x86,
+     &#39;F24&#39;: 0x87,
+     &#39;num_lock&#39;: 0x90,
+     &#39;scroll_lock&#39;: 0x91,
+     &#39;left_shift&#39;: 0xA0,
+     &#39;right_shift &#39;: 0xA1,
+     &#39;left_control&#39;: 0xA2,
+     &#39;right_control&#39;: 0xA3,
+     &#39;left_menu&#39;: 0xA4,
+     &#39;right_menu&#39;: 0xA5,
+     &#39;browser_back&#39;: 0xA6,
+     &#39;browser_forward&#39;: 0xA7,
+     &#39;browser_refresh&#39;: 0xA8,
+     &#39;browser_stop&#39;: 0xA9,
+     &#39;browser_search&#39;: 0xAA,
+     &#39;browser_favorites&#39;: 0xAB,
+     &#39;browser_start_and_home&#39;: 0xAC,
+     &#39;volume_mute&#39;: 0xAD,
+     &#39;volume_Down&#39;: 0xAE,
+     &#39;volume_up&#39;: 0xAF,
+     &#39;next_track&#39;: 0xB0,
+     &#39;previous_track&#39;: 0xB1,
+     &#39;stop_media&#39;: 0xB2,
+     &#39;play/pause_media&#39;: 0xB3,
+     &#39;start_mail&#39;: 0xB4,
+     &#39;select_media&#39;: 0xB5,
+     &#39;start_application_1&#39;: 0xB6,
+     &#39;start_application_2&#39;: 0xB7,
+     &#39;attn_key&#39;: 0xF6,
+     &#39;crsel_key&#39;: 0xF7,
+     &#39;exsel_key&#39;: 0xF8,
+     &#39;play_key&#39;: 0xFA,
+     &#39;zoom_key&#39;: 0xFB,
+     &#39;clear_key&#39;: 0xFE,
+     &#39;+&#39;: 0xBB,
+     &#39;,&#39;: 0xBC,
+     &#39;-&#39;: 0xBD,
+     &#39;.&#39;: 0xBE,
+     &#39;/&#39;: 0xBF,
+     &#39;`&#39;: 0xC0,
+     &#39;;&#39;: 0xBA,
+     &#39;[&#39;: 0xDB,
+     &#39;\\&#39;: 0xDC,
+     &#39;]&#39;: 0xDD,
+     &quot;&#39;&quot;: 0xDE,
+     &#39;`&#39;: 0xC0}
+ &#39;&#39;&#39;
+</code></pre></li>
+</ol>
 
     </div>
 
@@ -616,12 +829,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">68k</span>
+    <span title="站点总字数">74k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:02</span>
+    <span title="站点阅读时长">1:07</span>
 </div>
 
 
@@ -691,8 +904,8 @@
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
