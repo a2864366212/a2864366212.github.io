@@ -115,7 +115,7 @@
   <entry>
     <title><![CDATA[Search]]></title>
     <url>%2F2019%2F11%2F20%2FSearch%2F</url>
-    <content type="text"><![CDATA[检索 假设k_{1},k_{2}……,k_{n}是互不相同的关键码值，有一个包含n条记录的集合C，形式如下(k_{1},I_{1}),(k_{2},I_{2}),……,(k_{n},I_{n})。其中I_{j}是与关键码值绑定的value 匹配分类精确匹配：检索关键码值与某个特定值匹配的记录范围查询：检索关键码值在某个指定范围内得到所有记录 检索算法顺序表和线性表方法顺序查找和折半查找顺序查找的时间性能： 等概率ASL_{ss}= 不等概率 二分检索法将dataList[i].Key与给定值K作比较三种情况 Key=K,检索成功 返回dataList[i] Key&gt;K,则改为查找dataList[i]的前半个表中查找 Key&lt;K,则改为查找dataList[i]的后半个表中查找 散列：理想情况下O(1) 树索引：启发式规则：初始序列：ABCDEFGH访问模式：FDFGEGFADF 计数统计方法保持线性表按照访问频率排序：A(1)B(0)C(0)D(2)E(2)F(4)G(3)H(0) 排序后：FGDEABCH 移至前端访问某条记录，将该记录移至前端（刚访问过的元素很可能再被访问）F:FABCDEGHD:DFABCEGHF:FDABCEGHG:GFDABCEHE:EGFDABCH…ANSWER:EGFDABCH 转置将当前访问的记录与它在线性表中的前一条记录交换位置(访问某个元素，将其在线性表中的位置前移一位) 与‘移至前端’原理类似 哈希表哈希函数 Key-position映射]]></content>
+    <content type="text"><![CDATA[检索 假设$k_{1},k_{2}……,k_{n}$是互不相同的关键码值，有一个包含n条记录的集合C，形式如下$(k_{1},I_{1}),(k_{2},I_{2}),……,(k_{n},I_{n})$。其中I_{j}是与关键码值绑定的value 匹配分类精确匹配：检索关键码值与某个特定值匹配的记录范围查询：检索关键码值在某个指定范围内得到所有记录 检索算法顺序表和线性表方法顺序查找和折半查找顺序查找的时间性能： 等概率$ASL_{ss}=$ 不等概率 二分检索法将dataList[i].Key与给定值K作比较三种情况 Key=K,检索成功 返回dataList[i] Key&gt;K,则改为查找dataList[i]的前半个表中查找 Key&lt;K,则改为查找dataList[i]的后半个表中查找 散列：理想情况下O(1) 树索引：启发式规则：初始序列：ABCDEFGH访问模式：FDFGEGFADF 计数统计方法保持线性表按照访问频率排序：A(1)B(0)C(0)D(2)E(2)F(4)G(3)H(0) 排序后：FGDEABCH 移至前端访问某条记录，将该记录移至前端（刚访问过的元素很可能再被访问）F:FABCDEGHD:DFABCEGHF:FDABCEGHG:GFDABCEHE:EGFDABCH…ANSWER:EGFDABCH 转置将当前访问的记录与它在线性表中的前一条记录交换位置(访问某个元素，将其在线性表中的位置前移一位) 与‘移至前端’原理类似 哈希表哈希函数 Key-position映射]]></content>
       <tags>
         <tag>Algorithm and Data Structure</tag>
       </tags>
