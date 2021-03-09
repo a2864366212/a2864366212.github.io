@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Leetcode667]]></title>
-    <url>%2F2021%2F03%2F09%2FLeetcode667%2F</url>
+    <url>%2F2021%2F03%2F09%2FLeetcode%20667%2F</url>
     <content type="text"><![CDATA[667.优美的排列II被围绕的区域.题目描述：给定整数n和k，需要返回一个长度为n的数组，该数组的元素为1-n的一个排列。对于该数组需要满足条件：对于数组$[a_{1},a_{2}…a_{n}]$，那么有集合$S={|a_{k}-a_{k+1}| |k\in [1,n-1]}$且 |S|=k 。 举例：输入：n=15,k=3输出：[1,4,2,3,5,6,7,8,9,10,11,12,13,14,15] 分析：返回的答案序列由两部分组成 第一部分：偶数下标对应的序列$[1,2,…\frac{k}{2}]$，奇数下标对应的序列$[k+1,k,…\frac{k}{2}]$,例子中：偶数下标的数字序列为[1,2,3],奇数下标的数字序列为[4] 第二部分：[k+2,k+3,…,n] 边界计算：偶数下标对应的序列为递增序列，奇数下标序列为递减序列，求出二者的交点数值(在$\frac{k}{2}$附近)。 如果k%2==0,交点处附近的数字为$…,\frac{k}{2},\frac{k}{2} +2,\frac{k}{2} +1,k+2,k+3…$ 如果k%2==1,交点处附近的数字为$…,\frac{k+1}{2},\frac{k+1}{2} +1,k+2,k+3…$123456789101112131415161718192021222324int* constructArray(int n, int k, int* returnSize)&#123; *returnSize=n;//返回数组大小 int *res=(int *)malloc(n * sizeof(int));//分配空间 for(int i=0;i&lt;n;i++)res[i]=i+1; if(k==1)return res;//k为1直接返回 int endIdx=0;//Res序列前一段的末尾下标 int beginIdx=0;//Res序列后一段的开始下标 if(k%2==0)&#123; endIdx=2*(k/2-1); res[endIdx+2]=k/2+1; beginIdx=endIdx+3; &#125;else&#123; endIdx=2*((k+1)/2-1); beginIdx=endIdx+2; &#125; for(int i=0;i&lt;=endIdx;i+=2)&#123; res[i]=i/2+1; res[i+1]=k+1-(res[i]-1); &#125; for(int i=beginIdx;i&lt;n;i++)&#123; res[i]=k+2+(i-beginIdx); &#125; return res;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
