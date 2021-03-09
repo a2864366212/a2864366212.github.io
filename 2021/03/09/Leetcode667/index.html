@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="667.优美的排列II被围绕的区域.题目描述：给定整数n和k，需要返回一个长度为n的数组，该数组的元素为1-n的一个排列。对于该数组需要满足条件：对于数组$[a_{1},a_{2}…a_{n}]$，那么有集合$S={|a_{k}-a_{k+1}| |k\in [1,n-1]}$且 |S|=k 。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-09T06:49:23.414Z">
+<meta property="og:updated_time" content="2021-03-09T07:04:42.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode667">
 <meta name="twitter:description" content="667.优美的排列II被围绕的区域.题目描述：给定整数n和k，需要返回一个长度为n的数组，该数组的元素为1-n的一个排列。对于该数组需要满足条件：对于数组$[a_{1},a_{2}…a_{n}]$，那么有集合$S={|a_{k}-a_{k+1}| |k\in [1,n-1]}$且 |S|=k 。">
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2021-03-09 14:29:28 / 修改时间：14:49:23" itemprop="dateCreated datePublished" datetime="2021-03-09T14:29:28+08:00">2021-03-09</time>
+              <time title="创建时间：2021-03-09 14:29:28 / 修改时间：15:04:42" itemprop="dateCreated datePublished" datetime="2021-03-09T14:29:28+08:00">2021-03-09</time>
             </span>
           
             
@@ -374,7 +374,8 @@
 </li>
 <li>边界计算：<br>偶数下标对应的序列为递增序列，奇数下标序列为递减序列，求出二者的交点数值(在$\frac{k}{2}$附近)。<ul>
 <li>如果k%2==0,交点处附近的数字为$…,\frac{k}{2},\frac{k}{2} +2,\frac{k}{2} +1,k+2,k+3…$</li>
-<li>如果k%2==1,交点处附近的数字为$…,\frac{k+1}{2},\frac{k+1}{2} +1,k+2,k+3…$<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int* constructArray(int n, int k, int* returnSize)&#123;</span><br><span class="line">    *returnSize=n;//返回数组大小</span><br><span class="line">    int *res=(int *)malloc(n * sizeof(int));//分配空间</span><br><span class="line">    for(int i=0;i&lt;n;i++)res[i]=i+1;</span><br><span class="line">    if(k==1)return res;//k为1直接返回</span><br><span class="line">    int endIdx=0;//Res序列前一段的末尾下标</span><br><span class="line">    int beginIdx=0;//Res序列后一段的开始下标</span><br><span class="line">    if(k%2==0)&#123;</span><br><span class="line">        endIdx=2*(k/2-1);</span><br><span class="line">        res[endIdx+2]=k/2+1;</span><br><span class="line">        beginIdx=endIdx+3;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        endIdx=2*((k+1)/2-1);</span><br><span class="line">        beginIdx=endIdx+2;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;=endIdx;i+=2)&#123;</span><br><span class="line">        res[i]=i/2+1;</span><br><span class="line">        res[i+1]=k+1-(res[i]-1);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=beginIdx;i&lt;n;i++)&#123;</span><br><span class="line">        res[i]=k+2+(i-beginIdx);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>如果k%2==1,交点处附近的数字为$…,\frac{k+1}{2},\frac{k+1}{2} +1,k+2,k+3…$<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int* constructArray(int n, int k, int* returnSize)&#123;</span><br><span class="line">    *returnSize=n;//返回数组大小</span><br><span class="line">    int *res=(int *)malloc(n * sizeof(int));//分配空间</span><br><span class="line">    for(int i=0;i&lt;n;i++)res[i]=i+1;</span><br><span class="line">    if(k==1)return res;//k为1直接返回</span><br><span class="line">    int endIdx=0;//Res序列前一段的末尾下标</span><br><span class="line">    int beginIdx=0;//Res序列后一段的开始下标</span><br><span class="line">    if(k%2==0)&#123;</span><br><span class="line">        endIdx=2*(k/2-1);</span><br><span class="line">        res[endIdx+2]=k/2+1;</span><br><span class="line">        beginIdx=endIdx+3;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        endIdx=2*((k+1)/2-1);</span><br><span class="line">        beginIdx=endIdx+2;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;=endIdx;i+=2)&#123;</span><br><span class="line">        res[i]=i/2+1;</span><br><span class="line">        res[i+1]=k+1-(res[i]-1);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=beginIdx;i&lt;n;i++)&#123;</span><br><span class="line">        res[i]=k+2+(i-beginIdx);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ol>
@@ -592,6 +593,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
