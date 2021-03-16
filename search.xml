@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[Leetcode_for_offer47]]></title>
     <url>%2F2021%2F03%2F16%2FLeetcode-for-offer47%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[剑指Offer47.礼物的最大值在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？ 来源：力扣（LeetCode）链接：礼物的最大值.著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。 dfs暴力搜索，$O(2^{n})$ dp动态规划，$O(N*M)$ dfs 1234567891011121314151617int dfs(vector&lt;vector&lt;int&gt;&gt;&amp; grid,int M,int N,int r,int c,int sum)&#123; //edge test if(r==M-1&amp;&amp;c==N-1)&#123; return sum+grid[r][c]; &#125; if(c==N-1)return dfs(grid,M,N,r+1,c,sum+grid[r][c]); else if(r==M-1)return dfs(grid,M,N,r,c+1,sum+grid[r][c]); else&#123; return max(dfs(grid,M,N,r+1,c,sum+grid[r][c]) ,dfs(grid,M,N,r,c+1,sum+grid[r][c]) ); &#125; &#125; int maxValue(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123; int M=grid.size(); int N=grid[0].size(); return dfs(grid,M,N,0,0,0); &#125; dp 状态转移方程：$dpTable[i][j]=max{dpTable[i-1][j],dpTable[i][j-1]}+mat[i][j]$ 分析：dpTable[i][j]的最优解总是从两个子问题最优解的较大者转移而来12345678910111213141516171819202122const static int MAX_M=200; const static int MAX_N=200; int maxValue(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123; int M=grid.size(); int N=grid[0].size(); int dpTable[MAX_M][MAX_N]; //dpTable[i][j]=max&#123;dpTable[i-1][j],dpTable[i][j-1]&#125;+mat[i][j] memset(dpTable,0,MAX_M*MAX_N*sizeof(int)); //init the edge of table dpTable[0][0]=grid[0][0]; for(int i=1;i&lt;M;i++)dpTable[i][0]=grid[i][0]+dpTable[i-1][0]; for(int i=1;i&lt;N;i++)dpTable[0][i]=grid[0][i]+dpTable[0][i-1]; for(int i=1;i&lt;M;i++)&#123; for(int j=1;j&lt;N;j++)&#123; dpTable[i][j]=grid[i][j]+max(dpTable[i-1][j] ,dpTable[i][j-1]); &#125; &#125; return dpTable[M-1][N-1]; &#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Leetcode565]]></title>

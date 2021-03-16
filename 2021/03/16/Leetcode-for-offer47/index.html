@@ -59,17 +59,18 @@
   };
 </script>
 
-  <meta name="description" content="NoGameNoLife">
+  <meta name="description" content="剑指Offer47.礼物的最大值在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？ 来源：力扣（LeetCode）链接：礼物的最大值.著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode_for_offer47">
 <meta property="og:url" content="https://a2864366212.github.io/2021/03/16/Leetcode-for-offer47/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="NoGameNoLife">
+<meta property="og:description" content="剑指Offer47.礼物的最大值在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？ 来源：力扣（LeetCode）链接：礼物的最大值.著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-16T10:58:14.125Z">
+<meta property="og:updated_time" content="2021-03-16T15:22:58.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_for_offer47">
-<meta name="twitter:description" content="NoGameNoLife">
+<meta name="twitter:description" content="剑指Offer47.礼物的最大值在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？ 来源：力扣（LeetCode）链接：礼物的最大值.著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
   <link rel="canonical" href="https://a2864366212.github.io/2021/03/16/Leetcode-for-offer47/">
 
 
@@ -323,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2021-03-16 18:58:13 / 修改时间：18:58:14" itemprop="dateCreated datePublished" datetime="2021-03-16T18:58:13+08:00">2021-03-16</time>
+              <time title="创建时间：2021-03-16 18:58:13 / 修改时间：23:22:58" itemprop="dateCreated datePublished" datetime="2021-03-16T18:58:13+08:00">2021-03-16</time>
             </span>
           
             
@@ -340,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>0</span>
+              <span>1.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -350,7 +351,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -363,7 +364,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="剑指Offer47-礼物的最大值"><a href="#剑指Offer47-礼物的最大值" class="headerlink" title="剑指Offer47.礼物的最大值"></a>剑指Offer47.礼物的最大值</h1><p>在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof" target="_blank" rel="noopener">礼物的最大值</a>.<br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<ol>
+<li>dfs暴力搜索，$O(2^{n})$</li>
+<li>dp动态规划，$O(N*M)$<a id="more"></a></li>
+<li><p>dfs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int dfs(vector&lt;vector&lt;int&gt;&gt;&amp; grid,int M,int N,int r,int c,int sum)&#123;</span><br><span class="line">        //edge test</span><br><span class="line">        if(r==M-1&amp;&amp;c==N-1)&#123;</span><br><span class="line">            return sum+grid[r][c];</span><br><span class="line">        &#125;</span><br><span class="line">        if(c==N-1)return dfs(grid,M,N,r+1,c,sum+grid[r][c]);</span><br><span class="line">        else if(r==M-1)return dfs(grid,M,N,r,c+1,sum+grid[r][c]);</span><br><span class="line">        else&#123;</span><br><span class="line">            return max(dfs(grid,M,N,r+1,c,sum+grid[r][c])</span><br><span class="line">                    ,dfs(grid,M,N,r,c+1,sum+grid[r][c]) );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int maxValue(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">        int M=grid.size();</span><br><span class="line">        int N=grid[0].size();</span><br><span class="line">        return dfs(grid,M,N,0,0,0);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dp</p>
+<ul>
+<li>状态转移方程：$dpTable[i][j]=max{dpTable[i-1][j],dpTable[i][j-1]}+mat[i][j]$</li>
+<li>分析：dpTable[i][j]的最优解总是从两个子问题最优解的较大者转移而来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const static int MAX_M=200;</span><br><span class="line">   const static int MAX_N=200;</span><br><span class="line">   </span><br><span class="line">   int maxValue(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">       int M=grid.size();</span><br><span class="line">       int N=grid[0].size();</span><br><span class="line">       int dpTable[MAX_M][MAX_N];</span><br><span class="line">       //dpTable[i][j]=max&#123;dpTable[i-1][j],dpTable[i][j-1]&#125;+mat[i][j]</span><br><span class="line">       memset(dpTable,0,MAX_M*MAX_N*sizeof(int));</span><br><span class="line"></span><br><span class="line">       //init the edge of table</span><br><span class="line">       dpTable[0][0]=grid[0][0];</span><br><span class="line">       for(int i=1;i&lt;M;i++)dpTable[i][0]=grid[i][0]+dpTable[i-1][0];</span><br><span class="line">       for(int i=1;i&lt;N;i++)dpTable[0][i]=grid[0][i]+dpTable[0][i-1];</span><br><span class="line">       for(int i=1;i&lt;M;i++)&#123;</span><br><span class="line">           for(int j=1;j&lt;N;j++)&#123;</span><br><span class="line">               dpTable[i][j]=grid[i][j]+max(dpTable[i-1][j]</span><br><span class="line">                   ,dpTable[i][j-1]);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       return dpTable[M-1][N-1];</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
     </div>
 
     
@@ -373,6 +389,15 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+            
+          </div>
+        
 
         
 
@@ -422,7 +447,7 @@
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -445,6 +470,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#剑指Offer47-礼物的最大值"><span class="nav-number">1.</span> <span class="nav-text">剑指Offer47.礼物的最大值</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -501,12 +528,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">73k</span>
+    <span title="站点总字数">75k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:06</span>
+    <span title="站点阅读时长">1:08</span>
 </div>
 
 
@@ -566,6 +593,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
