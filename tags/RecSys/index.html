@@ -59,19 +59,17 @@
   };
 </script>
 
-  <meta name="description" content="思路分析转化为图来做两节点能转化，说明两节点连通，所以该问题变成，求图中begin节点和end节点是否可达，可达的最短路径求解1.建图2.BFS遍历图">
-<meta name="keywords" content="Leetcode">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode127">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/09/Leetcode127/index.html">
+  <meta name="description" content="NoGameNoLife">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SteinsGate">
+<meta property="og:url" content="https://a2864366212.github.io/tags/RecSys/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="思路分析转化为图来做两节点能转化，说明两节点连通，所以该问题变成，求图中begin节点和end节点是否可达，可达的最短路径求解1.建图2.BFS遍历图">
+<meta property="og:description" content="NoGameNoLife">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T05:00:53.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode127">
-<meta name="twitter:description" content="思路分析转化为图来做两节点能转化，说明两节点连通，所以该问题变成，求图中begin节点和end节点是否可达，可达的最短路径求解1.建图2.BFS遍历图">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/Leetcode127/">
+<meta name="twitter:title" content="SteinsGate">
+<meta name="twitter:description" content="NoGameNoLife">
+  <link rel="canonical" href="https://a2864366212.github.io/tags/RecSys/">
 
 
 <script id="page-configurations">
@@ -79,13 +77,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
+    isPost: false,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Leetcode127 | SteinsGate</title>
+  <title>标签: RecSys | SteinsGate</title>
   
 
 
@@ -288,231 +286,90 @@
         <div class="content-wrap">
             
 
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+
           <div id="content" class="content">
             
 
-  <div class="posts-expand">
-      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/09/Leetcode127/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李松">
-      <meta itemprop="description" content="NoGameNoLife">
-      <meta itemprop="image" content="/images/MyAvatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SteinsGate">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode127
-
-          
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h1 class="collection-header">RecSys<small>标签</small>
         </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-09 11:31:04 / 修改时间：13:00:53" itemprop="dateCreated datePublished" datetime="2019-11-09T11:31:04+08:00">2019-11-09</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>117</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>1 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+      </div>
 
       
-        <h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>转化为图来做<br>两节点能转化，说明两节点连通，所以该问题变成，求图中begin节点和end节点是否可达，可达的最短路径求解<br>1.建图<br>2.BFS遍历图<br><a id="more"></a><br>    class Solution {<br>    public:<br>        map<int,list<int> &gt;sonList;<br>        map<int,list<int> &gt;::iterator it;<br>        pair<map<int,list<int> &gt;::iterator,bool&gt;insertJudge;<br>        bool canFlip(string&amp;a,string&amp;b)<br>        {<br>            bool CanFlag=true;<br>            int num=0;</map<int,list<int></int,list<int></int,list<int></p>
-<pre><code>        for(int i=0;i&lt;a.size();i++)
-        {
-            if(a[i]!=b[i])
-            {
-                num++;
-                if(num&gt;1)
-                {
-                    CanFlag=false;
-                    break;
-                }
-            }
 
-        }
-        return CanFlag;
-    }
-    int ladderLength(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) {
-        wordList.push_back(beginWord);
-        bool* IsSon = new bool[wordList.size()];
-        queue&lt;int&gt;root;
-        memset(IsSon,0,wordList.size()*sizeof(bool));
-        root.push(wordList.size()-1);
-        IsSon[wordList.size()-1]=true;
-        int parent[wordList.size()];
-        memset(parent,-1,wordList.size()*sizeof(int));
+  
+  
 
-        int level=0;
-        bool canFind=false;
-        while(!root.empty())
-        {//select root node
-            int i=root.front();
-            //cout&lt;&lt;i&lt;&lt;endl;
-            root.pop();
-
-            list&lt;int&gt;temp;
-            for(int j=0;j&lt;wordList.size();j++)
-            {//select and judge root&#39;s son nodes
-                if(IsSon[j])
-                continue;
-
-                //cout&lt;&lt;&quot; canFlip&quot;&lt;&lt;canFlip(wordList[i],wordList[j])&lt;&lt;endl;
-
-                if( canFlip(wordList[i],wordList[j]) )
-                {//j is son node
-                    //cout&lt;&lt;&quot;line49 can fflip&quot;&lt;&lt;endl;
-                    parent[j]=i;
-                    root.push(j);
-                    IsSon[j]=true;
-                    temp.push_back( j );
-                    insertJudge=sonList.insert(make_pair(i,temp) );
-                    if(!insertJudge.second)
-                    {//sonList has existed
-                        sonList[i].push_back( j );
-                    }
-                }
-            }
-        }
-
-        int l=0;
-        for(int i=0;i&lt;wordList.size();i++)
-        {
-            if(wordList[i]==endWord)
-            {
-                canFind=true;
-                l=i;
-            }
-        }
-        if(!canFind)
-        return 0;
-        if(parent[l]==-1)
-        {
-            return 0;
-        }
-
-        while(1)
-        {
-            level++;
-            l=parent[l];
-            if(l==wordList.size()-1)
-            {
-                return level+1;
-            }
-        }
-        /*for(int i=0;i&lt;wordList.size();i++)
-        {
-            //cout&lt;&lt;&quot;line60&quot;&lt;&lt;endl;
-            if(sonList.find(i)!=sonList.end())
-            {
-                cout&lt;&lt;i&lt;&lt;&quot;&#39;s son have &quot;;
-                for(list&lt;int&gt;::iterator it=sonList[i].begin();it!=sonList[i].end();it++)
-                {
-                    cout&lt;&lt;(*it)&lt;&lt;&#39; &#39;;
-                }
-                cout&lt;&lt;endl;
-            }
-        }*/
-            return 0;
-    }
-};
-</code></pre>
+  
+    
+    <div class="collection-year">
+      <h1 class="collection-header">2021</h1>
     </div>
+  
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-03-09T15:36:04+08:00"
+              content="2021-03-09">
+          03-09
+        </time>
+      </div>
+
+      <h2 class="post-title">
         
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-            
-          </div>
+          <a class="post-title-link" href="/2021/03/09/UserCF-itemCF/" itemprop="url">
+            <span itemprop="name">UserCF-itemCF</span>
+          </a>
         
+      </h2>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/11/08/Leetcode130/" rel="next" title="Leetcode130">
-                  <i class="fa fa-chevron-left"></i> Leetcode130
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/09/LuoguP1162/" rel="prev" title="LuoguP1162">
-                  LuoguP1162 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
+    </header>
   </article>
+
+
+
+    </div>
+  </div>
   
   
   
 
-  </div>
+  
+
 
 
           </div>
@@ -541,11 +398,6 @@
       </div>
     
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -558,8 +410,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#思路分析"><span class="nav-number">1.</span> <span class="nav-text">思路分析</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 

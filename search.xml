@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode565]]></title>
+    <url>%2F2021%2F03%2F15%2FLeetcode565%2F</url>
+    <content type="text"><![CDATA[667.数组嵌套数组嵌套.题目描述：索引从0开始长度为N的数组A，包含0到N - 1的所有整数。找到最大的集合S并返回其大小，其中 S[i] = {A[i], A[A[i]], A[A[A[i]]], … }且遵守规则：假设选择索引为i的元素A[i]为S的第一个元素，S的下一个元素应该是A[A[i]]，之后是A[A[A[i]]]… 以此类推，不断添加直到S出现重复的元素。 解法 暴力枚举 复杂度$O(N^{2})$12345678910111213141516171819int arrayNesting(vector&lt;int&gt;&amp; nums) &#123; int N=nums.size(); int res=0; for(int i=0;i&lt;N;i++)&#123; memset(vis,0,MAX_N*sizeof(bool)); //S[i] int leftNum=nums[i];//init first postion: A[i] for(int j=0;j&lt;=N;j++)&#123; if(!vis[leftNum]) vis[leftNum]=true; else&#123;//end, length&lt;-i if(res&lt;j)res=j; break; &#125; leftNum=nums[leftNum]; &#125; &#125; return res; &#125; 图论$O(n)$注意到以下几点： 嵌套关系可以抽象成有向边 基于第一点，以数组元素$A[i]$为一个结点，则图中每个节点出度、入度均为1。(对于$A[i]$，入结点和出结点分别为$A[j]=i,A[k]=A[A[i]]$) 综上可以看出： 集合S由图中一个环上的结点元素值组成 且由于图中每个节点的出度、入度均为1，则每个节点仅处于一个环上1234567891011121314151617181920212223242526int MAX_N=20005; bool vis[20005]; int arrayNesting(vector&lt;int&gt;&amp; nums) &#123; int N=nums.size(); int res=0; memset(vis,0,MAX_N*sizeof(bool)); int pos=0;//the latest start point while(pos&lt;N)&#123; while(pos&lt;N)&#123; if(!vis[nums[pos]])break; ++pos; &#125; if(pos&gt;=N)break; //S[pos]=&#123;A[pos],A[A[pos]]&#125;... int leftNum=nums[pos]; int len=0; while(vis[leftNum]==false)&#123; vis[leftNum]=true; leftNum=nums[leftNum]; ++len; &#125; if(res&lt;len)res=len; &#125; return res; &#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[UserCF-itemCF]]></title>
+    <url>%2F2021%2F03%2F09%2FUserCF-itemCF%2F</url>
+    <content type="text"><![CDATA[基于领域的推荐算法：分为两大类，一类是基于用户的协同过滤算法，一类是基于物品的协同过滤算法。核心：聚类、匹配相似的人/相似的物品 算法介绍 基于用户的协同过滤算法(userCF)： 步骤一：找到和目标用户相似的用户集合 步骤二：将该集合中用户喜欢的物品，推荐给目标用户 思想：目标用户与其相似用户的兴趣类似 基于物品(标的物)的协同过滤算法(itemCF)： 步骤一：计算物品之间相似度 步骤二：分析目标用户的历史行为，为其推荐与喜欢物品相似的其他物品 思想：目标用户曾经对物品A感兴趣，而物品B与A相似，则认为用户也会对B感兴趣 实验DEMO 数据集：MovieLens 1M Dataset、 概述：包含6000多用户对4000多部电影的100万条评分 数据格式： User：UserID::Gender::Age::Occupation::Zip-code MOVIES：MovieID::Title::Genres RATINGS：UserID::MovieID::Rating::Timestamp 数据读取： 12345userfile=open("D:/SIT/推荐系统/ml-1m/ml-1m/users.dat")for line in userfile.readlines(): line=line.strip("\n") print(line.split("::"))userfile.close(); 1234[&apos;1&apos;, &apos;F&apos;, &apos;1&apos;, &apos;10&apos;, &apos;48067&apos;][&apos;2&apos;, &apos;M&apos;, &apos;56&apos;, &apos;16&apos;, &apos;70072&apos;][&apos;3&apos;, &apos;M&apos;, &apos;25&apos;, &apos;15&apos;, &apos;55117&apos;].... 预处理： 数据集切分：将数据集随机切分为M份，取其中一份为测试集，剩下的M-1份为训练集。 代码： 1 结果： 1 算法评测 对用户$u$推荐N个物品，(记为$R(u)$)，令用户$u$在测试集上喜欢的物品集合为$T(u)$ 召回率： Recall=\frac{\sum_{u\in U}|R(u)\cap T(u)|}{\sum_{u\in U} |T(u)|} 准确率： Precision=\frac{\sum_{u\in U}|R(u)\cap T(u)|}{\sum_{u\in U} |R(u)|} 覆盖率：所有用户的推荐结果并集的元素个数除以总物品数，用以说明推荐结果列表可以包含多大比例的物品（一个推荐系统不能总是推荐一小部分商品。对于该指标随机推荐可以达到100%，因为每个物品有均等机会被推荐） Coverage=\frac{|\cup_{u\in U}R(u)|}{|I|} 新颖度：推荐结果列表的平均流行度]]></content>
+      <tags>
+        <tag>RecSys</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode667]]></title>
     <url>%2F2021%2F03%2F09%2FLeetcode%20667%2F</url>
     <content type="text"><![CDATA[667.优美的排列II被围绕的区域.题目描述：给定整数n和k，需要返回一个长度为n的数组，该数组的元素为1-n的一个排列。对于该数组需要满足条件：对于数组$[a_{1},a_{2}…a_{n}]$，那么有集合$S={|a_{k}-a_{k+1}| |k\in [1,n-1]}$且 |S|=k 。 举例：输入：n=15,k=3输出：[1,4,2,3,5,6,7,8,9,10,11,12,13,14,15] 分析：返回的答案序列由两部分组成 第一部分：偶数下标对应的序列$[1,2,…\frac{k}{2}]$，奇数下标对应的序列$[k+1,k,…\frac{k}{2}]$,例子中：偶数下标的数字序列为[1,2,3],奇数下标的数字序列为[4] 第二部分：[k+2,k+3,…,n] 边界计算：偶数下标对应的序列为递增序列，奇数下标序列为递减序列，求出二者的交点数值(在$\frac{k}{2}$附近)。 如果k%2==0,交点处附近的数字为$…,\frac{k}{2},\frac{k}{2} +2,\frac{k}{2} +1,k+2,k+3…$ 如果k%2==1,交点处附近的数字为$…,\frac{k+1}{2},\frac{k+1}{2} +1,k+2,k+3…$123456789101112131415161718192021222324int* constructArray(int n, int k, int* returnSize)&#123; *returnSize=n;//返回数组大小 int *res=(int *)malloc(n * sizeof(int));//分配空间 for(int i=0;i&lt;n;i++)res[i]=i+1; if(k==1)return res;//k为1直接返回 int endIdx=0;//Res序列前一段的末尾下标 int beginIdx=0;//Res序列后一段的开始下标 if(k%2==0)&#123; endIdx=2*(k/2-1); res[endIdx+2]=k/2+1; beginIdx=endIdx+3; &#125;else&#123; endIdx=2*((k+1)/2-1); beginIdx=endIdx+2; &#125; for(int i=0;i&lt;=endIdx;i+=2)&#123; res[i]=i/2+1; res[i+1]=k+1-(res[i]-1); &#125; for(int i=beginIdx;i&lt;n;i++)&#123; res[i]=k+2+(i-beginIdx); &#125; return res;&#125;]]></content>
@@ -175,11 +191,6 @@
       <tags>
         <tag>Leetcode</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[HNUOJ2826]]></title>
-    <url>%2F2019%2F11%2F09%2FHNUOJ2826%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Leetcode130]]></title>
