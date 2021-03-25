@@ -294,6 +294,145 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/02/BasicAlgorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李松">
+      <meta itemprop="description" content="NoGameNoLife">
+      <meta itemprop="image" content="/images/MyAvatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SteinsGate">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/11/02/BasicAlgorithm/" class="post-title-link" itemprop="url">BasicAlgorithm</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-02 23:04:01" itemprop="dateCreated datePublished" datetime="2019-11-02T23:04:01+08:00">2019-11-02</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-24 01:03:01" itemprop="dateModified" datetime="2019-11-24T01:03:01+08:00">2019-11-24</time>
+              </span>
+            
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>8.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>8 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://blog.csdn.net/weixin_44049566/article/details/89409209" target="_blank" rel="noopener">一些板子</a></p>
+<h1 id="一些基本算法"><a href="#一些基本算法" class="headerlink" title="一些基本算法"></a>一些基本算法</h1><h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>左移<br>variable = variable &lt;&lt; num<br>variable &lt;&lt;=num<br>观察可以发现，左移一位的结果就是原值乘2，左移两位的结果就是原值乘4。<br>右移<br>variable = variable &gt;&gt; num<br>variable &gt;&gt;=num<br>右移一位的结果就是原值除2，左移两位的结果就是原值除4，注意，除了以后没有小数位的，都是取整。<br>按位与：字面意思<br>variable &amp; 1 -&gt; 拿到最低位的数字<br>variable &amp; 00000001 -&gt;0000000a </p>
+<h2 id="快速积-取模"><a href="#快速积-取模" class="headerlink" title="快速积(取模)"></a>快速积(取模)</h2><p>精髓：化乘法为多次加法<br>FastSpeedMultiplying<br><img src="/2019/11/02/BasicAlgorithm/FastSpeedMultiplying.jpg" alt="FastSpeedMultiplying"></p>
+<pre><code>typedef long long int ll;
+ll Mulitply(ll a,ll b,ll c)
+{
+    ll ans=0;
+    while(b)
+    {
+        if(b&amp;1) ans= (ans+a)%c;
+        a= (a&lt;&lt;1)%c;
+        //感觉还是可能会在a+a做加法的时候溢出，必要的时候做一个 (a mod c + a mod c)mod c  
+        b&gt;&gt;=1;
+    }
+    return ans;
+}
+</code></pre><h2 id="快速幂-取模"><a href="#快速幂-取模" class="headerlink" title="快速幂(取模)"></a>快速幂(取模)</h2><p><a href="https://blog.csdn.net/qq_19782019/article/details/85621386" target="_blank" rel="noopener">战神级讲解</a></p>
+<pre><code>ll Quick_Power(ll a,ll b,ll c)
+{
+    ll ans=1;
+
+    while(b)
+    {
+        if(b&amp;1) ans= Mulitply(ans,a,c);
+
+        a=Mulitply(a,a,c);
+
+        b&gt;&gt;=1;
+    }
+    return ans;
+}
+</code></pre><h2 id="a-欧几里德算法求最大公约数"><a href="#a-欧几里德算法求最大公约数" class="headerlink" title="a)欧几里德算法求最大公约数"></a>a)欧几里德算法求最大公约数</h2>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/11/02/BasicAlgorithm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/02/LearningPath/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -649,7 +788,7 @@
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChaoticDynamic/">ChaoticDynamic</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -684,7 +823,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -723,12 +862,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">75k</span>
+    <span title="站点总字数">79k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:08</span>
+    <span title="站点阅读时长">1:12</span>
 </div>
 
 
@@ -791,10 +930,64 @@
   
     
       
+        
+      
+    
+      
     
       
     
       
+    
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
     
   
 
