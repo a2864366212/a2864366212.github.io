@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
-<meta name="keywords" content="Leetcode">
+  <meta name="description" content="论文阅读：The quest for quality tags提出的核心问题 标签评分接口(tag rating) 怎样的标签评价接口(rating interfaces)可以获得最多的评分？ 设计者应该实现怎样的标签评价接口，选择更好的标签来展示给用户？   标签选择方法(tag selection method)  我们能否根据其他用户的行为来确定一个用户想要看到的标签？ 我们可以根据用户自己">
+<meta name="keywords" content="RecSys">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LuoguP1162">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/09/LuoguP1162/index.html">
+<meta property="og:title" content="RecSys_TheQuestForQualityTags">
+<meta property="og:url" content="https://a2864366212.github.io/2021/04/18/RecSys-TheQuestForQualityTags/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
+<meta property="og:description" content="论文阅读：The quest for quality tags提出的核心问题 标签评分接口(tag rating) 怎样的标签评价接口(rating interfaces)可以获得最多的评分？ 设计者应该实现怎样的标签评价接口，选择更好的标签来展示给用户？   标签选择方法(tag selection method)  我们能否根据其他用户的行为来确定一个用户想要看到的标签？ 我们可以根据用户自己">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T05:51:29.642Z">
+<meta property="og:updated_time" content="2021-04-18T05:44:20.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LuoguP1162">
-<meta name="twitter:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
+<meta name="twitter:title" content="RecSys_TheQuestForQualityTags">
+<meta name="twitter:description" content="论文阅读：The quest for quality tags提出的核心问题 标签评分接口(tag rating) 怎样的标签评价接口(rating interfaces)可以获得最多的评分？ 设计者应该实现怎样的标签评价接口，选择更好的标签来展示给用户？   标签选择方法(tag selection method)  我们能否根据其他用户的行为来确定一个用户想要看到的标签？ 我们可以根据用户自己">
+  <link rel="canonical" href="https://a2864366212.github.io/2021/04/18/RecSys-TheQuestForQualityTags/">
 
 
 <script id="page-configurations">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title>LuoguP1162 | SteinsGate</title>
+  <title>RecSys_TheQuestForQualityTags | SteinsGate</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2021/04/18/RecSys-TheQuestForQualityTags/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +308,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">LuoguP1162
+        <h1 class="post-title" itemprop="name headline">RecSys_TheQuestForQualityTags
 
           
         </h1>
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2019-11-09 13:48:52 / 修改时间：13:51:29" itemprop="dateCreated datePublished" datetime="2019-11-09T13:48:52+08:00">2019-11-09</time>
+              <time title="创建时间：2021-04-18 13:42:56 / 修改时间：13:44:20" itemprop="dateCreated datePublished" datetime="2021-04-18T13:42:56+08:00">2021-04-18</time>
             </span>
           
             
@@ -364,87 +364,101 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>模板题目：和Leetcode T130的解法只需要改一下参数就可<br><a id="more"></a></p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;vector&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-    void DFS(int r,int c,vector&lt;vector&lt;char&gt; &gt;&amp; board)
-    {
-        if(r&lt;0||r&gt;=board.size()||c&lt;0 ||c&gt;=board[0].size()||board[r][c]==&#39;1&#39;
-           ||board[r][c]==&#39;H&#39;)
-        {
-            return ;
-        }
-
-        board[r][c]=&#39;H&#39;;
-        DFS(r+1,c,board);
-        DFS(r-1,c,board);
-        DFS(r,c+1,board);
-        DFS(r,c-1,board);
-    }
-    void solve(vector&lt;vector&lt;char&gt; &gt;&amp; board) {
-        if(board.size()&lt;1||board[0].size()&lt;1)
-            return ;
-
-        for(int i=0;i&lt;board[0].size();i++)
-            DFS(0,i,board);
-        for(int i=0;i&lt;board[0].size();i++)
-            DFS(board.size()-1,i,board);
-        for(int i=0;i&lt;board.size();i++)
-            DFS(i,0,board);
-        for(int i=0;i&lt;board.size();i++)
-            DFS(i,board[0].size()-1,board);
-        for(int i=0;i&lt;board.size();i++)
-        {
-            for(int j=0;j&lt;board[0].size();j++)
-            {
-                if(board[i][j]==&#39;H&#39;)
-                    board[i][j]=&#39;0&#39;;
-                else{
-                    if(board[i][j]==&#39;0&#39;)
-                    board[i][j]=&#39;2&#39;;
-                }
-            }
-        }
-    }
-int main()
-{
-    int n;
-    cin&gt;&gt;n;
-
-    vector&lt;vector&lt;char&gt; &gt;board;
-    vector&lt;char&gt;temp;
-    for(int i=0;i&lt;n;i++)
-    {
-        for(int j=0;j&lt;n;j++)
-        {
-            char ch;
-            cin&gt;&gt;ch;
-
-            temp.push_back(ch);                
-        }
-        board.push_back(temp);
-        temp.erase(temp.begin(),temp.end());
-    }
-    solve(board);
-    for(int i=0;i&lt;n;i++)
-    {
-        for(int j=0;j&lt;n;j++)
-        {
-            if(j==0)
-            cout&lt;&lt;board[i][j];
-            else{
-                cout&lt;&lt;&#39; &#39;&lt;&lt;board[i][j];
-            }
-        }
-        if(i!=n-1)
-        cout&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre><p>真就是只改了下参数。。。。水题</p>
+        <h1 id="论文阅读：The-quest-for-quality-tags"><a href="#论文阅读：The-quest-for-quality-tags" class="headerlink" title="论文阅读：The quest for quality tags"></a>论文阅读：<a href="https://dl.acm.org/doi/abs/10.1145/1316624.1316678" target="_blank" rel="noopener">The quest for quality tags</a></h1><h2 id="提出的核心问题"><a href="#提出的核心问题" class="headerlink" title="提出的核心问题"></a>提出的核心问题</h2><ol>
+<li>标签评分接口(tag rating)<ol>
+<li>怎样的标签评价接口(rating interfaces)可以获得最多的评分？</li>
+<li><strong>设计者应该实现怎样的标签评价接口，选择更好的标签来展示给用户？</strong></li>
+</ol>
+</li>
+<li><p>标签选择方法(tag selection method)</p>
+<ol>
+<li>我们能否根据其他用户的行为来确定一个用户想要看到的标签？</li>
+<li>我们可以根据用户自己的评分来确定用户想要看到的标签吗？</li>
+<li>我们可以根据其他用户的评分来确定用户想要看到的标签吗？<a id="more"></a>
+<h2 id="前人的结论"><a href="#前人的结论" class="headerlink" title="前人的结论"></a>前人的结论</h2></li>
+</ol>
+</li>
+<li><p>用户看到的标签会影响他们自己创建的标签</p>
+</li>
+<li>若将标签分为事实标签、主观标签和个人标签，用户通常更喜欢事实标签而不是主观标签，强烈不喜欢个人标签</li>
+</ol>
+<h2 id="标签评分接口"><a href="#标签评分接口" class="headerlink" title="标签评分接口"></a>标签评分接口</h2><p>回答问题：<strong>怎样的标签评价接口(rating interfaces)可以获得最多的评分</strong></p>
+<ol>
+<li>在MovieLens电影推荐系统上引入了标签的评分功能。评分是通过点赞/点踩来实现的，理由是星级评分占用较多的屏幕空间，同时进行了四组对比试验：<ul>
+<li>C组没有显示任何评分部件，即不可对标签评分，无标签评分反馈</li>
+<li>U组只可以点赞，只允许正反馈</li>
+<li>D组只可以点踩，只允许负反馈</li>
+<li>UD可以点赞/点踩</li>
+</ul>
+</li>
+<li>结论<ol>
+<li>UD组收集到最多的评价</li>
+<li>用户倾向于点踩</li>
+</ol>
+</li>
+</ol>
+<p>回答问题：<strong>设计者应该实现怎样的标签评价接口，选择更好的标签来展示给用户？</strong></p>
+<ol>
+<li><p>系统应该同时提供正面/负面评价功能（如：点赞、点踩）</p>
+<p>论文中的实验结论：</p>
+<ol>
+<li>当被系统同时提供正面/负面评价功能时，用户将产生更多的正面评价数目</li>
+<li>增加的评分数量改善了许多标签选择方法的覆盖范围。</li>
+<li>使用负面评级以及正面和负面评级的选择方法比仅使用正面评级或不使用评级的选择方法表现得更好。</li>
+</ol>
+</li>
+<li><p>使用能够标准化用户影响的标签选择策略</p>
+<p>论文中的实验结论：</p>
+<ol>
+<li>对于某些标签选择方法：如基于每个标签的搜索次数或应用次数top-k算法，其结果会被一小群“积极用户”所扭曲。按用户标准化的标记选择方法(如应用标记的用户数量num-users)比不应用标记的方法(如num-apps和num-searches)性能更好。</li>
+</ol>
+</li>
+<li><p>结合基于行为和基于评分的标签选择方法</p>
+<p>论文中的实验结论：</p>
+<ol>
+<li>基于用户自己评分的方法精确度很高，但覆盖率很低</li>
+<li>混合方法在精确度和覆盖率上表现均比较良好（topk排名k值较小时，混合方法表现略差）</li>
+</ol>
+</li>
+<li><p>可以认为用户通常对相同的标签进行一致的评价，不管它被应用到任一物品(item/标的物)上。</p>
+</li>
+</ol>
+<h2 id="预测标签质量"><a href="#预测标签质量" class="headerlink" title="预测标签质量"></a>预测标签质量</h2><h3 id="三种基于隐式行为标签选择策略"><a href="#三种基于隐式行为标签选择策略" class="headerlink" title="三种基于隐式行为标签选择策略"></a>三种基于隐式行为标签选择策略</h3><p>评价指标：标签的平均评分</p>
+<p>回答问题：<strong>我们能否根据其他用户的行为来确定一个用户想要看到的标签?</strong></p>
+<ol>
+<li>num-apps：标签被应用的数量。</li>
+<li>num-users：应用标签的用户数量</li>
+<li>num-searches：标签被搜索的数量。可以转化为对标签的搜索事件和点击事件（前端埋点、日志记录）</li>
+</ol>
+<p>存在问题：num-apps与num-searches均会受到少量极端用户的影响。对于num-apps，可能会有少数用户大量使用讨人厌的“个人”标签，导致系统展示的标签平均评分降低。而对于num-searches，可能会有一些“狂热”用户对于某些相同的标签进行频繁搜索，从而降低系统展示标签的平均评分</p>
+<h3 id="基于显式行为的标签选择策略（评分，点赞-点踩）"><a href="#基于显式行为的标签选择策略（评分，点赞-点踩）" class="headerlink" title="基于显式行为的标签选择策略（评分，点赞/点踩）"></a>基于显式行为的标签选择策略（评分，点赞/点踩）</h3><ol>
+<li><p>个人用户评分</p>
+<p>回答问题：<strong>我们可以根据用户自己的评分来确定用户想要看到的标签吗？</strong></p>
+<ol>
+<li><p><strong>user-rating</strong>：</p>
+<p>该策略认为某一用户总是喜欢他”点赞“的标签，讨厌他”点踩“的标签</p>
+</li>
+<li><p><strong>user-avg</strong>：计算同一用户对同一标签多次评分的均值（对同一标签的多次评分行为，可能发生在标签出现在不同标的物上，论文中举例是用户Sally在“28天后”和“活死人黎明”中都给“僵尸”标签打分）</p>
+</li>
+</ol>
+</li>
+<li><p>全体用户评分                                                 </p>
+<p>基于假设：大多数用户对标签有相似的意见</p>
+<p>回答问题：<strong>我们可以根据其他用户的评分来确定用户想要看到的标签吗？</strong></p>
+<ol>
+<li><p><strong>global-avg</strong></p>
+<p>计算所有用户的平均评分，作为标签评分</p>
+</li>
+<li><p><strong>consec-apps</strong></p>
+<p>基于初始相同评分数量进行top-k排序。（背后的思想是根据标签的分歧程度进行排名，例如：一个标签的赞/踩数目相近，则该标签的分歧较大，不应该推荐。论文中在Table 3中列举了10个最具争议的标签）</p>
+</li>
+<li><p><strong>consec-users</strong></p>
+<p>基于来自不同用户的初始相同评分数量进行top-k排序，对<strong>consec-apps</strong>的一个改进，避免某些积极用户对少数标签的过分关注。（论文中举例：“僵尸”标签总共有五个正面标签，但之前对“僵尸”的四个评级可能都来自同一用户）</p>
+</li>
+</ol>
+<h3 id="集成学习，综合预测"><a href="#集成学习，综合预测" class="headerlink" title="集成学习，综合预测"></a>集成学习，综合预测</h3><p>受到集成学习的启发，综合多个“专家”系统的结果，可以提高整体性能，论文中选择上述的六种策略进行混合：num-users、num-searches、user-avg、global-avg、consec-apps、consec-users</p>
+</li>
+</ol>
 
     </div>
 
@@ -460,7 +474,7 @@ int main()
           
           <div class="post-tags">
             
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+              <a href="/tags/RecSys/" rel="tag"># RecSys</a>
             
           </div>
         
@@ -470,8 +484,8 @@ int main()
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/09/Leetcode127/" rel="next" title="Leetcode127">
-                  <i class="fa fa-chevron-left"></i> Leetcode127
+                <a href="/2021/04/06/MysqlAudit/" rel="next" title="MysqlAudit">
+                  <i class="fa fa-chevron-left"></i> MysqlAudit
                 </a>
               
             </div>
@@ -479,10 +493,6 @@ int main()
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/09/Huffman/" rel="prev" title="Huffman">
-                  Huffman <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -540,6 +550,8 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#论文阅读：The-quest-for-quality-tags"><span class="nav-number">1.</span> <span class="nav-text">论文阅读：The quest for quality tags</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#提出的核心问题"><span class="nav-number">1.1.</span> <span class="nav-text">提出的核心问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前人的结论"><span class="nav-number">1.2.</span> <span class="nav-text">前人的结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签评分接口"><span class="nav-number">1.3.</span> <span class="nav-text">标签评分接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测标签质量"><span class="nav-number">1.4.</span> <span class="nav-text">预测标签质量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种基于隐式行为标签选择策略"><span class="nav-number">1.4.1.</span> <span class="nav-text">三种基于隐式行为标签选择策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于显式行为的标签选择策略（评分，点赞-点踩）"><span class="nav-number">1.4.2.</span> <span class="nav-text">基于显式行为的标签选择策略（评分，点赞/点踩）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习，综合预测"><span class="nav-number">1.4.3.</span> <span class="nav-text">集成学习，综合预测</span></a></li></ol></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
