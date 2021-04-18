@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
-<meta name="keywords" content="Leetcode">
+  <meta name="description" content="之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。">
+<meta name="keywords" content="RecSys">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LuoguP1162">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/09/LuoguP1162/index.html">
+<meta property="og:title" content="TagBasedPR">
+<meta property="og:url" content="https://a2864366212.github.io/2021/04/18/TagBasedPR/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
+<meta property="og:description" content="之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T05:51:29.642Z">
+<meta property="og:updated_time" content="2021-04-18T06:30:40.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LuoguP1162">
-<meta name="twitter:description" content="模板题目：和Leetcode T130的解法只需要改一下参数就可">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
+<meta name="twitter:title" content="TagBasedPR">
+<meta name="twitter:description" content="之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。">
+  <link rel="canonical" href="https://a2864366212.github.io/2021/04/18/TagBasedPR/">
 
 
 <script id="page-configurations">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title>LuoguP1162 | SteinsGate</title>
+  <title>TagBasedPR | SteinsGate</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/09/LuoguP1162/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2021/04/18/TagBasedPR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +308,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">LuoguP1162
+        <h1 class="post-title" itemprop="name headline">TagBasedPR
 
           
         </h1>
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2019-11-09 13:48:52 / 修改时间：13:51:29" itemprop="dateCreated datePublished" datetime="2019-11-09T13:48:52+08:00">2019-11-09</time>
+              <time title="创建时间：2021-04-18 13:46:01 / 修改时间：14:30:40" itemprop="dateCreated datePublished" datetime="2021-04-18T13:46:01+08:00">2021-04-18</time>
             </span>
           
             
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2k</span>
+              <span>2.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -364,87 +364,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>模板题目：和Leetcode T130的解法只需要改一下参数就可<br><a id="more"></a></p>
-<pre><code>#include&lt;cstdio&gt;
-#include&lt;vector&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-    void DFS(int r,int c,vector&lt;vector&lt;char&gt; &gt;&amp; board)
-    {
-        if(r&lt;0||r&gt;=board.size()||c&lt;0 ||c&gt;=board[0].size()||board[r][c]==&#39;1&#39;
-           ||board[r][c]==&#39;H&#39;)
-        {
-            return ;
-        }
-
-        board[r][c]=&#39;H&#39;;
-        DFS(r+1,c,board);
-        DFS(r-1,c,board);
-        DFS(r,c+1,board);
-        DFS(r,c-1,board);
-    }
-    void solve(vector&lt;vector&lt;char&gt; &gt;&amp; board) {
-        if(board.size()&lt;1||board[0].size()&lt;1)
-            return ;
-
-        for(int i=0;i&lt;board[0].size();i++)
-            DFS(0,i,board);
-        for(int i=0;i&lt;board[0].size();i++)
-            DFS(board.size()-1,i,board);
-        for(int i=0;i&lt;board.size();i++)
-            DFS(i,0,board);
-        for(int i=0;i&lt;board.size();i++)
-            DFS(i,board[0].size()-1,board);
-        for(int i=0;i&lt;board.size();i++)
-        {
-            for(int j=0;j&lt;board[0].size();j++)
-            {
-                if(board[i][j]==&#39;H&#39;)
-                    board[i][j]=&#39;0&#39;;
-                else{
-                    if(board[i][j]==&#39;0&#39;)
-                    board[i][j]=&#39;2&#39;;
-                }
-            }
-        }
-    }
-int main()
-{
-    int n;
-    cin&gt;&gt;n;
-
-    vector&lt;vector&lt;char&gt; &gt;board;
-    vector&lt;char&gt;temp;
-    for(int i=0;i&lt;n;i++)
-    {
-        for(int j=0;j&lt;n;j++)
-        {
-            char ch;
-            cin&gt;&gt;ch;
-
-            temp.push_back(ch);                
-        }
-        board.push_back(temp);
-        temp.erase(temp.begin(),temp.end());
-    }
-    solve(board);
-    for(int i=0;i&lt;n;i++)
-    {
-        for(int j=0;j&lt;n;j++)
-        {
-            if(j==0)
-            cout&lt;&lt;board[i][j];
-            else{
-                cout&lt;&lt;&#39; &#39;&lt;&lt;board[i][j];
-            }
-        }
-        if(i!=n-1)
-        cout&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre><p>真就是只改了下参数。。。。水题</p>
+        <p>之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。<br><a id="more"></a></p>
+<p>三分图是稀疏图，为了能够容纳更多的结点，使用链表形式建图。（矩阵形式消耗空间过多，应该可以使用稀疏矩阵进行存储和运算）</p>
+<h2 id="基于图的标签推荐算法"><a href="#基于图的标签推荐算法" class="headerlink" title="基于图的标签推荐算法"></a>基于图的标签推荐算法</h2><script type="math/tex; mode=display">
+PR(v)=
+\left\{  
+             \begin{array}{**lr**}  
+             \alpha \sum_{v'\in in(v)}\frac{PR(v')}{|out(v')|}, &(v \neq v_{u})  \\  
+             (1-\alpha)+\alpha \sum_{v'\in in(v)}\frac{PR(v')}{|out(v')|}, &(v = v_{u})  
+             \end{array}  
+\right.</script><p>user-tag-item Graph：</p>
+<p>建图规则：有用户标签行为元组（user,tag,item），分别对应图中结点$v_{user}$、$v_{tag}$、$v_{item}$，则在图中添加两条边($v_{user}$，$v_{tag}$),($v_{tag}$，$v_{item}$），若边已经存在，则边权加一。</p>
+<p>从用户u结点出发，采用随机游走，求出收敛时图上各节点的PR值，完成对用户u的topK推荐。</p>
+<ol>
+<li><p>加权随机选择</p>
+<p>demo:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span>  np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> accumulate</span><br><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line">node=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'F'</span>,<span class="string">'G'</span>,<span class="string">'H'</span>]</span><br><span class="line">weight=np.random.randint(<span class="number">1</span>,len(node),len(node))</span><br><span class="line">print(weight)</span><br></pre></td></tr></table></figure>
+<pre><code>[6 2 2 5 5 5 7 1]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weightedRandSel</span><span class="params">(node,weight,selNum)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    node:物品序列</span></span><br><span class="line"><span class="string">    weight:权重序列</span></span><br><span class="line"><span class="string">    selNum:随机选择次数</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    return:随机选择的结果序列</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    sumWeight=sum(weight)<span class="comment">#权重和</span></span><br><span class="line">    accuSumArr=list(accumulate(weight))<span class="comment">#累积和序列</span></span><br><span class="line">    selArr=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(selNum):</span><br><span class="line">        randSel=random.uniform(<span class="number">0</span>,sumWeight)<span class="comment">#(0,权重和)的随机数</span></span><br><span class="line">        idx=bisect.bisect_right(accuSumArr, randSel)<span class="comment">#二分查找randSel的位置</span></span><br><span class="line">        selectedNode=node[idx]</span><br><span class="line">        selArr.append(selectedNode)</span><br><span class="line">    <span class="keyword">return</span> selArr</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkRes</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    检查随机选择的正确性，统计node及其出现次数</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    judge=dict()</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> arr:</span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> judge.keys():</span><br><span class="line">            judge[node]=<span class="number">0</span></span><br><span class="line">        judge[node]+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> judge</span><br><span class="line"></span><br><span class="line">selNum=<span class="number">50000</span><span class="comment">#随机选择次数</span></span><br><span class="line">selNodeArr=weightedRandSel(node,weight,selNum)</span><br><span class="line">judgeRes= checkRes(selNodeArr)</span><br><span class="line"></span><br><span class="line">item=judgeRes.items()</span><br><span class="line">item=sorted(item,key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">print(item)</span><br></pre></td></tr></table></figure>
+<pre><code>[(&#39;A&#39;, 9050), (&#39;B&#39;, 3018), (&#39;C&#39;, 3036), (&#39;D&#39;, 7621), (&#39;E&#39;, 7646), (&#39;F&#39;, 7443), (&#39;G&#39;, 10658), (&#39;H&#39;, 1528)]
+</code></pre><p>实际应用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sumPR =sum(list(PR.values()))<span class="comment">#求出整个序列的权重和</span></span><br><span class="line">accuPR=list(accumulate(list(PR.values())))<span class="comment">#累积和序列</span></span><br><span class="line"><span class="comment">#权重随机选择</span></span><br><span class="line">randSelCnt = random.uniform(<span class="number">0</span>,sumPR)<span class="comment">#(0,sumPR)的随机值</span></span><br><span class="line">idx=bisect.bisect_right(accuPR, randSelCnt)<span class="comment">#二分查找</span></span><br><span class="line">selectNode = nodeList[idx]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结点PR值更新</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">renewPR</span><span class="params">(selectNode)</span>:</span></span><br><span class="line">    neighbors = list(Graph[selectNode].keys())</span><br><span class="line">    sumNeighborPR = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> neib <span class="keyword">in</span> neighbors:</span><br><span class="line">        sumNeighborPR += PR[neib] / Outdegree[neib]</span><br><span class="line">    sumNeighborPR = alpha * sumNeighborPR</span><br><span class="line">    PR[selectNode] = sumNeighborPR</span><br><span class="line">    <span class="keyword">if</span> selectNode == startPointName:</span><br><span class="line">        PR[selectNode] = PR[selectNode] + <span class="number">1</span> - alpha</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
     </div>
 
@@ -460,7 +405,7 @@ int main()
           
           <div class="post-tags">
             
-              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+              <a href="/tags/RecSys/" rel="tag"># RecSys</a>
             
           </div>
         
@@ -470,8 +415,8 @@ int main()
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/09/Leetcode127/" rel="next" title="Leetcode127">
-                  <i class="fa fa-chevron-left"></i> Leetcode127
+                <a href="/2021/04/18/RecSys-TheQuestForQualityTags/" rel="next" title="RecSys_TheQuestForQualityTags">
+                  <i class="fa fa-chevron-left"></i> RecSys_TheQuestForQualityTags
                 </a>
               
             </div>
@@ -479,10 +424,6 @@ int main()
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/09/Huffman/" rel="prev" title="Huffman">
-                  Huffman <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -540,6 +481,8 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于图的标签推荐算法"><span class="nav-number">1.</span> <span class="nav-text">基于图的标签推荐算法</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
