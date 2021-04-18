@@ -25,11 +25,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[mysqlPriv]]></title>
+    <title><![CDATA[MysqlPriv]]></title>
     <url>%2F2021%2F04%2F06%2FMysqlPriv%2F</url>
     <content type="text"><![CDATA[mysql 5.7更新至8.0后，root用户无法GRANT ALL赋权给其他用户解决：更新root用户权限 步骤 root用户登录：cmd&gt;mysql -u[username] -p[passward] (忘记密码可以通过控制台越过登录验证mysqld —console —skip-grant-tables —shared-memory) 更新权限 12update user set select_priv=&apos;Y&apos;,Insert_priv=&apos;Y&apos;,Update_priv=&apos;Y&apos;,Delete_priv=&apos;Y&apos;,Create_priv=&apos;Y&apos;,Drop_priv=&apos;Y&apos;,Reload_priv=&apos;Y&apos;,File_priv=&apos;Y&apos;,Grant_priv=&apos;Y&apos;,References_priv=&apos;Y&apos;,Index_priv=&apos;Y&apos;,Alter_priv=&apos;Y&apos;,Show_db_priv=&apos;Y&apos;,Super_priv=&apos;Y&apos;,Create_tmp_table_priv=&apos;Y&apos;,Lock_tables_priv=&apos;Y&apos;,Execute_priv=&apos;Y&apos;,Repl_slave_priv=&apos;Y&apos;,Repl_client_priv=&apos;Y&apos;,Create_view_priv=&apos;Y&apos;,Show_view_priv=&apos;Y&apos;,Create_routine_priv=&apos;Y&apos;,Alter_routine_priv=&apos;Y&apos;,Create_user_priv=&apos;Y&apos;,Event_priv=&apos;Y&apos;,Trigger_priv=&apos;Y&apos;,Create_tablespace_priv=&apos;Y&apos;WHERE user=&apos;root&apos;; 刷新并退出： 12flush privileges;exit;]]></content>
       <tags>
-        <tag>mysql</tag>
+        <tag>Mysql</tag>
       </tags>
   </entry>
   <entry>
