@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="Huffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长度），如果存在一种赋权方式，使得\sum_{i=1}^{t}w_{i}l(v_{i})的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树.">
-<meta name="keywords" content="Algorithm and Data Structure">
+  <meta name="description" content="题目描述 给你一个整数数组 nums 和一个整数 target 。 向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ： 例如，nums = [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。 来源：力扣（Leet">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Huffman">
-<meta property="og:url" content="https://a2864366212.github.io/2019/11/09/Huffman/index.html">
+<meta property="og:title" content="Leetcode494">
+<meta property="og:url" content="https://a2864366212.github.io/2021/05/17/Leetcode494/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="Huffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长度），如果存在一种赋权方式，使得\sum_{i=1}^{t}w_{i}l(v_{i})的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树.">
+<meta property="og:description" content="题目描述 给你一个整数数组 nums 和一个整数 target 。 向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ： 例如，nums = [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。 来源：力扣（Leet">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-09T16:30:55.833Z">
+<meta property="og:updated_time" content="2021-05-17T13:17:49.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huffman">
-<meta name="twitter:description" content="Huffman树设根树T有t片树叶v_{1},v_{2},..,v_{t},给每片树叶赋一个权值w_{1},w_{2},...,w_{t},则成为T赋权二叉树，其中l(v_{i})为叶子节点v_{i}的长度（节点到根节点路径长度），如果存在一种赋权方式，使得\sum_{i=1}^{t}w_{i}l(v_{i})的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树.">
-  <link rel="canonical" href="https://a2864366212.github.io/2019/11/09/Huffman/">
+<meta name="twitter:title" content="Leetcode494">
+<meta name="twitter:description" content="题目描述 给你一个整数数组 nums 和一个整数 target 。 向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ： 例如，nums = [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。 来源：力扣（Leet">
+  <link rel="canonical" href="https://a2864366212.github.io/2021/05/17/Leetcode494/">
 
 
 <script id="page-configurations">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title>Huffman | SteinsGate</title>
+  <title>Leetcode494 | SteinsGate</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2019/11/09/Huffman/">
+    <link itemprop="mainEntityOfPage" href="https://a2864366212.github.io/2021/05/17/Leetcode494/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李松">
@@ -308,7 +308,7 @@
       <meta itemprop="name" content="SteinsGate">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Huffman
+        <h1 class="post-title" itemprop="name headline">Leetcode494
 
           
         </h1>
@@ -324,19 +324,11 @@
                 
               
 
-              <time title="创建时间：2019-11-09 17:18:41" itemprop="dateCreated datePublished" datetime="2019-11-09T17:18:41+08:00">2019-11-09</time>
+              <time title="创建时间：2021-05-17 17:31:58 / 修改时间：21:17:49" itemprop="dateCreated datePublished" datetime="2021-05-17T17:31:58+08:00">2021-05-17</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-10 00:30:55" itemprop="dateModified" datetime="2019-11-10T00:30:55+08:00">2019-11-10</time>
-              </span>
             
           
 
@@ -349,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>488</span>
+              <span>3.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -359,7 +351,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -372,10 +364,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Huffman树"><a href="#Huffman树" class="headerlink" title="Huffman树"></a>Huffman树</h1><p>设根树T有t片树叶<script type="math/tex">v_{1},v_{2},..,v_{t},</script>给每片树叶赋一个权值<script type="math/tex">w_{1},w_{2},...,w_{t}</script>,则成为T赋权二叉树，其中<script type="math/tex">l(v_{i})</script>为叶子节点<script type="math/tex">v_{i}</script>的长度（节点到根节点路径长度），如果存在一种赋权方式，使得<script type="math/tex">\sum_{i=1}^{t}w_{i}l(v_{i})</script>的值（带权路径和）达到最小，则称这棵树为最优二叉树，或称Huffman树.<br><a id="more"></a></p>
-<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>(1).对所有权值从低到高排序.<br>(2).找出两个最小的权值，记为<script type="math/tex">w_{1},w_{2}</script><br>(3).用(<script type="math/tex">w_{1}+w_{2}</script> 代替<script type="math/tex">w_{1}</script>与<script type="math/tex">w_{2}</script>),产生新的队列<br>(4).若队列中的点数大于1，则回到第一步，否则进行下一步.</p>
-<p>(5).逆序将以上组合过程画出来得到Huffman树</p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>构造时为保证唯一性，要求”左小右大，组合优先，左0右1，不足补0”<br>左小右大：值权值小的画左边，权值大的画右边<br>组合优先：如果某两个权值相同，则组合出来的节点优先（作为左子节点，画在左边）<br>左0右1：是指向左儿子的边的编号为0， 指向右儿子的边编号为1<br>不足补零：译码时使用，在末尾添加适当0以使得可以译码码</p>
+        <p>题目描述</p>
+<p>给你一个整数数组 nums 和一个整数 target 。</p>
+<p>向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ：</p>
+<p>例如，nums = [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。<br>返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/target-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/target-sum</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<a id="more"></a>
+<p>题解：</p>
+<ol>
+<li>枚举+剪枝</li>
+<li>子集和</li>
+<li>dp动规</li>
+</ol>
+<h1 id="枚举-剪枝"><a href="#枚举-剪枝" class="headerlink" title="枚举+剪枝"></a>枚举+剪枝</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> suffixSum[<span class="number">50</span>];<span class="comment">//后缀和</span></span><br><span class="line">    <span class="keyword">int</span> resNum=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target,<span class="keyword">int</span> depth,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="comment">//剪枝</span></span><br><span class="line">        <span class="keyword">if</span>( (sum+suffixSum[depth]&lt;target) || (sum-suffixSum[depth]&gt;target) )<span class="keyword">return</span> ;</span><br><span class="line">        <span class="comment">//结束</span></span><br><span class="line">        <span class="keyword">if</span>(sum==target&amp;&amp;depth==nums.size())&#123;</span><br><span class="line">            resNum+=<span class="number">1</span>;<span class="comment">//succ res+=1</span></span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(depth&gt;=nums.size()&amp;&amp;sum!=target)<span class="keyword">return</span> ;<span class="comment">//fail res+=0</span></span><br><span class="line">        <span class="comment">//搜索</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> selection=<span class="number">1</span>+i*(<span class="number">-2</span>);</span><br><span class="line">            <span class="keyword">int</span> searchSum=sum+selection*nums[depth];</span><br><span class="line">            dfs(nums,target,depth+<span class="number">1</span>,searchSum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findTargetSumWays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        resNum=<span class="number">0</span>;</span><br><span class="line">        sort(nums.begin(),nums.end());<span class="comment">//排序</span></span><br><span class="line">        <span class="built_in">memset</span>(suffixSum,<span class="number">0</span>,<span class="number">50</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    	</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.size()<span class="number">-1</span>;i&gt;<span class="number">-1</span>;--i)</span><br><span class="line">        &#123;</span><br><span class="line">            suffixSum[i]=suffixSum[i+<span class="number">1</span>]+nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(nums,target,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> resNum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>执行用时：1116ms</p>
+</li>
+<li><p>内存消耗：8.7MB</p>
+</li>
+</ul>
+<h1 id="dp动规"><a href="#dp动规" class="headerlink" title="dp动规"></a>dp动规</h1><ol>
+<li><p>状态转移方程：</p>
+<script type="math/tex; mode=display">resNum[i][j]$$意为前$i$个数字($nums[0:i]$)构造运算结果等于 $j$的不同表达式的数目</script><p>resNum[i][j]=resNum[i-1][j-nums[i]]+resNum[i-1][j+nums[i]]<br>$$</p>
+</li>
+<li><p>注意点：由于target维度可取负数，因此可以使用Offset将负数域的target偏移映射到非负数域。（或者使用map映射）</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> MAXLEN=<span class="number">25</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> MAX_TARGET=<span class="number">5000</span>;</span><br><span class="line">    <span class="keyword">int</span> numOffset=<span class="number">0</span>;<span class="comment">//负数偏移 映射到非负数</span></span><br><span class="line">    <span class="keyword">int</span> resNum[MAXLEN][MAX_TARGET];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="comment">//target=true target -numOffset</span></span><br><span class="line">        <span class="keyword">int</span> num=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">memset</span>(resNum,<span class="number">0</span>,MAX_TARGET*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">        resNum[<span class="number">0</span>][num+numOffset]+=<span class="number">1</span>;</span><br><span class="line">        resNum[<span class="number">0</span>][-num+numOffset]+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> idx,<span class="keyword">int</span> target,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(resNum[idx][target +numOffset]!=<span class="number">-1</span>)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(resNum[idx<span class="number">-1</span>][target-nums[idx] +numOffset]==<span class="number">-1</span>)dp(idx<span class="number">-1</span>,target-nums[idx],nums);</span><br><span class="line">        <span class="keyword">if</span>(resNum[idx<span class="number">-1</span>][target+nums[idx] +numOffset]==<span class="number">-1</span>)dp(idx<span class="number">-1</span>,target+nums[idx],nums);</span><br><span class="line"></span><br><span class="line">        resNum[idx][target +numOffset]=</span><br><span class="line">        resNum[idx<span class="number">-1</span>][target-nums[idx] +numOffset]</span><br><span class="line">        +resNum[idx<span class="number">-1</span>][target+nums[idx] +numOffset];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findTargetSumWays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(resNum,<span class="number">-1</span>,MAX_TARGET*MAXLEN*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> absSum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();++i)</span><br><span class="line">        &#123;</span><br><span class="line">            absSum+=<span class="built_in">abs</span>(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        numOffset=target-absSum;</span><br><span class="line">        <span class="keyword">if</span>(numOffset&lt;<span class="number">0</span>)numOffset=-numOffset;</span><br><span class="line">        <span class="keyword">else</span> numOffset=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(-nums[<span class="number">0</span>]+numOffset&lt;<span class="number">0</span>)numOffset=nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        init(nums);</span><br><span class="line">        dp(nums.size()<span class="number">-1</span>,target,nums);</span><br><span class="line">        <span class="keyword">return</span> resNum[nums.size()<span class="number">-1</span>][target+ numOffset];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>执行用时：24ms</p>
+</li>
+<li><p>内存消耗：9.3MB</p>
+</li>
+</ul>
 
     </div>
 
@@ -391,7 +412,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Algorithm-and-Data-Structure/" rel="tag"># Algorithm and Data Structure</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
             
           </div>
         
@@ -401,8 +422,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/09/LuoguP1162/" rel="next" title="LuoguP1162">
-                  <i class="fa fa-chevron-left"></i> LuoguP1162
+                <a href="/2021/04/18/TagBasedPR/" rel="next" title="TagBasedPR">
+                  <i class="fa fa-chevron-left"></i> TagBasedPR
                 </a>
               
             </div>
@@ -410,10 +431,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/10/BinSearchTree/" rel="prev" title="BinSearchTree">
-                  BinSearchTree <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -471,7 +488,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Huffman树"><span class="nav-number">1.</span> <span class="nav-text">Huffman树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">1.1.1.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举-剪枝"><span class="nav-number">1.</span> <span class="nav-text">枚举+剪枝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dp动规"><span class="nav-number">2.</span> <span class="nav-text">dp动规</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
