@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="基于领域的推荐算法：分为两大类，一类是基于用户的协同过滤算法，一类是基于物品的协同过滤算法。核心：聚类、匹配相似的人/相似的物品">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-18T09:07:48.781Z">
+<meta property="og:updated_time" content="2021-05-18T09:10:36.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UserCF-itemCF">
 <meta name="twitter:description" content="基于领域的推荐算法：分为两大类，一类是基于用户的协同过滤算法，一类是基于物品的协同过滤算法。核心：聚类、匹配相似的人/相似的物品">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-18 17:07:48" itemprop="dateModified" datetime="2021-05-18T17:07:48+08:00">2021-05-18</time>
+                <time title="修改时间：2021-05-18 17:10:36" itemprop="dateModified" datetime="2021-05-18T17:10:36+08:00">2021-05-18</time>
               </span>
             
           
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.3k</span>
+              <span>3.2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -387,25 +387,18 @@
 <ol>
 <li>Jaccard公式：计算两个集合A和B的交集元素在A、B的并集中所占的比例<script type="math/tex; mode=display">
 sim_{u,v}=\frac{|N(u)\cap N(v)|}{|N(u)\cup N(v)|}</script></li>
+<li><p>余弦相似度：</p>
+<p>用物品向量（有过正反馈的物品的向量分量置1，否则为0）度量</p>
+<p>则u、v两用户的相似度为</p>
+<script type="math/tex; mode=display">
+sim_{u,v}=\frac{|N(u)\cap N(v)|}{\sqrt{|N(u)|| N(v)|}}</script><p>等价于原始的向量余弦相似度定义</p>
+<script type="math/tex; mode=display">
+sim_{u,v}=\frac{\vec A\cdot \vec B}{|\vec A||\vec B|}</script><p>用户的物品向量为$\vec A=(x_{0},x_{1}…x_{n})$其中$x_{i}$可取0、1​</p>
+</li>
 </ol>
 </li>
 </ul>
 </li>
-</ol>
-<pre><code>  2. 余弦相似度：
-
-     用物品向量（有过正反馈的物品的向量分量置1，否则为0）度量
-
-     则u、v两用户的相似度为
-     $$
-     sim_{u,v}=\frac{|N(u)\cap N(v)|}{\sqrt{|N(u)|| N(v)|}}
-     $$
-     等价于原始的向量余弦相似度定义
-     $$
-     sim_{u,v}=\frac{\vec A\cdot \vec B}{|\vec A||\vec B|}
-     $$
-     用户的物品向量为$\vec A=(x_{0},x_{1}...x_{n})$其中$x_{i}$可取0、1​
-</code></pre><ol>
 <li><p>基于物品(标的物)的协同过滤算法(itemCF)：</p>
 <ul>
 <li><p>步骤一：计算物品之间相似度</p>
@@ -763,8 +756,8 @@ Coverage=\frac{|\cup_{u\in U}R(u)|}{|I|}</script></li>
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
