@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-18T06:30:40.002Z">
+<meta property="og:updated_time" content="2021-05-19T13:14:01.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TagBasedPR">
 <meta name="twitter:description" content="之前实现了基于图的PersonRank算法，采用随机游走的方式求出物品结点与用户结点之间的相关性，完成top-k排序推荐。类似的，基于标签的推荐也可以在图上完成，在原先的user-item图中引入tag结点，构成了新的三分图：user-tag-item图，然后在该图上进行相似的操作，求出PR值用于推荐。">
@@ -324,11 +324,19 @@
                 
               
 
-              <time title="创建时间：2021-04-18 13:46:01 / 修改时间：14:30:40" itemprop="dateCreated datePublished" datetime="2021-04-18T13:46:01+08:00">2021-04-18</time>
+              <time title="创建时间：2021-04-18 13:46:01" itemprop="dateCreated datePublished" datetime="2021-04-18T13:46:01+08:00">2021-04-18</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-19 21:14:01" itemprop="dateModified" datetime="2021-05-19T21:14:01+08:00">2021-05-19</time>
+              </span>
             
           
 
@@ -609,6 +617,56 @@ PR(v)=
   
 
   
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
 
   
 
@@ -618,8 +676,8 @@ PR(v)=
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+    <script type="text/javascript" src="/js/src/fireworks.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
