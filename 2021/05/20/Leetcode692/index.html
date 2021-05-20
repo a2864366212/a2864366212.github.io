@@ -59,18 +59,18 @@
   };
 </script>
 
-  <meta name="description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/top-k-frequent-words著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
+  <meta name="description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 输入: [“i”, “love”, “leetcode”, “i”, “love”, “coding”], k = 2输出: [“i”, “love”]解析: “i” 和 “love” 为出现次数最多的两个单词，均为2次。    注意，按字母">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode692">
 <meta property="og:url" content="https://a2864366212.github.io/2021/05/20/Leetcode692/index.html">
 <meta property="og:site_name" content="SteinsGate">
-<meta property="og:description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/top-k-frequent-words著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
+<meta property="og:description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 输入: [“i”, “love”, “leetcode”, “i”, “love”, “coding”], k = 2输出: [“i”, “love”]解析: “i” 和 “love” 为出现次数最多的两个单词，均为2次。    注意，按字母">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-20T04:19:38.509Z">
+<meta property="og:updated_time" content="2021-05-20T04:23:08.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode692">
-<meta name="twitter:description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/top-k-frequent-words著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。">
+<meta name="twitter:description" content="给一非空的单词列表，返回前 k 个出现次数最多的单词。 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。 示例 1： 输入: [“i”, “love”, “leetcode”, “i”, “love”, “coding”], k = 2输出: [“i”, “love”]解析: “i” 和 “love” 为出现次数最多的两个单词，均为2次。    注意，按字母">
   <link rel="canonical" href="https://a2864366212.github.io/2021/05/20/Leetcode692/">
 
 
@@ -324,7 +324,7 @@
                 
               
 
-              <time title="创建时间：2021-05-20 12:05:25 / 修改时间：12:19:38" itemprop="dateCreated datePublished" datetime="2021-05-20T12:05:25+08:00">2021-05-20</time>
+              <time title="创建时间：2021-05-20 12:05:25 / 修改时间：12:23:08" itemprop="dateCreated datePublished" datetime="2021-05-20T12:05:25+08:00">2021-05-20</time>
             </span>
           
             
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.8k</span>
+              <span>3.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -367,6 +367,9 @@
         <p>给一非空的单词列表，返回前 k 个出现次数最多的单词。</p>
 <p>返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。</p>
 <p>示例 1：</p>
+<p>输入: [“i”, “love”, “leetcode”, “i”, “love”, “coding”], k = 2<br>输出: [“i”, “love”]<br>解析: “i” 和 “love” 为出现次数最多的两个单词，均为2次。<br>    注意，按字母顺序 “i” 在 “love” 之前。</p>
+<p>示例 2：</p>
+<p>输入: [“the”, “day”, “is”, “sunny”, “the”, “the”, “the”, “sunny”, “is”, “is”], k = 4<br>输出: [“the”, “is”, “sunny”, “day”]<br>解析: “the”, “is”, “sunny” 和 “day” 是出现次数最多的四个单词，<br>    出现次数依次为 4, 3, 2 和 1 次。</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/top-k-frequent-words" target="_blank" rel="noopener">https://leetcode-cn.com/problems/top-k-frequent-words</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <a id="more"></a>
 <h1 id="哈希表对频次计数-优先队列排序"><a href="#哈希表对频次计数-优先队列排序" class="headerlink" title="哈希表对频次计数+优先队列排序"></a>哈希表对频次计数+优先队列排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
