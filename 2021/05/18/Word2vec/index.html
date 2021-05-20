@@ -67,12 +67,13 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="2013年，Google开源了一款用于词向量计算的工具——Word2vec，可以在百万数量的词典和上亿数量级的数据集上进行高效训练，得到的训练结果——词向量（Word Embedding）——可以很好的度量词与词之间的相似性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/词向量DNN训练模型.png">
-<meta property="og:updated_time" content="2021-05-19T13:10:00.487Z">
+<meta property="og:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/CBOW_ONE-WORD_CONTEXT.png">
+<meta property="og:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/连续词袋模型.png">
+<meta property="og:updated_time" content="2021-05-20T16:23:36.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word2vec">
 <meta name="twitter:description" content="2013年，Google开源了一款用于词向量计算的工具——Word2vec，可以在百万数量的词典和上亿数量级的数据集上进行高效训练，得到的训练结果——词向量（Word Embedding）——可以很好的度量词与词之间的相似性。">
-<meta name="twitter:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/词向量DNN训练模型.png">
+<meta name="twitter:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/CBOW_ONE-WORD_CONTEXT.png">
   <link rel="canonical" href="https://a2864366212.github.io/2021/05/18/Word2vec/">
 
 
@@ -337,7 +338,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-19 21:10:00" itemprop="dateModified" datetime="2021-05-19T21:10:00+08:00">2021-05-19</time>
+                <time title="修改时间：2021-05-21 00:23:36" itemprop="dateModified" datetime="2021-05-21T00:23:36+08:00">2021-05-21</time>
               </span>
             
           
@@ -351,7 +352,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>673</span>
+              <span>1.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -361,7 +362,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -385,7 +386,6 @@
 <p>One-Hot向量简单的表示了一个词语，但是却无法有效表达它们的语义信息。“土豆”和“马铃薯”虽然是同一种食物，但利用常规的向量距离公式，比如欧几里德距离或者余弦距离公式，都无法有效计算它们的相似度，显然这种方式不能很好地表达词之间的相似性。</p>
 <h1 id="Dristributed-词向量"><a href="#Dristributed-词向量" class="headerlink" title="Dristributed 词向量"></a>Dristributed 词向量</h1><p>通过训练，将每一个词映射到较短的向量上。</p>
 <p>如神经网络DNN来训练出词向量，一般采用三层神经网络结构，分为输入层，隐藏层，和输出层（softmax层）。</p>
-<p><img src="/2021/05/18/Word2vec/词向量DNN训练模型.png" alt="词向量DNN训练模型"></p>
 <h1 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h1><h2 id="两个模型"><a href="#两个模型" class="headerlink" title="两个模型"></a>两个模型</h2><ol>
 <li><p>跳字模型（Skip-gram）</p>
 <p>输入一个词，给出该词在文本序列周围的词（预测单个词的上下文Context）。</p>
@@ -393,8 +393,56 @@
 <li><p>连续词袋模型（CBOW）</p>
 <p>输入某一个特征词的上下文相关的词对应的词向量，输出该特定词。</p>
 <p>假设我们有一句话，people make progress every day。输入的是4个词向量，’people’ , ‘make‘ , ‘every’ , ‘day’, 输出是词汇表中所有词的softmax概率，我们的目标是期望progress词对应的softmax概率最大。</p>
+<ul>
+<li><p>CBOW One-Word Context模型</p>
+<p>该模型输入一个上下文单词，预测一个目标单词。</p>
+<p><img src="/2021/05/18/Word2vec/CBOW_ONE-WORD_CONTEXT.png" alt></p>
+<ol>
+<li><p>输入层</p>
+<p>输入层是一个用One-Hot编码表示的单词向量，其维度为词典大小 $V$。记为 $x$，形状为 V x 1</p>
+</li>
+<li><p>输入层-&gt;隐藏层</p>
+<p>全连接，权重矩阵为 $W$，形状为 V x N。输出为向量 $h$，形状为 N x 1</p>
+<p>前向计算公式为：</p>
+<script type="math/tex; mode=display">
+\Large h=W^{T}\cdot x</script><p>注意到输入向量 $x$是One-Hot向量，只有一维为1其余为0。等价的有</p>
+<script type="math/tex; mode=display">
+\Large h=v_{w_{I}}^{T}</script><p>其中 $v_{wI}$ 为权重矩阵 $W$ 的第 $k$ 行，相应的输入向量的第 $k$ 维为1</p>
+</li>
+<li><p>隐藏层-&gt;输出层</p>
+<p>全连接，权重矩阵为$W’$，形状为N x V。输出向量为$u$，形状为 V x 1</p>
+<p>前向计算公式为：</p>
+<script type="math/tex; mode=display">
+\Large u=W'^{\, T}\cdot h</script><p>对其分量有</p>
+<script type="math/tex; mode=display">
+\Large u_{j}=v^{'\, T}_{w_{j}} \cdot h</script><p>其中$\Large v^{‘\, T}_{w_{j}}$为$W\,’$的第 $j$ 列向量</p>
+</li>
+<li><p>Softmax层</p>
+<p>经过Softmax层后，输出层第 j 个结点输出的值为</p>
+<script type="math/tex; mode=display">
+\Large p(w_{j}|w_{I})=\frac{e^{u_{j}}}{\sum^{V}_{j\,'=1}e^{u_{j\,'}}}</script><p>代入$(2)$和$(4)$式，有</p>
+<script type="math/tex; mode=display">
+\Large p(w_{j}|w_{I})=\frac{e^{ v^{'\, T}_{w_{j}} \cdot v_{w_{I}}^{T} }}{\sum^{V}_{j\,'=1}e^{ v^{'\, T}_{w_{j\,'}} \cdot v_{w_{I}}^{T} }}</script></li>
+<li><p>损失函数</p>
+<p>该模型的任务为输入上下文单词$w_{I}$的One-Hot向量，经过上述前向传播过程后，预测目标单词$w_{O}$（标签值为V x 1的One-Hot向量，对应于目标单词）。实际上是最大化$(7)$式的条件概率$p(w_{O}|w_{I})$</p>
+<script type="math/tex; mode=display">
+\Large max\ p(w_{O}|w_{I}) =>max\ log\ p(w_{O}|w_{I})\\
+\Large  =>max\ u_{j^{*}}-log\ \sum_{j\,'=1}^{V}e^{u_{j\,'}}</script><p>一般的，我们会用梯度下降法求解参数，有损失函数 $E$ 如下</p>
+<script type="math/tex; mode=display">
+\Large E=-log\ p(w_{O}|w_{I})=log\ \sum_{j\,'=1}^{V}e^{u_{j\,'}}-u_{j^{*}}</script></li>
+</ol>
+</li>
+</ul>
 </li>
 </ol>
+<pre><code> 6. 隐藏层-&gt;输出层的权重更新($W^{\,&#39;}$)
+
+ 7. 输入层-&gt;隐藏层的权重更新($W$)
+</code></pre><ul>
+<li><p>CBOW Multi-Word Context</p>
+<p><img src="/2021/05/18/Word2vec/连续词袋模型.png" alt="连续词袋模型"></p>
+</li>
+</ul>
 <h2 id="两种高效训练方式"><a href="#两种高效训练方式" class="headerlink" title="两种高效训练方式"></a>两种高效训练方式</h2>
     </div>
 
@@ -548,12 +596,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">98k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:29</span>
 </div>
 
 
