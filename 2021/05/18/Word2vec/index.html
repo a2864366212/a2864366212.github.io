@@ -69,7 +69,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/CBOW_ONE-WORD_CONTEXT.png">
 <meta property="og:image" content="https://a2864366212.github.io/2021/05/18/Word2vec/连续词袋模型.png">
-<meta property="og:updated_time" content="2021-05-20T16:23:36.675Z">
+<meta property="og:updated_time" content="2021-05-20T16:29:16.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word2vec">
 <meta name="twitter:description" content="2013年，Google开源了一款用于词向量计算的工具——Word2vec，可以在百万数量的词典和上亿数量级的数据集上进行高效训练，得到的训练结果——词向量（Word Embedding）——可以很好的度量词与词之间的相似性。">
@@ -338,7 +338,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-21 00:23:36" itemprop="dateModified" datetime="2021-05-21T00:23:36+08:00">2021-05-21</time>
+                <time title="修改时间：2021-05-21 00:29:16" itemprop="dateModified" datetime="2021-05-21T00:29:16+08:00">2021-05-21</time>
               </span>
             
           
@@ -415,7 +415,7 @@
 <script type="math/tex; mode=display">
 \Large u=W'^{\, T}\cdot h</script><p>对其分量有</p>
 <script type="math/tex; mode=display">
-\Large u_{j}=v^{'\, T}_{w_{j}} \cdot h</script><p>其中$\Large v^{‘\, T}_{w_{j}}$为$W\,’$的第 $j$ 列向量</p>
+\Large u_{j}=v^{'\, T}_{w_{j}} \cdot h</script><p>其中$\Large v\,’^{\, T}_{w_{j}}$为$W\,’$的第 $j$ 列向量</p>
 </li>
 <li><p>Softmax层</p>
 <p>经过Softmax层后，输出层第 j 个结点输出的值为</p>
@@ -430,19 +430,18 @@
 \Large  =>max\ u_{j^{*}}-log\ \sum_{j\,'=1}^{V}e^{u_{j\,'}}</script><p>一般的，我们会用梯度下降法求解参数，有损失函数 $E$ 如下</p>
 <script type="math/tex; mode=display">
 \Large E=-log\ p(w_{O}|w_{I})=log\ \sum_{j\,'=1}^{V}e^{u_{j\,'}}-u_{j^{*}}</script></li>
+<li><p>隐藏层-&gt;输出层的权重更新($W^{\,’}$)</p>
+</li>
+<li><p>输入层-&gt;隐藏层的权重更新($W$)</p>
+</li>
 </ol>
+</li>
+<li><p>CBOW Multi-Word Context</p>
 </li>
 </ul>
-</li>
-</ol>
-<pre><code> 6. 隐藏层-&gt;输出层的权重更新($W^{\,&#39;}$)
-
- 7. 输入层-&gt;隐藏层的权重更新($W$)
-</code></pre><ul>
-<li><p>CBOW Multi-Word Context</p>
 <p><img src="/2021/05/18/Word2vec/连续词袋模型.png" alt="连续词袋模型"></p>
 </li>
-</ul>
+</ol>
 <h2 id="两种高效训练方式"><a href="#两种高效训练方式" class="headerlink" title="两种高效训练方式"></a>两种高效训练方式</h2>
     </div>
 
