@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="SteinsGate">
 <meta property="og:description" content="最长上升子序列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-22T17:49:20.351Z">
+<meta property="og:updated_time" content="2021-05-21T09:10:50.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LongestIncreasingSubsequence">
 <meta name="twitter:description" content="最长上升子序列">
@@ -335,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-23 01:49:20" itemprop="dateModified" datetime="2019-11-23T01:49:20+08:00">2019-11-23</time>
+                <time title="修改时间：2021-05-21 17:10:50" itemprop="dateModified" datetime="2021-05-21T17:10:50+08:00">2021-05-21</time>
               </span>
             
           
@@ -373,12 +373,13 @@
 
       
         <p>最长上升子序列<br><a id="more"></a><br>两种方法介绍<br>法一：<br>dp状态转移<br>法二：<br>贪心+二分<br>做法：<br>思路：1. 求最长递增子序列的长度时，我们使用二分查找的方法求，具体的操作是维护一个辅助数组，这个辅助数组dp[k]中保存着当前已经获得最长递增子序列，k表示当前的辅助数组中递增序列的个数，当处理原数组中下一个元素data[i]时，<br>1）若data[i] &gt; dp[k - 1]时， 直接dp[k++] = data[i];<br>2) 否则，使用二分查找在dp中找到第一个不大于data[i]的元素的位置j, 使得dp[j] = data[i];</p>
-<h1 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h1><h2 id="复杂度O-n-2"><a href="#复杂度O-n-2" class="headerlink" title="复杂度O(n_{2})"></a>复杂度O(n_{2})</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><pre><code>State:Length[index][TailHeight]-&gt;
+<h1 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h1><p>复杂度$O(n^{2})$</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><pre><code>State:Length[index][TailHeight]-&gt;
 1. Length[index+1][TailHeight] 当前元素不能接在LIS后面，下一状态继承当前状态
 2. Length[index+1][Height[index]]+1 or Length[index+1][TailHeight]当前元素能接在LIS后面，下一状态基于当前状态做出两种决策
-</code></pre><p>分析一下最终结果 假如输入序列中有n个元素，那么记最后结果为dp[n]<br>显然 dp[n]= max(dp[i,i\epsilon[1,n]]+    element[n]&gt;element[i]?1:0;  )</p>
+</code></pre><p>分析一下最终结果 假如输入序列中有n个元素，那么记最后结果为dp[n]<br>显然 $dp[n]= max(dp[i,i\epsilon[1,n]]+    element[n]&gt;element[i]?1:0;  )$</p>
 <p>dp[i]为 以element[i]结尾的序列问题的最优解</p>
-<p>状态转移方程：dp[i]=max(dp[j,j\epsilon[1,i）])+  element[i]]&gt;element[j]?1:0;  )<br>answer:dp<br>cin:element</p>
+<p>状态转移方程：$ dp[i]=max(dp[j]+  element[i]]&gt;element[j]?1:0 ),j\epsilon[1,i)$<br>answer:dp<br>cin:element</p>
 <p>如果已经求出前n-1个元素的最优解，那么可以求出前n个元素的最优解<br>如果已经求出前n-2个元素的最优解，那么可以求出前n-1个元素的最优解<br>….<br>初始化</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
@@ -401,7 +402,8 @@ int main(){
             ans = f[i];
     printf(&quot;%d\n&quot;,ans);
 }
-</code></pre><h1 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h1><h2 id="复杂度O-n-log-n"><a href="#复杂度O-n-log-n" class="headerlink" title="复杂度O(n\log n)"></a>复杂度O(n\log n)</h2><pre><code>1.lower_bound(起始地址，结束地址，要查找的数值) 返回的是大于或等于val的第一个元素位置
+</code></pre><h1 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h1><p>复杂度 $O(n\log n)$</p>
+<pre><code>1.lower_bound(起始地址，结束地址，要查找的数值) 返回的是大于或等于val的第一个元素位置
 2.upper_bound(起始地址，结束地址，要查找的数值) 返回的是返回大于val的第一个元素位置
 3.binary_search(起始地址，结束地址，要查找的数值)  返回的是是否存在这么一个数，是一个bool值。
 
@@ -449,7 +451,8 @@ int main()
     cout&lt;&lt;endl&lt;&lt;lower_bound(a,a+n,3)-a;*/
     return 0;
 } 
-</code></pre>
+</code></pre><p>​    </p>
+
     </div>
 
     
@@ -521,7 +524,7 @@ int main()
           <h3 class="widget-title">Tag Cloud</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Luogu/">Luogu</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecSys/">RecSys</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHIMSY/">WHIMSY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -544,7 +547,7 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法1"><span class="nav-number">1.</span> <span class="nav-text">方法1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度O-n-2"><span class="nav-number">1.1.</span> <span class="nav-text">复杂度O(n_{2})</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解"><span class="nav-number">1.1.1.</span> <span class="nav-text">理解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法2"><span class="nav-number">2.</span> <span class="nav-text">方法2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度O-n-log-n"><span class="nav-number">2.1.</span> <span class="nav-text">复杂度O(n\log n)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法1"><span class="nav-number">1.</span> <span class="nav-text">方法1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">1.1.</span> <span class="nav-text">理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法2"><span class="nav-number">2.</span> <span class="nav-text">方法2</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -563,7 +566,7 @@ int main()
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -602,12 +605,12 @@ int main()
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">98k</span>
+    <span title="站点总字数">105k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:36</span>
 </div>
 
 
